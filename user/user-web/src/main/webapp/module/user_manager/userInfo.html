@@ -1,0 +1,271 @@
+<div class="wrapper-md bg-light b-b headerPadding">
+	<h1 class="m-n font-thin h3">
+		<a href="">个人信息</a>&gt;<a href="">个人信息查看</a>
+	</h1>
+</div>
+<div class="wrapper-md">
+	<div class="panel panel-default">
+		<div class="panel-heading font-bold">账户信息</div>
+		<div class="panel-body">
+			<form class="form-horizontal" method="get">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">用户ID:</label>
+					<div class="row">
+						<div class="col-sm-3">
+							<span class="help-block m-b-none">{{userInfo.id}}</span>
+						</div>
+					</div>
+				</div>
+				<div class="line line-dashed b-b line-lg"></div>
+			    <div class="form-group">
+					<label class="col-sm-2 control-label">用户名:</label>
+					<div class="row">
+						<div class="col-sm-3">
+							<span class="help-block m-b-none">{{userInfo.username}}</span>
+						</div>
+						<div class="col-sm-5">
+							<button type="button" class="btn btn-info" data-toggle="modal"
+								data-target="#formT" ng-click="cleanEditPasswordMessage()">修改密码</button>
+						</div>
+					</div>
+				</div>
+				<div class="line line-dashed b-b line-lg  "></div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">姓名:</label>
+					<div class="row">
+						<div class="col-sm-3">
+							<span class="help-block m-b-none">{{userInfo.identityCardName}}</span>
+						</div>
+					</div>
+				</div>
+				<div class="line line-dashed b-b line-lg"></div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">手机号:</label>
+					<div class="row">
+						<div class="col-sm-3">
+							<span class="help-block m-b-none">{{userInfo.mobile2}}</span>
+						</div>
+						<div class="col-sm-5">
+							<button type="button" class="btn btn-info" data-toggle="modal"
+								data-target="#phone" ng-click="cleanPhone()">修改手机号</button>
+						</div>
+					</div>
+				</div>
+				<div class="line line-dashed b-b line-lg  "></div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">邮箱:</label>
+					<div class="row">
+						<div class="col-sm-3">
+							<span class="help-block m-b-none">{{userInfo.email}}</span>
+						</div>
+						<div class="col-sm-5">
+							<button type="button" class="btn btn-info" data-toggle="modal"
+								data-target="#form" ng-click="cleanEmail()">修改邮箱</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<!--弹窗-修改密码-->
+<div class="modal fade" id="formT" data-keyboard="false"
+	data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby=""
+	aria-hidden="true">
+	<div class="modal-dialog ">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="">
+					修改密码 <span class="close-popup" data-dismiss="modal"></span>
+				</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal" method="get">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">原密码:</label>
+						<div class="col-sm-9">
+							<input type="password" ng-model="editPassword.password" placeholder="原密码" ng-init="" class="form-control"> 
+							<span ng-show="password_error_tip" class="help-block m-b-none" style="color:red;">{{password_error}}</span>
+						</div>
+					</div>
+					<div class="line line-dashed b-b line-lg"></div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">新密码:</label>
+						<div class="col-sm-9">
+							<input type="password" ng-model="editPassword.password1" placeholder="密码需为6位-18位，包含字母或数字" ng-init=""  class="form-control"> 
+							<span ng-show="password1_error_tip" class="help-block m-b-none" style="color:red;">{{password1_error}}</span>
+						</div>
+					</div>
+					<div class="line line-dashed b-b line-lg"></div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">确认新密码:</label>
+						<div class="col-sm-9">
+							<input type="password" ng-model="editPassword.password2"   placeholder="密码需为6位-18位，包含字母或数字" ng-init="" class="form-control"> 
+							<span ng-show="password2_error_tip"  class="help-block" style="color:red;">{{password2_error}}</span>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-info" ng-click="saveEditPassword()" ng-disabled="saveCheckDisabled">确定</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!--弹窗-修改邮箱-->
+<div class="modal fade" id="form" data-keyboard="false"
+	data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby=""
+	aria-hidden="true">
+	<div class="modal-dialog ">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="">
+					修改邮箱 <span class="close-popup" data-dismiss="modal"></span>
+				</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal" method="get">
+					<div class="form-group" ng-if="userInfo.email!=null && userInfo.email!=''">
+						<label class="col-sm-3 control-label">旧邮箱:</label>
+						<div class="col-sm-6">
+							<span class="help-block m-b-none">{{userInfo.email}}</span>
+						</div>
+					</div>
+					<div class="line line-dashed b-b line-lg" ng-if="userInfo.email!=null && userInfo.email!=''"></div>
+					<div class="form-group" ng-if="userInfo.email!=null && userInfo.email!=''">
+						<label class="col-sm-3 control-label">完整旧邮箱:</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" ng-model="editEmail.email" ng-init="">
+							<span ng-show="email_error_tip"  class="help-block" style="color:red;">{{email_error}}</span>
+						</div>
+						<div class="col-sm-3">
+							<button type="button" class="btn btn-info" ng-disabled="sendEmailCodeDisabled" ng-click="sendEmailCode();">发送验证码</button>
+						</div>
+					</div>
+					<div class="line line-dashed b-b line-lg" ng-if="userInfo.email!=null && userInfo.email!=''"></div>
+					<div class="form-group " ng-if="userInfo.email!=null && userInfo.email!=''">
+						<label class="col-sm-3 control-label">验证码:</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" ng-model="editEmail.emailCode" ng-init="">
+							<span ng-show="code_error_tip"  class="help-block" style="color:red;">{{code_error}}</span>
+						</div>
+					</div>
+					<div class="line line-dashed b-b line-lg"></div>
+					<div class="form-group ">
+						<label class="col-sm-3 control-label">新邮箱:</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" ng-model="editEmail.email2" ng-init="" >
+							<span ng-show="email2_error_tip"  class="help-block" style="color:red;">{{email2_error}}</span>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-info" ng-click="saveEditEmail()">确定</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!--弹窗-修改手机号-->
+<div class="modal fade" id="phone" data-keyboard="false"
+	data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby=""
+	aria-hidden="true">
+	<div class="modal-dialog ">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="">
+					修改手机号 <span class="close-popup" data-dismiss="modal"></span>
+				</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal" method="get">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">手机号:</label>
+						<div class="row">
+							<div class="col-sm-4">
+								<span class="help-block m-b-none">{{userInfo.mobile2}}</span>
+							</div>
+							<div class="col-sm-7">
+								<button  ng-if="userInfo.mobile2!=null && userInfo.mobile2!=''" type="button" id="sendBtnText" class="btn btn-info" ng-disabled="sendMobileCodeDisabled" ng-click="sendMobileCode($event);">获取短信验证码</button>								
+								<!-- <button type="button" class="btn btn-info">重新发送</button>-->
+							</div>
+						</div>
+					</div>
+					<div ng-if="userInfo.mobile2!=null && userInfo.mobile2!=''"  class="line line-dashed b-b line-lg"></div>
+					<div ng-if="userInfo.mobile2!=null && userInfo.mobile2!=''"  class="form-group ">
+						<label class="col-sm-3 control-label">验证码:</label>
+						<div class="col-sm-7">
+							<input type="text" class="form-control" ng-model="checkCaptchas.captchas" ng-init="">
+							<span class="help-block m-b-none" ng-show="captchas_error_tip" style="color:red;">{{captchas_error}}</span>
+						</div>
+					</div>
+					<div class="line line-dashed b-b line-lg"></div>
+					<div class="form-group ">
+						<label class="col-sm-3 control-label">新手机号:</label>
+						<div class="col-sm-7">
+							<input type="text" class="form-control" ng-model="checkCaptchas.mobile" ng-init="">
+							<span class="help-block m-b-none" ng-show="checkMobile_error_tip" style="color:red;">{{checkMobile_error}}</span>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-info"  ng-click="checkMobileCaptchas()">确定</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!--二层弹窗--->
+<div class="modal fade" id="phone1" data-keyboard="false"
+	data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby=""
+	aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="">
+					绑定新手机 <span class="close-popup" data-dismiss="modal"></span>
+				</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal" method="get">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">新手机号:</label>
+						<div class="row">
+							<div class="col-sm-7">
+								<input type="text" class="form-control" />
+							</div>
+							<div class="col-sm-3">
+								<button type="button" class="btn btn-info">发送验证码</button>
+							</div>
+						</div>
+					</div>
+					<div class="line line-dashed b-b line-lg"></div>
+					<div class="form-group ">
+						<label class="col-sm-3 control-label">验证码:</label>
+						<div class="col-sm-7">
+							<input type="text" class="form-control"> <span
+								class="help-block m-b-none">验证码不正确</span>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消
+				</button>
+				<button type="button" class="btn btn-info">确定</button>
+			</div>
+		</div>
+	</div>
+	<!--</div>-->
+</div>

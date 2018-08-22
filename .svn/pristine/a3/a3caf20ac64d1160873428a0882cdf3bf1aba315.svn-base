@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="renderer" content="wekit|ie-comp|ie-stand">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>医谷社区后台管理系统</title>
+  
+<link href="/plugins/bootstrap-3.3.4/css/bootstrap.min.css" rel="stylesheet">
+<link href="/plugins/common/css/animate.min.css" rel="stylesheet" />
+<link href="/plugins/common/css/font-awesome.min.css" rel="stylesheet" />
+<link href="/plugins/common/css/simple-line-icons.css" rel="stylesheet" />
+<link href="/plugins/platform-include/css/platform.css" rel="stylesheet">
+
+<script src="/plugins/jquery/jquery.min.js"></script>
+<script src="/plugins/angular-1.2.29/js/angular.min.js"></script>
+<script src="/plugins/angular-1.2.29/js/angular-cookies.min.js"></script>
+<script src="/plugins/angular-1.2.29/js/angular-animate.min.js"></script>
+<script src="/plugins/angular-1.2.29/js/angular-route.min.js"></script>
+<script src="/plugins/angular-1.2.29/js/angular-ui-router.js"></script>
+<script src="/plugins/angular-1.2.29/js/ngStorage.min.js"></script>
+<script src="/plugins/angular-1.2.29/js/ui-load.js"></script>
+<script src="/plugins/angular-1.2.29/js/ui-jq.js"></script>
+<script src="/plugins/angular-1.2.29/js/ui-validate.js"></script>
+<script src="/plugins/angular-1.2.29/js/ui-bootstrap-tpls.min.js"></script>
+<script src="/plugins/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+<!--[if lt IE 9]>
+<script src="/plugins/ie_browser/js/html5shiv.min.js"></script>
+<script src="/plugins/ie_browser/js/respond.min.js"></script>
+
+<![endif]-->
+
+<script src="/plugins/platform-include/js/platformApp.js"></script>
+<script src="/plugins/platform-include/js/platformCtrl.js"></script>
+
+<script src="/plugins/platform-include/js/loginCtrl.js"></script>
+<script src="/plugins/platform-include/js/blankCtrl.js"></script>
+<style type="text/css">
+
+
+.w400px {
+  /*width: 50%;*/
+  height:400px;
+  /*padding-top: 8%;
+  padding-left: 20%;
+  padding-bottom: 30px; */
+  margin:100px auto 10px;
+}
+.loginTitle {
+height: 263px;
+width: 771px;
+margin:15% auto auto auto;
+}
+
+.loginForm {
+}
+.username {
+	background:url(images/login-mz/3.jpg) no-repeat;
+    height: 50px;
+    width: 410px;
+    padding-left:62px;
+    border:none;
+    font-size:16px;
+}
+.password {
+	background:url(images/login-mz/4.jpg) no-repeat;
+	height: 50px;
+    width: 410px;
+    padding-left:62px;
+    border:none;
+    font-size:16px;
+    margin-top:10px;
+}
+.submit {
+	background:url(images/login-mz/5.jpg) no-repeat;
+	height: 50px;
+    width: 410px;
+    border:none;
+    margin-left:8px;
+    margin-top:20px;
+}
+
+</style>
+</head>
+
+<body style="height:1080px;background:url(images/login-mz/1.jpg) no-repeat">
+
+<div ng-app="app" class="container-fluid" ng-controller="loginCtrl" ng-init="init();">
+    <div class="loginBox">
+        <div class="col-xs-3"></div>
+        <div class="col-xs-6 text-left" >
+         <div class="loginTitle"></div>
+         <div class="w400px">
+            <img src='images/login-mz/2.png' style="width:40%;margin-top:10px;"/>
+            <form class="form-horizontal loginForm" novalidate autocomplete="off" style="width:50%;float:right;">
+                <div class="form-group">
+                	<label class="col-xs-2"></label>
+                    <div class="input-group col-xs-10">
+                    	<input name="username" type="text" style="display:none;">
+                        <input name="username" placeholder="用户名" class="username" type="text" autocomplete="off"
+                               ng-model="user.username" ng-change="loginCheck();">
+                    </div>
+                </div>
+                <div class="form-group">
+                	<label class="col-xs-2"></label>
+                    <div class="input-group col-xs-10">
+                    	<input name="password" type="password" style="display:none;">
+                        <input name="password" placeholder="密码" class="password" type="password" autocomplete="off"
+                               ng-model="user.password" ng-change="loginCheck();">
+                    </div>
+                </div>
+                <div class="form-group" style="height:22px;position: absolute;margin: 0;">
+                    <div style="color:red;" ng-bind="errorMessage"></div>
+                </div>
+                <div class="form-group">
+                	<label class="col-xs-2"></label>
+                    <div ng-class="col-xs-10">
+                        <button  autocomplete="off" id="loginBtn" class="submit" ng-click="loginSubmit();"></button>
+                    </div>
+                </div>
+            </form>
+	        </div>
+	        </div>
+        <div class="col-xs-3"></div>
+    </div>
+</div>
+</body>

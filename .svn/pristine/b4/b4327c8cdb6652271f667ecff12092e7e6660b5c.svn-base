@@ -1,0 +1,653 @@
+4784 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'mobileUserWriteManage': ResourceElement for private com.people2000.user.business.write.dao.ext.UserRoleDAOWrite2 com.people2000.user.business.write.manage.impl.MobileUserWriteManageImpl.userRoleDAOWrite
+4784 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'userRoleDAOWrite'
+4784 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'mobileUserWriteManage': ResourceElement for private com.people2000.user.business.write.dao.ext.CaptchasDAOWrite2 com.people2000.user.business.write.manage.impl.MobileUserWriteManageImpl.captchasDAOWrite
+4784 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'captchasDAOWrite'
+4784 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'mobileUserWriteManage': ResourceElement for private com.people2000.user.business.read.dao.ext.CaptchasDAORead2 com.people2000.user.business.write.manage.impl.MobileUserWriteManageImpl.captchasDAORead2
+4784 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'captchasDAORead'
+4784 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'mobileUserWriteManage': ResourceElement for private com.people2000.user.business.write.manage.EncryptInfoWriteManage com.people2000.user.business.write.manage.impl.MobileUserWriteManageImpl.encryptInfoWriteManage
+4784 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'encryptInfoWriteManage'
+4784 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'mobileUserWriteManage': ResourceElement for private com.people2000.user.business.read.dao.UPlatformGroupRelationDAORead com.people2000.user.business.write.manage.impl.MobileUserWriteManageImpl.uPlatformGroupRelationDAORead
+4784 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'uPlatformGroupRelationDAORead'
+4784 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'mobileUserWriteManage': ResourceElement for private com.people2000.user.business.write.dao.ext.UserActionLogDAOWrite2 com.people2000.user.business.write.manage.impl.MobileUserWriteManageImpl.userActionLogDAOWrite
+4784 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'userActionLogDAOWrite'
+4784 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'mobileUserWriteManage': ResourceElement for private com.people2000.user.business.write.dao.UserMappingDAOWrite com.people2000.user.business.write.manage.impl.MobileUserWriteManageImpl.userMappingDAOWrite
+4784 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'userMappingDAOWrite'
+4784 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'mobileUserWriteManage': ResourceElement for private com.people2000.user.business.write.dao.UserExtDAOWrite com.people2000.user.business.write.manage.impl.MobileUserWriteManageImpl.userExtDAOWrite
+4784 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'userExtDAOWrite'
+4785 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'mobileUserWriteManage': ResourceElement for private com.people2000.user.business.write.manage.UnionLoginManage com.people2000.user.business.write.manage.impl.MobileUserWriteManageImpl.unionLoginManage
+4785 DEBUG [2018-06-25 11:08:41]  Creating shared instance of singleton bean 'unionLoginManage'
+4785 DEBUG [2018-06-25 11:08:41]  Creating instance of bean 'unionLoginManage'
+4785 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4785 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4785 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4785 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4785 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4785 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4787 DEBUG [2018-06-25 11:08:41]  Registered injected element on class [com.people2000.user.business.write.manage.impl.UnionLoginManageImpl]: ResourceElement for private com.people2000.user.business.write.manage.LoginWriteManage com.people2000.user.business.write.manage.impl.UnionLoginManageImpl.loginWriteManage
+4787 DEBUG [2018-06-25 11:08:41]  Registered injected element on class [com.people2000.user.business.write.manage.impl.UnionLoginManageImpl]: ResourceElement for private com.people2000.user.business.write.dao.UserLoginDAOWrite com.people2000.user.business.write.manage.impl.UnionLoginManageImpl.userLoginDAOWrite
+4787 DEBUG [2018-06-25 11:08:41]  Registered injected element on class [com.people2000.user.business.write.manage.impl.UnionLoginManageImpl]: ResourceElement for private com.people2000.user.business.write.manage.UserCookieWriteManage com.people2000.user.business.write.manage.impl.UnionLoginManageImpl.userCookieWriteManage
+4787 DEBUG [2018-06-25 11:08:41]  Registered injected element on class [com.people2000.user.business.write.manage.impl.UnionLoginManageImpl]: ResourceElement for private com.people2000.user.business.write.dao.ext.UserDAOWrite2 com.people2000.user.business.write.manage.impl.UnionLoginManageImpl.userDAOWrite
+4787 DEBUG [2018-06-25 11:08:41]  Registered injected element on class [com.people2000.user.business.write.manage.impl.UnionLoginManageImpl]: ResourceElement for private com.people2000.user.business.write.dao.UUnionConfigDAOWrite com.people2000.user.business.write.manage.impl.UnionLoginManageImpl.uUnionConfigDAOWrite
+4788 DEBUG [2018-06-25 11:08:41]  Registered injected element on class [com.people2000.user.business.write.manage.impl.UnionLoginManageImpl]: ResourceElement for private com.people2000.user.business.write.manage.EncryptInfoWriteManage com.people2000.user.business.write.manage.impl.UnionLoginManageImpl.encryptInfoWriteManage
+4788 DEBUG [2018-06-25 11:08:41]  Registered injected element on class [com.people2000.user.business.write.manage.impl.UnionLoginManageImpl]: ResourceElement for private com.people2000.user.business.write.dao.UserRoleDAOWrite com.people2000.user.business.write.manage.impl.UnionLoginManageImpl.userRoleDAOWrite
+4788 DEBUG [2018-06-25 11:08:41]  Registered injected element on class [com.people2000.user.business.write.manage.impl.UnionLoginManageImpl]: ResourceElement for private com.people2000.user.business.write.dao.ext.UserActionLogDAOWrite2 com.people2000.user.business.write.manage.impl.UnionLoginManageImpl.userActionLogDAOWrite
+4788 DEBUG [2018-06-25 11:08:41]  Registered injected element on class [com.people2000.user.business.write.manage.impl.UnionLoginManageImpl]: ResourceElement for private com.people2000.user.business.write.dao.UUnionLoginDAOWrite com.people2000.user.business.write.manage.impl.UnionLoginManageImpl.uUnionLoginDAOWrite
+4788 DEBUG [2018-06-25 11:08:41]  Registered injected element on class [com.people2000.user.business.write.manage.impl.UnionLoginManageImpl]: ResourceElement for private com.people2000.user.business.utils.uionlogin.WXLoginService com.people2000.user.business.write.manage.impl.UnionLoginManageImpl.wxLoginService
+4788 DEBUG [2018-06-25 11:08:41]  Eagerly caching bean 'unionLoginManage' to allow for resolving potential circular references
+4791 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'unionLoginManage': ResourceElement for private com.people2000.user.business.write.manage.LoginWriteManage com.people2000.user.business.write.manage.impl.UnionLoginManageImpl.loginWriteManage
+4792 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'loginWriteManageImpl'
+4792 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'unionLoginManage': ResourceElement for private com.people2000.user.business.write.dao.UserLoginDAOWrite com.people2000.user.business.write.manage.impl.UnionLoginManageImpl.userLoginDAOWrite
+4792 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'userLoginDAOWrite'
+4792 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'unionLoginManage': ResourceElement for private com.people2000.user.business.write.manage.UserCookieWriteManage com.people2000.user.business.write.manage.impl.UnionLoginManageImpl.userCookieWriteManage
+4792 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'userCookieWriteManage'
+4792 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'unionLoginManage': ResourceElement for private com.people2000.user.business.write.dao.ext.UserDAOWrite2 com.people2000.user.business.write.manage.impl.UnionLoginManageImpl.userDAOWrite
+4792 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'userDAOWrite'
+4792 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'unionLoginManage': ResourceElement for private com.people2000.user.business.write.dao.UUnionConfigDAOWrite com.people2000.user.business.write.manage.impl.UnionLoginManageImpl.uUnionConfigDAOWrite
+4792 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'uUnionConfigDAOWrite'
+4792 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'unionLoginManage': ResourceElement for private com.people2000.user.business.write.manage.EncryptInfoWriteManage com.people2000.user.business.write.manage.impl.UnionLoginManageImpl.encryptInfoWriteManage
+4792 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'encryptInfoWriteManage'
+4792 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'unionLoginManage': ResourceElement for private com.people2000.user.business.write.dao.UserRoleDAOWrite com.people2000.user.business.write.manage.impl.UnionLoginManageImpl.userRoleDAOWrite
+4792 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'userRoleDAOWrite'
+4792 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'unionLoginManage': ResourceElement for private com.people2000.user.business.write.dao.ext.UserActionLogDAOWrite2 com.people2000.user.business.write.manage.impl.UnionLoginManageImpl.userActionLogDAOWrite
+4792 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'userActionLogDAOWrite'
+4792 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'unionLoginManage': ResourceElement for private com.people2000.user.business.write.dao.UUnionLoginDAOWrite com.people2000.user.business.write.manage.impl.UnionLoginManageImpl.uUnionLoginDAOWrite
+4792 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'uUnionLoginDAOWrite'
+4792 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'unionLoginManage': ResourceElement for private com.people2000.user.business.utils.uionlogin.WXLoginService com.people2000.user.business.write.manage.impl.UnionLoginManageImpl.wxLoginService
+4792 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'wxLoginService'
+4793 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4793 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4793 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4793 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4793 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4793 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4793 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4793 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4793 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4793 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4793 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4793 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4793 DEBUG [2018-06-25 11:08:41]  Adding transactional method 'bindUnionToMobileWithTx' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT; ''
+4795 DEBUG [2018-06-25 11:08:41]  Creating shared instance of singleton bean 'org.springframework.transaction.interceptor.TransactionInterceptor#0'
+4795 DEBUG [2018-06-25 11:08:41]  Creating instance of bean 'org.springframework.transaction.interceptor.TransactionInterceptor#0'
+4795 DEBUG [2018-06-25 11:08:41]  Eagerly caching bean 'org.springframework.transaction.interceptor.TransactionInterceptor#0' to allow for resolving potential circular references
+4795 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0'
+4795 DEBUG [2018-06-25 11:08:41]  Invoking afterPropertiesSet() on bean with name 'org.springframework.transaction.interceptor.TransactionInterceptor#0'
+4796 DEBUG [2018-06-25 11:08:41]  Finished creating instance of bean 'org.springframework.transaction.interceptor.TransactionInterceptor#0'
+4796 DEBUG [2018-06-25 11:08:41]  Creating implicit proxy for bean 'unionLoginManage' with 0 common interceptors and 5 specific interceptors
+4796 DEBUG [2018-06-25 11:08:41]  Creating JDK dynamic proxy: target source is SingletonTargetSource for target object [com.people2000.user.business.write.manage.impl.UnionLoginManageImpl@2c719bd4]
+4798 DEBUG [2018-06-25 11:08:41]  Finished creating instance of bean 'unionLoginManage'
+4798 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'mobileUserWriteManage': ResourceElement for private com.people2000.user.business.write.dao.UUnionLoginDAOWrite com.people2000.user.business.write.manage.impl.MobileUserWriteManageImpl.uUnionLoginDAOWrite
+4798 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'uUnionLoginDAOWrite'
+4798 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'mobileUserWriteManage': ResourceElement for private com.people2000.user.business.write.manage.PushMessageWriteManage com.people2000.user.business.write.manage.impl.MobileUserWriteManageImpl.pushMessageWriteManage
+4798 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'pushMessageWriteManage'
+4798 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'mobileUserWriteManage': ResourceElement for private com.people2000.user.business.write.manage.UserAccountWriteManage com.people2000.user.business.write.manage.impl.MobileUserWriteManageImpl.userAccountWriteManage
+4798 DEBUG [2018-06-25 11:08:41]  Creating shared instance of singleton bean 'userAccountWriteManage'
+4798 DEBUG [2018-06-25 11:08:41]  Creating instance of bean 'userAccountWriteManage'
+4798 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4798 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4799 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4799 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4799 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4799 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4802 DEBUG [2018-06-25 11:08:41]  Registered injected element on class [com.people2000.user.business.write.manage.impl.UserAccountWriteManageImpl]: ResourceElement for private com.people2000.user.business.write.dao.UserAccountDAOWrite com.people2000.user.business.write.manage.impl.UserAccountWriteManageImpl.userAccountDAOWrite
+4802 DEBUG [2018-06-25 11:08:41]  Registered injected element on class [com.people2000.user.business.write.manage.impl.UserAccountWriteManageImpl]: ResourceElement for private com.people2000.user.business.write.manage.MobileUserWriteManage com.people2000.user.business.write.manage.impl.UserAccountWriteManageImpl.mobileUserWriteManage
+4802 DEBUG [2018-06-25 11:08:41]  Registered injected element on class [com.people2000.user.business.write.manage.impl.UserAccountWriteManageImpl]: ResourceElement for private com.people2000.user.business.write.dao.AccountRecordDAOWrite com.people2000.user.business.write.manage.impl.UserAccountWriteManageImpl.accountRecordDAOWrite
+4802 DEBUG [2018-06-25 11:08:41]  Registered injected element on class [com.people2000.user.business.write.manage.impl.UserAccountWriteManageImpl]: ResourceElement for private com.people2000.user.business.write.dao.ext.UserGradeDAOWrite2 com.people2000.user.business.write.manage.impl.UserAccountWriteManageImpl.userGradeDAOWrite
+4802 DEBUG [2018-06-25 11:08:41]  Registered injected element on class [com.people2000.user.business.write.manage.impl.UserAccountWriteManageImpl]: ResourceElement for private com.people2000.user.business.write.dao.ext.UserDAOWrite2 com.people2000.user.business.write.manage.impl.UserAccountWriteManageImpl.userDAOWrite
+4802 DEBUG [2018-06-25 11:08:41]  Eagerly caching bean 'userAccountWriteManage' to allow for resolving potential circular references
+4805 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'userAccountWriteManage': ResourceElement for private com.people2000.user.business.write.dao.UserAccountDAOWrite com.people2000.user.business.write.manage.impl.UserAccountWriteManageImpl.userAccountDAOWrite
+4805 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'userAccountDAOWrite'
+4805 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'userAccountWriteManage': ResourceElement for private com.people2000.user.business.write.manage.MobileUserWriteManage com.people2000.user.business.write.manage.impl.UserAccountWriteManageImpl.mobileUserWriteManage
+4805 DEBUG [2018-06-25 11:08:41]  Returning eagerly cached instance of singleton bean 'mobileUserWriteManage' that is not fully initialized yet - a consequence of a circular reference
+4805 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'userAccountWriteManage': ResourceElement for private com.people2000.user.business.write.dao.AccountRecordDAOWrite com.people2000.user.business.write.manage.impl.UserAccountWriteManageImpl.accountRecordDAOWrite
+4805 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'accountRecordDAOWrite'
+4805 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'userAccountWriteManage': ResourceElement for private com.people2000.user.business.write.dao.ext.UserGradeDAOWrite2 com.people2000.user.business.write.manage.impl.UserAccountWriteManageImpl.userGradeDAOWrite
+4805 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'userGradeDAOWrite'
+4805 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'userAccountWriteManage': ResourceElement for private com.people2000.user.business.write.dao.ext.UserDAOWrite2 com.people2000.user.business.write.manage.impl.UserAccountWriteManageImpl.userDAOWrite
+4805 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'userDAOWrite'
+4805 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4805 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4805 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4806 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4806 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4806 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4806 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4806 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4806 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4806 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4806 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4806 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4808 DEBUG [2018-06-25 11:08:41]  Creating implicit proxy for bean 'userAccountWriteManage' with 0 common interceptors and 4 specific interceptors
+4808 DEBUG [2018-06-25 11:08:41]  Creating JDK dynamic proxy: target source is SingletonTargetSource for target object [com.people2000.user.business.write.manage.impl.UserAccountWriteManageImpl@6c8fe7a4]
+4810 DEBUG [2018-06-25 11:08:41]  Finished creating instance of bean 'userAccountWriteManage'
+4810 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'mobileUserWriteManage': AutowiredFieldElement for private java.lang.String com.people2000.user.business.write.manage.impl.MobileUserWriteManageImpl.condition
+4810 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'mobileUserWriteManage': AutowiredFieldElement for private com.people2000.user.business.write.manage.SmsManage com.people2000.user.business.write.manage.impl.MobileUserWriteManageImpl.smsManage
+4810 DEBUG [2018-06-25 11:08:41]  Creating shared instance of singleton bean 'smsManageDahantc'
+4811 DEBUG [2018-06-25 11:08:41]  Creating instance of bean 'smsManageDahantc'
+4811 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4811 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4811 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4811 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4811 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4811 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4811 DEBUG [2018-06-25 11:08:41]  Registered injected element on class [com.people2000.user.business.write.manage.impl.SmsManageDahantcImpl]: AutowiredFieldElement for private java.lang.String com.people2000.user.business.write.manage.impl.SmsManageDahantcImpl.uri
+4811 DEBUG [2018-06-25 11:08:41]  Registered injected element on class [com.people2000.user.business.write.manage.impl.SmsManageDahantcImpl]: AutowiredFieldElement for private java.lang.String com.people2000.user.business.write.manage.impl.SmsManageDahantcImpl.accountId
+4811 DEBUG [2018-06-25 11:08:41]  Registered injected element on class [com.people2000.user.business.write.manage.impl.SmsManageDahantcImpl]: AutowiredFieldElement for private java.lang.String com.people2000.user.business.write.manage.impl.SmsManageDahantcImpl.authToken
+4811 DEBUG [2018-06-25 11:08:41]  Registered injected element on class [com.people2000.user.business.write.manage.impl.SmsManageDahantcImpl]: AutowiredFieldElement for private java.lang.String com.people2000.user.business.write.manage.impl.SmsManageDahantcImpl.appId
+4811 DEBUG [2018-06-25 11:08:41]  Registered injected element on class [com.people2000.user.business.write.manage.impl.SmsManageDahantcImpl]: AutowiredFieldElement for public java.lang.String com.people2000.user.business.write.manage.impl.SmsManageDahantcImpl.templateVerifycode
+4812 DEBUG [2018-06-25 11:08:41]  Eagerly caching bean 'smsManageDahantc' to allow for resolving potential circular references
+4814 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'smsManageDahantc': AutowiredFieldElement for private java.lang.String com.people2000.user.business.write.manage.impl.SmsManageDahantcImpl.uri
+4814 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'smsManageDahantc': AutowiredFieldElement for private java.lang.String com.people2000.user.business.write.manage.impl.SmsManageDahantcImpl.accountId
+4814 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'smsManageDahantc': AutowiredFieldElement for private java.lang.String com.people2000.user.business.write.manage.impl.SmsManageDahantcImpl.authToken
+4815 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'smsManageDahantc': AutowiredFieldElement for private java.lang.String com.people2000.user.business.write.manage.impl.SmsManageDahantcImpl.appId
+4815 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'smsManageDahantc': AutowiredFieldElement for public java.lang.String com.people2000.user.business.write.manage.impl.SmsManageDahantcImpl.templateVerifycode
+4815 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4815 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4815 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4815 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4815 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4815 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4815 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4815 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4815 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4815 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4815 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4815 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4816 DEBUG [2018-06-25 11:08:41]  Creating implicit proxy for bean 'smsManageDahantc' with 0 common interceptors and 4 specific interceptors
+4817 DEBUG [2018-06-25 11:08:41]  Creating JDK dynamic proxy: target source is SingletonTargetSource for target object [com.people2000.user.business.write.manage.impl.SmsManageDahantcImpl@7c90b7b7]
+4818 DEBUG [2018-06-25 11:08:41]  Finished creating instance of bean 'smsManageDahantc'
+4819 DEBUG [2018-06-25 11:08:41]  Creating shared instance of singleton bean 'smsManage'
+4819 DEBUG [2018-06-25 11:08:41]  Creating instance of bean 'smsManage'
+4819 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4819 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4819 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4819 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4819 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4819 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4819 DEBUG [2018-06-25 11:08:41]  Registered injected element on class [com.people2000.user.business.write.manage.impl.SmsManageImpl]: AutowiredFieldElement for private java.lang.String com.people2000.user.business.write.manage.impl.SmsManageImpl.apikey
+4819 DEBUG [2018-06-25 11:08:41]  Registered injected element on class [com.people2000.user.business.write.manage.impl.SmsManageImpl]: AutowiredFieldElement for private java.lang.String com.people2000.user.business.write.manage.impl.SmsManageImpl.uri
+4819 DEBUG [2018-06-25 11:08:41]  Registered injected element on class [com.people2000.user.business.write.manage.impl.SmsManageImpl]: AutowiredFieldElement for public java.lang.String com.people2000.user.business.write.manage.impl.SmsManageImpl.templateVerifycode
+4819 DEBUG [2018-06-25 11:08:41]  Eagerly caching bean 'smsManage' to allow for resolving potential circular references
+4822 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'smsManage': AutowiredFieldElement for private java.lang.String com.people2000.user.business.write.manage.impl.SmsManageImpl.apikey
+4822 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'smsManage': AutowiredFieldElement for private java.lang.String com.people2000.user.business.write.manage.impl.SmsManageImpl.uri
+4822 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'smsManage': AutowiredFieldElement for public java.lang.String com.people2000.user.business.write.manage.impl.SmsManageImpl.templateVerifycode
+4823 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4823 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4823 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4823 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4823 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4823 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4823 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4823 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4823 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4823 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4823 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4823 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4824 DEBUG [2018-06-25 11:08:41]  Creating implicit proxy for bean 'smsManage' with 0 common interceptors and 4 specific interceptors
+4824 DEBUG [2018-06-25 11:08:41]  Creating JDK dynamic proxy: target source is SingletonTargetSource for target object [com.people2000.user.business.write.manage.impl.SmsManageImpl@5a08b084]
+4824 DEBUG [2018-06-25 11:08:41]  Finished creating instance of bean 'smsManage'
+4825 DEBUG [2018-06-25 11:08:41]  Autowiring by type from bean name 'mobileUserWriteManage' to bean named 'smsManage'
+4825 DEBUG [2018-06-25 11:08:41]  Finished creating instance of bean 'mobileUserWriteManage'
+4825 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'mobileLoginWriteManageImpl': ResourceElement for private com.people2000.user.business.write.manage.PasswordEncryptInfoWriteManage com.people2000.user.business.write.manage.impl.MobileLoginWriteManageImpl.passwordEncryptInfoWriteManage
+4825 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'passwordEncryptInfoWriteManage'
+4825 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'mobileLoginWriteManageImpl': ResourceElement for private com.people2000.user.business.write.dao.UserGradeDAOWrite com.people2000.user.business.write.manage.impl.MobileLoginWriteManageImpl.userGradeDAOWrite
+4825 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'userGradeDAOWrite'
+4825 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'mobileLoginWriteManageImpl': ResourceElement for private com.people2000.user.business.write.manage.PushMessageWriteManage com.people2000.user.business.write.manage.impl.MobileLoginWriteManageImpl.pushMessageWriteManage
+4825 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'pushMessageWriteManage'
+4825 DEBUG [2018-06-25 11:08:41]  Processing injected method of bean 'mobileLoginWriteManageImpl': ResourceElement for private com.people2000.user.business.write.manage.AppMessageManage com.people2000.user.business.write.manage.impl.MobileLoginWriteManageImpl.appMessageManage
+4826 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'appMessage'
+4826 DEBUG [2018-06-25 11:08:41]  Finished creating instance of bean 'mobileLoginWriteManageImpl'
+4826 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'mobileUserWriteManage'
+4826 DEBUG [2018-06-25 11:08:41]  Creating shared instance of singleton bean 'organizationUserWriteManage'
+4826 DEBUG [2018-06-25 11:08:41]  Creating instance of bean 'organizationUserWriteManage'
+4826 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4826 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4826 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4826 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4826 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4826 DEBUG [2018-06-25 11:08:41]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4826 DEBUG [2018-06-25 11:08:41]  Eagerly caching bean 'organizationUserWriteManage' to allow for resolving potential circular references
+4829 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4829 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4829 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4829 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4829 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4829 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4829 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4829 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4829 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4829 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4829 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4829 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4830 DEBUG [2018-06-25 11:08:42]  Finished creating instance of bean 'organizationUserWriteManage'
+4830 DEBUG [2018-06-25 11:08:42]  Creating shared instance of singleton bean 'organizationWriteManage'
+4830 DEBUG [2018-06-25 11:08:42]  Creating instance of bean 'organizationWriteManage'
+4830 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4830 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4830 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4830 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4830 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4830 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4831 DEBUG [2018-06-25 11:08:42]  Registered injected element on class [com.people2000.user.business.write.manage.impl.OrganizationWriteManageImpl]: ResourceElement for private com.people2000.user.business.write.manage.UserWriteManage com.people2000.user.business.write.manage.impl.OrganizationWriteManageImpl.userWriteManage
+4831 DEBUG [2018-06-25 11:08:42]  Registered injected element on class [com.people2000.user.business.write.manage.impl.OrganizationWriteManageImpl]: ResourceElement for private com.people2000.user.business.write.dao.ext.UserRoleDAOWrite2 com.people2000.user.business.write.manage.impl.OrganizationWriteManageImpl.userRoleDAOWrite
+4831 DEBUG [2018-06-25 11:08:42]  Registered injected element on class [com.people2000.user.business.write.manage.impl.OrganizationWriteManageImpl]: ResourceElement for private com.people2000.user.business.write.dao.ext.UOrganizationDAOWrite2 com.people2000.user.business.write.manage.impl.OrganizationWriteManageImpl.uOrganizationDAOWrite
+4831 DEBUG [2018-06-25 11:08:42]  Registered injected element on class [com.people2000.user.business.write.manage.impl.OrganizationWriteManageImpl]: ResourceElement for private com.people2000.user.business.write.dao.ext.UOrganizationUserDAOWrite2 com.people2000.user.business.write.manage.impl.OrganizationWriteManageImpl.uOrganizationUserDAOWrite
+4831 DEBUG [2018-06-25 11:08:42]  Registered injected element on class [com.people2000.user.business.write.manage.impl.OrganizationWriteManageImpl]: ResourceElement for private com.people2000.user.business.write.dao.UserPositionDAOWrite com.people2000.user.business.write.manage.impl.OrganizationWriteManageImpl.userPositionDAOWrite
+4831 DEBUG [2018-06-25 11:08:42]  Registered injected element on class [com.people2000.user.business.write.manage.impl.OrganizationWriteManageImpl]: ResourceElement for private com.people2000.user.business.write.manage.UserAccountWriteManage com.people2000.user.business.write.manage.impl.OrganizationWriteManageImpl.userAccountWriteManage
+4831 DEBUG [2018-06-25 11:08:42]  Eagerly caching bean 'organizationWriteManage' to allow for resolving potential circular references
+4834 DEBUG [2018-06-25 11:08:42]  Processing injected method of bean 'organizationWriteManage': ResourceElement for private com.people2000.user.business.write.manage.UserWriteManage com.people2000.user.business.write.manage.impl.OrganizationWriteManageImpl.userWriteManage
+4834 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'userWriteManage'
+4834 DEBUG [2018-06-25 11:08:42]  Processing injected method of bean 'organizationWriteManage': ResourceElement for private com.people2000.user.business.write.dao.ext.UserRoleDAOWrite2 com.people2000.user.business.write.manage.impl.OrganizationWriteManageImpl.userRoleDAOWrite
+4834 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'userRoleDAOWrite'
+4834 DEBUG [2018-06-25 11:08:42]  Processing injected method of bean 'organizationWriteManage': ResourceElement for private com.people2000.user.business.write.dao.ext.UOrganizationDAOWrite2 com.people2000.user.business.write.manage.impl.OrganizationWriteManageImpl.uOrganizationDAOWrite
+4835 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'uOrganizationDAOWrite'
+4835 DEBUG [2018-06-25 11:08:42]  Processing injected method of bean 'organizationWriteManage': ResourceElement for private com.people2000.user.business.write.dao.ext.UOrganizationUserDAOWrite2 com.people2000.user.business.write.manage.impl.OrganizationWriteManageImpl.uOrganizationUserDAOWrite
+4835 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'uOrganizationUserDAOWrite'
+4835 DEBUG [2018-06-25 11:08:42]  Processing injected method of bean 'organizationWriteManage': ResourceElement for private com.people2000.user.business.write.dao.UserPositionDAOWrite com.people2000.user.business.write.manage.impl.OrganizationWriteManageImpl.userPositionDAOWrite
+4835 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'userPositionDAOWrite'
+4835 DEBUG [2018-06-25 11:08:42]  Processing injected method of bean 'organizationWriteManage': ResourceElement for private com.people2000.user.business.write.manage.UserAccountWriteManage com.people2000.user.business.write.manage.impl.OrganizationWriteManageImpl.userAccountWriteManage
+4835 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'userAccountWriteManage'
+4835 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4835 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4835 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4835 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4835 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4835 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4835 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4835 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4835 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4835 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4835 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4835 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4838 DEBUG [2018-06-25 11:08:42]  Creating implicit proxy for bean 'organizationWriteManage' with 0 common interceptors and 4 specific interceptors
+4838 DEBUG [2018-06-25 11:08:42]  Creating JDK dynamic proxy: target source is SingletonTargetSource for target object [com.people2000.user.business.write.manage.impl.OrganizationWriteManageImpl@5c6a5192]
+4840 DEBUG [2018-06-25 11:08:42]  Finished creating instance of bean 'organizationWriteManage'
+4841 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'passwordEncryptInfoWriteManage'
+4841 DEBUG [2018-06-25 11:08:42]  Creating shared instance of singleton bean 'platformGroupWriteManage'
+4841 DEBUG [2018-06-25 11:08:42]  Creating instance of bean 'platformGroupWriteManage'
+4841 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4841 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4841 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4841 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4841 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4841 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4844 DEBUG [2018-06-25 11:08:42]  Registered injected element on class [com.people2000.user.business.write.manage.impl.PlatformGroupWriteManageImpl]: AutowiredFieldElement for private com.people2000.user.business.read.dao.UPlatformGroupDAORead com.people2000.user.business.write.manage.impl.PlatformGroupWriteManageImpl.uPlatformGroupDAORead
+4845 DEBUG [2018-06-25 11:08:42]  Registered injected element on class [com.people2000.user.business.write.manage.impl.PlatformGroupWriteManageImpl]: AutowiredFieldElement for private com.people2000.user.business.write.dao.UPlatformGroupDAOWrite com.people2000.user.business.write.manage.impl.PlatformGroupWriteManageImpl.uPlatformGroupDAOWrite
+4845 DEBUG [2018-06-25 11:08:42]  Registered injected element on class [com.people2000.user.business.write.manage.impl.PlatformGroupWriteManageImpl]: AutowiredFieldElement for private com.people2000.user.business.read.dao.UPlatformGroupRelationDAORead com.people2000.user.business.write.manage.impl.PlatformGroupWriteManageImpl.uPlatformGroupRelationDAORead
+4845 DEBUG [2018-06-25 11:08:42]  Registered injected element on class [com.people2000.user.business.write.manage.impl.PlatformGroupWriteManageImpl]: AutowiredFieldElement for private com.people2000.user.business.write.dao.UPlatformGroupRelationDAOWrite com.people2000.user.business.write.manage.impl.PlatformGroupWriteManageImpl.uPlatformGroupRelationDAOWrite
+4845 DEBUG [2018-06-25 11:08:42]  Registered injected element on class [com.people2000.user.business.write.manage.impl.PlatformGroupWriteManageImpl]: AutowiredFieldElement for private com.people2000.user.business.write.dao.ext.UPlatformGroupRelationDAOWrite2 com.people2000.user.business.write.manage.impl.PlatformGroupWriteManageImpl.uPlatformGroupRelationDAOWrite2
+4845 DEBUG [2018-06-25 11:08:42]  Eagerly caching bean 'platformGroupWriteManage' to allow for resolving potential circular references
+4847 DEBUG [2018-06-25 11:08:42]  Processing injected method of bean 'platformGroupWriteManage': AutowiredFieldElement for private com.people2000.user.business.read.dao.UPlatformGroupDAORead com.people2000.user.business.write.manage.impl.PlatformGroupWriteManageImpl.uPlatformGroupDAORead
+4848 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'uPlatformGroupDAORead'
+4848 DEBUG [2018-06-25 11:08:42]  Autowiring by type from bean name 'platformGroupWriteManage' to bean named 'uPlatformGroupDAORead'
+4848 DEBUG [2018-06-25 11:08:42]  Processing injected method of bean 'platformGroupWriteManage': AutowiredFieldElement for private com.people2000.user.business.write.dao.UPlatformGroupDAOWrite com.people2000.user.business.write.manage.impl.PlatformGroupWriteManageImpl.uPlatformGroupDAOWrite
+4848 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'uPlatformGroupDAOWrite'
+4848 DEBUG [2018-06-25 11:08:42]  Autowiring by type from bean name 'platformGroupWriteManage' to bean named 'uPlatformGroupDAOWrite'
+4848 DEBUG [2018-06-25 11:08:42]  Processing injected method of bean 'platformGroupWriteManage': AutowiredFieldElement for private com.people2000.user.business.read.dao.UPlatformGroupRelationDAORead com.people2000.user.business.write.manage.impl.PlatformGroupWriteManageImpl.uPlatformGroupRelationDAORead
+4848 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'uPlatformGroupRelationDAORead'
+4848 DEBUG [2018-06-25 11:08:42]  Autowiring by type from bean name 'platformGroupWriteManage' to bean named 'uPlatformGroupRelationDAORead'
+4849 DEBUG [2018-06-25 11:08:42]  Processing injected method of bean 'platformGroupWriteManage': AutowiredFieldElement for private com.people2000.user.business.write.dao.UPlatformGroupRelationDAOWrite com.people2000.user.business.write.manage.impl.PlatformGroupWriteManageImpl.uPlatformGroupRelationDAOWrite
+4849 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'uPlatformGroupRelationDAOWrite'
+4849 DEBUG [2018-06-25 11:08:42]  Autowiring by type from bean name 'platformGroupWriteManage' to bean named 'uPlatformGroupRelationDAOWrite'
+4849 DEBUG [2018-06-25 11:08:42]  Processing injected method of bean 'platformGroupWriteManage': AutowiredFieldElement for private com.people2000.user.business.write.dao.ext.UPlatformGroupRelationDAOWrite2 com.people2000.user.business.write.manage.impl.PlatformGroupWriteManageImpl.uPlatformGroupRelationDAOWrite2
+4849 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'uPlatformGroupRelationDAOWrite'
+4850 DEBUG [2018-06-25 11:08:42]  Autowiring by type from bean name 'platformGroupWriteManage' to bean named 'uPlatformGroupRelationDAOWrite'
+4850 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4850 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4850 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4850 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4850 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4850 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4850 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4850 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4850 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4850 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4850 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4850 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4851 DEBUG [2018-06-25 11:08:42]  Creating implicit proxy for bean 'platformGroupWriteManage' with 0 common interceptors and 4 specific interceptors
+4851 DEBUG [2018-06-25 11:08:42]  Creating JDK dynamic proxy: target source is SingletonTargetSource for target object [com.people2000.user.business.write.manage.impl.PlatformGroupWriteManageImpl@23c767e6]
+4853 DEBUG [2018-06-25 11:08:42]  Finished creating instance of bean 'platformGroupWriteManage'
+4853 DEBUG [2018-06-25 11:08:42]  Creating shared instance of singleton bean 'pointsWriteManage'
+4853 DEBUG [2018-06-25 11:08:42]  Creating instance of bean 'pointsWriteManage'
+4853 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4853 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4853 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4853 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4853 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4853 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4854 DEBUG [2018-06-25 11:08:42]  Registered injected element on class [com.people2000.user.business.write.manage.impl.PointsWriteManageImpl]: ResourceElement for private com.people2000.user.business.write.dao.ext.UserDAOWrite2 com.people2000.user.business.write.manage.impl.PointsWriteManageImpl.userDAOWrite
+4855 DEBUG [2018-06-25 11:08:42]  Eagerly caching bean 'pointsWriteManage' to allow for resolving potential circular references
+4857 DEBUG [2018-06-25 11:08:42]  Processing injected method of bean 'pointsWriteManage': ResourceElement for private com.people2000.user.business.write.dao.ext.UserDAOWrite2 com.people2000.user.business.write.manage.impl.PointsWriteManageImpl.userDAOWrite
+4857 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'userDAOWrite'
+4857 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4857 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4857 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4857 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4857 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4858 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4858 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4858 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4858 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4858 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4858 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4858 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4859 DEBUG [2018-06-25 11:08:42]  Creating implicit proxy for bean 'pointsWriteManage' with 0 common interceptors and 4 specific interceptors
+4859 DEBUG [2018-06-25 11:08:42]  Creating JDK dynamic proxy: target source is SingletonTargetSource for target object [com.people2000.user.business.write.manage.impl.PointsWriteManageImpl@7f42e06e]
+4860 DEBUG [2018-06-25 11:08:42]  Finished creating instance of bean 'pointsWriteManage'
+4861 DEBUG [2018-06-25 11:08:42]  Creating shared instance of singleton bean 'positionWriteManage'
+4861 DEBUG [2018-06-25 11:08:42]  Creating instance of bean 'positionWriteManage'
+4861 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4861 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4861 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4861 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4861 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4861 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4863 DEBUG [2018-06-25 11:08:42]  Registered injected element on class [com.people2000.user.business.write.manage.impl.PositionWriteManageImpl]: ResourceElement for private com.people2000.user.business.write.dao.UPositionDAOWrite com.people2000.user.business.write.manage.impl.PositionWriteManageImpl.positionDAOWrite
+4863 DEBUG [2018-06-25 11:08:42]  Eagerly caching bean 'positionWriteManage' to allow for resolving potential circular references
+4866 DEBUG [2018-06-25 11:08:42]  Processing injected method of bean 'positionWriteManage': ResourceElement for private com.people2000.user.business.write.dao.UPositionDAOWrite com.people2000.user.business.write.manage.impl.PositionWriteManageImpl.positionDAOWrite
+4867 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'positionDAOWrite'
+4867 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4867 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4867 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4867 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4867 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4867 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4867 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4867 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4868 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4868 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4868 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4868 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4869 DEBUG [2018-06-25 11:08:42]  Creating implicit proxy for bean 'positionWriteManage' with 0 common interceptors and 4 specific interceptors
+4869 DEBUG [2018-06-25 11:08:42]  Creating JDK dynamic proxy: target source is SingletonTargetSource for target object [com.people2000.user.business.write.manage.impl.PositionWriteManageImpl@6909f6be]
+4871 DEBUG [2018-06-25 11:08:42]  Finished creating instance of bean 'positionWriteManage'
+4871 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'pushMessageWriteManage'
+4871 DEBUG [2018-06-25 11:08:42]  Creating shared instance of singleton bean 'roleFunctionWriteManage'
+4871 DEBUG [2018-06-25 11:08:42]  Creating instance of bean 'roleFunctionWriteManage'
+4871 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4871 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4871 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4871 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4871 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4871 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4871 DEBUG [2018-06-25 11:08:42]  Registered injected element on class [com.people2000.user.business.write.manage.impl.RoleFunctionWriteManageImpl]: ResourceElement for private com.people2000.user.business.write.dao.ext.RoleFunctionDAOWrite2 com.people2000.user.business.write.manage.impl.RoleFunctionWriteManageImpl.roleFunctionDAOWrite
+4872 DEBUG [2018-06-25 11:08:42]  Eagerly caching bean 'roleFunctionWriteManage' to allow for resolving potential circular references
+4874 DEBUG [2018-06-25 11:08:42]  Processing injected method of bean 'roleFunctionWriteManage': ResourceElement for private com.people2000.user.business.write.dao.ext.RoleFunctionDAOWrite2 com.people2000.user.business.write.manage.impl.RoleFunctionWriteManageImpl.roleFunctionDAOWrite
+4874 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'roleFunctionDAOWrite'
+4877 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4877 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4877 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4877 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4877 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4877 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4877 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4877 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4877 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4877 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4877 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4878 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4879 DEBUG [2018-06-25 11:08:42]  Creating implicit proxy for bean 'roleFunctionWriteManage' with 0 common interceptors and 4 specific interceptors
+4879 DEBUG [2018-06-25 11:08:42]  Creating JDK dynamic proxy: target source is SingletonTargetSource for target object [com.people2000.user.business.write.manage.impl.RoleFunctionWriteManageImpl@4db77402]
+4881 DEBUG [2018-06-25 11:08:42]  Finished creating instance of bean 'roleFunctionWriteManage'
+4881 DEBUG [2018-06-25 11:08:42]  Creating shared instance of singleton bean 'roleWriteManage'
+4881 DEBUG [2018-06-25 11:08:42]  Creating instance of bean 'roleWriteManage'
+4881 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4881 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4881 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4881 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4881 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4881 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4883 DEBUG [2018-06-25 11:08:42]  Registered injected element on class [com.people2000.user.business.write.manage.impl.RoleWriteManageImpl]: ResourceElement for private com.people2000.user.business.write.dao.RoleDAOWrite com.people2000.user.business.write.manage.impl.RoleWriteManageImpl.roleDAOWrite
+4883 DEBUG [2018-06-25 11:08:42]  Registered injected element on class [com.people2000.user.business.write.manage.impl.RoleWriteManageImpl]: ResourceElement for private com.people2000.user.business.write.dao.ext.RoleFunctionDAOWrite2 com.people2000.user.business.write.manage.impl.RoleWriteManageImpl.roleFunctionDAOWrite
+4883 DEBUG [2018-06-25 11:08:42]  Eagerly caching bean 'roleWriteManage' to allow for resolving potential circular references
+4886 DEBUG [2018-06-25 11:08:42]  Processing injected method of bean 'roleWriteManage': ResourceElement for private com.people2000.user.business.write.dao.RoleDAOWrite com.people2000.user.business.write.manage.impl.RoleWriteManageImpl.roleDAOWrite
+4886 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'roleDAOWrite'
+4886 DEBUG [2018-06-25 11:08:42]  Processing injected method of bean 'roleWriteManage': ResourceElement for private com.people2000.user.business.write.dao.ext.RoleFunctionDAOWrite2 com.people2000.user.business.write.manage.impl.RoleWriteManageImpl.roleFunctionDAOWrite
+4886 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'roleFunctionDAOWrite'
+4886 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4886 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4886 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4886 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4886 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4886 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4886 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4886 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4886 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4886 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4886 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4886 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4889 DEBUG [2018-06-25 11:08:42]  Creating implicit proxy for bean 'roleWriteManage' with 0 common interceptors and 4 specific interceptors
+4889 DEBUG [2018-06-25 11:08:42]  Creating JDK dynamic proxy: target source is SingletonTargetSource for target object [com.people2000.user.business.write.manage.impl.RoleWriteManageImpl@721d5b74]
+4892 DEBUG [2018-06-25 11:08:42]  Finished creating instance of bean 'roleWriteManage'
+4892 DEBUG [2018-06-25 11:08:42]  Creating shared instance of singleton bean 'shippingAddressWriteManage'
+4892 DEBUG [2018-06-25 11:08:42]  Creating instance of bean 'shippingAddressWriteManage'
+4892 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4892 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4892 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4892 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4892 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4892 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4894 DEBUG [2018-06-25 11:08:42]  Registered injected element on class [com.people2000.user.business.write.manage.impl.ShippingAddressWriteManageImpl]: ResourceElement for private com.people2000.user.business.write.dao.UserAddressDAOWrite com.people2000.user.business.write.manage.impl.ShippingAddressWriteManageImpl.userAddressDAOWrite
+4894 DEBUG [2018-06-25 11:08:42]  Eagerly caching bean 'shippingAddressWriteManage' to allow for resolving potential circular references
+4898 DEBUG [2018-06-25 11:08:42]  Processing injected method of bean 'shippingAddressWriteManage': ResourceElement for private com.people2000.user.business.write.dao.UserAddressDAOWrite com.people2000.user.business.write.manage.impl.ShippingAddressWriteManageImpl.userAddressDAOWrite
+4898 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'userAddressDAOWrite'
+4898 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4898 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4898 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4898 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4898 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4898 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4898 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4899 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4899 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4899 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4899 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4899 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4901 DEBUG [2018-06-25 11:08:42]  Creating implicit proxy for bean 'shippingAddressWriteManage' with 0 common interceptors and 4 specific interceptors
+4902 DEBUG [2018-06-25 11:08:42]  Creating JDK dynamic proxy: target source is SingletonTargetSource for target object [com.people2000.user.business.write.manage.impl.ShippingAddressWriteManageImpl@432af457]
+4905 DEBUG [2018-06-25 11:08:42]  Finished creating instance of bean 'shippingAddressWriteManage'
+4905 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'smsManageDahantc'
+4905 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'smsManage'
+4905 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'unionLoginManage'
+4905 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'userAccountWriteManage'
+4905 DEBUG [2018-06-25 11:08:42]  Creating shared instance of singleton bean 'userAPIWriteManage'
+4905 DEBUG [2018-06-25 11:08:42]  Creating instance of bean 'userAPIWriteManage'
+4905 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4905 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4905 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4905 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4905 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4905 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4907 DEBUG [2018-06-25 11:08:42]  Registered injected element on class [com.people2000.user.business.write.manage.impl.UserAPIWriteManageImpl]: ResourceElement for private com.people2000.user.business.write.dao.ext.UserDAOWrite2 com.people2000.user.business.write.manage.impl.UserAPIWriteManageImpl.userDAOWrite
+4907 DEBUG [2018-06-25 11:08:42]  Registered injected element on class [com.people2000.user.business.write.manage.impl.UserAPIWriteManageImpl]: ResourceElement for private com.people2000.user.business.write.dao.ext.UserActionLogDAOWrite2 com.people2000.user.business.write.manage.impl.UserAPIWriteManageImpl.userActionLogDAOWrite
+4908 DEBUG [2018-06-25 11:08:42]  Eagerly caching bean 'userAPIWriteManage' to allow for resolving potential circular references
+4911 DEBUG [2018-06-25 11:08:42]  Processing injected method of bean 'userAPIWriteManage': ResourceElement for private com.people2000.user.business.write.dao.ext.UserDAOWrite2 com.people2000.user.business.write.manage.impl.UserAPIWriteManageImpl.userDAOWrite
+4911 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'userDAOWrite'
+4911 DEBUG [2018-06-25 11:08:42]  Processing injected method of bean 'userAPIWriteManage': ResourceElement for private com.people2000.user.business.write.dao.ext.UserActionLogDAOWrite2 com.people2000.user.business.write.manage.impl.UserAPIWriteManageImpl.userActionLogDAOWrite
+4911 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'userActionLogDAOWrite'
+4911 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4911 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4911 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4912 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4912 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4912 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4912 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4912 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4912 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4912 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4912 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4912 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4913 DEBUG [2018-06-25 11:08:42]  Creating implicit proxy for bean 'userAPIWriteManage' with 0 common interceptors and 4 specific interceptors
+4913 DEBUG [2018-06-25 11:08:42]  Creating JDK dynamic proxy: target source is SingletonTargetSource for target object [com.people2000.user.business.write.manage.impl.UserAPIWriteManageImpl@713a35c5]
+4915 DEBUG [2018-06-25 11:08:42]  Finished creating instance of bean 'userAPIWriteManage'
+4915 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'userCookieWriteManage'
+4915 DEBUG [2018-06-25 11:08:42]  Creating shared instance of singleton bean 'userLoginWriteManage'
+4915 DEBUG [2018-06-25 11:08:42]  Creating instance of bean 'userLoginWriteManage'
+4915 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4915 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4915 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4915 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4915 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4915 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4916 DEBUG [2018-06-25 11:08:42]  Registered injected element on class [com.people2000.user.business.write.manage.impl.UserLoginWriteManageImpl]: ResourceElement for private com.people2000.user.business.write.dao.ext.UserLoginDAOWrite2 com.people2000.user.business.write.manage.impl.UserLoginWriteManageImpl.userLoginDAOWrite
+4916 DEBUG [2018-06-25 11:08:42]  Eagerly caching bean 'userLoginWriteManage' to allow for resolving potential circular references
+4918 DEBUG [2018-06-25 11:08:42]  Processing injected method of bean 'userLoginWriteManage': ResourceElement for private com.people2000.user.business.write.dao.ext.UserLoginDAOWrite2 com.people2000.user.business.write.manage.impl.UserLoginWriteManageImpl.userLoginDAOWrite
+4918 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'userLoginDAOWrite'
+4918 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4919 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4919 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4919 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4919 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4919 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4919 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4919 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4919 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4919 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4919 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4919 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4920 DEBUG [2018-06-25 11:08:42]  Creating implicit proxy for bean 'userLoginWriteManage' with 0 common interceptors and 4 specific interceptors
+4921 DEBUG [2018-06-25 11:08:42]  Creating JDK dynamic proxy: target source is SingletonTargetSource for target object [com.people2000.user.business.write.manage.impl.UserLoginWriteManageImpl@77b3752b]
+4923 DEBUG [2018-06-25 11:08:42]  Finished creating instance of bean 'userLoginWriteManage'
+4923 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'userRoleWriteManage'
+4923 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'userWriteManage'
+4923 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+4923 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+4923 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor'
+4923 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+4923 DEBUG [2018-06-25 11:08:42]  Creating shared instance of singleton bean 'userService'
+4923 DEBUG [2018-06-25 11:08:42]  Creating instance of bean 'userService'
+4923 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4923 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4923 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4923 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4923 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4923 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4923 DEBUG [2018-06-25 11:08:42]  Registered injected element on class [com.people2000.user.service.UserServiceImpl]: ResourceElement for private com.people2000.user.business.write.manage.UserCookieWriteManage com.people2000.user.service.UserServiceImpl.userCookieWriteManage
+4924 DEBUG [2018-06-25 11:08:42]  Eagerly caching bean 'userService' to allow for resolving potential circular references
+4926 DEBUG [2018-06-25 11:08:42]  Processing injected method of bean 'userService': ResourceElement for private com.people2000.user.business.write.manage.UserCookieWriteManage com.people2000.user.service.UserServiceImpl.userCookieWriteManage
+4926 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'userCookieWriteManage'
+4926 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4926 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4926 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4926 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4926 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4926 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4926 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4926 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4926 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4926 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4926 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4926 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4928 DEBUG [2018-06-25 11:08:42]  Finished creating instance of bean 'userService'
+4928 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.config.internalAutoProxyCreator'
+4928 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0'
+4928 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.interceptor.TransactionInterceptor#0'
+4928 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4928 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.context.annotation.internalAsyncAnnotationProcessor'
+4928 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.context.annotation.internalScheduledAnnotationProcessor'
+4928 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'transactionManager'
+4928 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'txAdvice'
+4928 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'userReadWriteDataSource'
+4928 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'sqlMapClientWrite'
+4929 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'sqlMapClientRead'
+4929 DEBUG [2018-06-25 11:08:42]  Creating shared instance of singleton bean 'userSessionFactory'
+4929 DEBUG [2018-06-25 11:08:42]  Creating instance of bean 'userSessionFactory'
+4931 DEBUG [2018-06-25 11:08:42]  Eagerly caching bean 'userSessionFactory' to allow for resolving potential circular references
+4935 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'userReadWriteDataSource'
+4936 DEBUG [2018-06-25 11:08:42]  Resolved location pattern [classpath*:mybatis/*.xml] to resources []
+4936 DEBUG [2018-06-25 11:08:42]  Resolved location pattern [classpath*:mybatis/ext/*.xml] to resources []
+4937 DEBUG [2018-06-25 11:08:42]  Invoking afterPropertiesSet() on bean with name 'userSessionFactory'
+4937 DEBUG [2018-06-25 11:08:42]  Property `configuration` or 'configLocation' not specified, using default MyBatis Configuration
+4971 DEBUG [2018-06-25 11:08:42]  Property 'mapperLocations' was not specified or no matching resources found
+4971 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4971 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4971 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4971 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4971 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4971 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4971 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4971 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4972 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4972 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4972 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4972 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4981 DEBUG [2018-06-25 11:08:42]  Finished creating instance of bean 'userSessionFactory'
+4981 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'userScannerConfigurer'
+4981 DEBUG [2018-06-25 11:08:42]  Creating shared instance of singleton bean 'userDataSourceAop'
+4981 DEBUG [2018-06-25 11:08:42]  Creating instance of bean 'userDataSourceAop'
+4981 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4992 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4992 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4992 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4992 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4992 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4992 DEBUG [2018-06-25 11:08:42]  Eagerly caching bean 'userDataSourceAop' to allow for resolving potential circular references
+4995 DEBUG [2018-06-25 11:08:42]  Finished creating instance of bean 'userDataSourceAop'
+4995 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4995 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4995 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4995 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4995 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+4995 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'springUtils'
+4995 DEBUG [2018-06-25 11:08:42]  Creating shared instance of singleton bean 'redisClient'
+4995 DEBUG [2018-06-25 11:08:42]  Creating instance of bean 'redisClient'
+4995 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+4995 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+4995 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+4995 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+4995 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+4995 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+5192 DEBUG [2018-06-25 11:08:42]  Eagerly caching bean 'redisClient' to allow for resolving potential circular references
+5195 DEBUG [2018-06-25 11:08:42]  Invoking afterPropertiesSet() on bean with name 'redisClient'
+5199 INFO  [2018-06-25 11:08:42]  timeout=3000
+5199 INFO  [2018-06-25 11:08:42]  password=123456
+5199 INFO  [2018-06-25 11:08:42]  servers=192.168.88.85:6379
+5742 INFO  [2018-06-25 11:08:42]  Init local redundant pool.
+5743 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+5743 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+5743 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+5743 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+5743 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+5743 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+5743 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+5743 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+5743 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+5743 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+5743 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+5743 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+5748 DEBUG [2018-06-25 11:08:42]  Finished creating instance of bean 'redisClient'
+5748 DEBUG [2018-06-25 11:08:42]  Creating shared instance of singleton bean 'cacheProxy'
+5748 DEBUG [2018-06-25 11:08:42]  Creating instance of bean 'cacheProxy'
+5748 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+5748 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+5748 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+5748 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+5748 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+5748 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+5751 DEBUG [2018-06-25 11:08:42]  Eagerly caching bean 'cacheProxy' to allow for resolving potential circular references
+5754 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'redisClient'
+5755 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+5755 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+5755 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+5755 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+5755 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+5755 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+5755 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+5755 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0'
+5755 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'
+5755 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#1'
+5755 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#2'
+5755 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#3'
+5761 DEBUG [2018-06-25 11:08:42]  Finished creating instance of bean 'cacheProxy'
+5761 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor'
+5763 DEBUG [2018-06-25 11:08:42]  Unable to locate LifecycleProcessor with name 'lifecycleProcessor': using default [org.springframework.context.support.DefaultLifecycleProcessor@c3719e5]
+5763 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'lifecycleProcessor'
+5765 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'org.springframework.context.annotation.internalScheduledAnnotationProcessor'
+5765 DEBUG [2018-06-25 11:08:42]  Returning cached instance of singleton bean 'userSessionFactory'
+5817 DEBUG [2018-06-25 11:08:42]  Searching for key 'spring.liveBeansView.mbeanDomain' in [servletConfigInitParams]
+5817 DEBUG [2018-06-25 11:08:42]  Searching for key 'spring.liveBeansView.mbeanDomain' in [servletContextInitParams]
+5817 DEBUG [2018-06-25 11:08:42]  Searching for key 'spring.liveBeansView.mbeanDomain' in [jndiProperties]
+5817 DEBUG [2018-06-25 11:08:42]  Looking up JNDI object with name [java:comp/env/spring.liveBeansView.mbeanDomain]
+5817 DEBUG [2018-06-25 11:08:42]  Converted JNDI name [java:comp/env/spring.liveBeansView.mbeanDomain] not found - trying original name [spring.liveBeansView.mbeanDomain]. javax.naming.NameNotFoundException: Name spring.liveBeansView.mbeanDomain is not bound in this Context
+5817 DEBUG [2018-06-25 11:08:42]  Looking up JNDI object with name [spring.liveBeansView.mbeanDomain]
+5817 DEBUG [2018-06-25 11:08:42]  JNDI lookup for name [spring.liveBeansView.mbeanDomain] threw NamingException with message: Name spring.liveBeansView.mbeanDomain is not bound in this Context. Returning null.

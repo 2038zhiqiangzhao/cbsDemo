@@ -1,0 +1,49 @@
+<div ng-controller="backGuideCtrl" ng-init="init();">
+<div class="modal-dialog" role="document" style="width: 788px">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">网站导航</h4>
+        </div>
+        <div class="modal-body">
+
+            <div class="guide-main">
+                <h3>初次使用，向导将带您快速掌握网站使用方法</h3>
+
+                <ul class="nav nav-tabs guide-tab" role="tablist">
+                    <li ng-repeat="record in commonSettingDTOList" role="presentation" ng-class="{true: 'active', false: ''}[$index == 0]"><a href="#commonSetting_{{$index}}" data-toggle="tab">{{record.name}}</a></li>
+                    <li role="presentation"><a href="#wancheng" data-toggle="tab">完成</a></li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div ng-repeat="record in commonSettingDTOList" role="tabpanel" ng-class="{true: 'tab-pane active', false: 'tab-pane'}[$index == 0]" id="commonSetting_{{$index}}">
+                        <div class="guide-quick">
+                            <div ng-repeat="item in record.commonSettingDTOList" class="item">
+                                {{item.keyDesc}}<a ng-click="clickToGo(item);" target="mainFrame" class="link">现在就去</a><span ng-if="item.linkStauts" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                        <div class="guide-footer">
+                            <div class="remember" ng-click="changeNoShowStatus();">
+                                <span id="isNoShowBackGuide" ng-class="{true: 'glyphicon glyphicon-check', false: 'glyphicon glyphicon-unchecked'}[isNoShowBackGuide]" aria-hidden="true"></span> 下次不再显示此向导
+                            </div>
+                            <button ng-if="$index != 0 " type="button" class="btn btn-info" ng-click="clickPrev($index);" style="background-color: #98d7fe">上一步</button>
+                            <button type="button" class="btn btn-info" ng-click="clickNext($index);" style="background-color: #98d7fe">下一步</button>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="wancheng">
+                        <div class="guide-quick">
+                            <h3 class="sucs">恭喜您，您的网站可以正常使用了！</h3>
+                            <p>下面是一些常用功能的链接聚合，您关闭本页后，依然可以在左侧菜单相关项目中找到。</p>
+                            <a target="mainFrame" ng-click="clickToGo(record);" class="btn btn-quick" ng-repeat="record in finishSettingList">{{record.keyDesc}}</a>
+                        </div>
+                        <div class="guide-footer">
+                            <button type="button" class="btn btn-info " data-dismiss="modal" aria-label="Close" style="background-color: #98d7fe">完成</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

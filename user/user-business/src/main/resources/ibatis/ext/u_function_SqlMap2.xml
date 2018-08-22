@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="u_function2">
+
+ 	<resultMap id="abatorgenerated_FunctionResult" class="com.people2000.user.model.po.ibatis.Function"
+               extends="u_function.abatorgenerated_FunctionResult">
+    </resultMap>
+
+	<select id="getAllFunctionByUserId" parameterClass="Long" resultClass = "java.util.HashMap">
+		SELECT DISTINCT path,code FROM u_function f , (
+			SELECT function_id FROM u_role_function WHERE role_id IN (
+				select id from u_role where id  in (SELECT role_id FROM u_user_role WHERE user_id =#value:BIGINT#  and is_deleted = 0
+				) and is_deleted=0
+			) and is_deleted = 0
+		) v  WHERE f.id = v.function_id  and is_deleted = 0
+	</select>
+	
+	<select id="getFunctionMapByUserIdAndPlatformId" parameterClass="java.util.Map" resultClass = "java.util.HashMap">
+		SELECT DISTINCT path,code FROM u_function f , (
+			SELECT function_id FROM u_role_function WHERE role_id IN (
+				select id from u_role where id  in (SELECT role_id FROM u_user_role WHERE user_id =#userId:BIGINT#  and is_deleted = 0
+				) and is_deleted=0
+			) and is_deleted = 0
+		) v  WHERE f.id = v.function_id  and is_deleted = 0
+		<isNotNull property="platformId" prepend="and">
+		        f.platform_id= #platformId:BIGINT#
+	     </isNotNull>
+	</select>
+
+	<select id="getAllMenuFunctionByParentCode" parameterClass="List" resultClass = "com.people2000.user.model.dto.FunctionTreeDTO">
+		select 	id,	CODE,	parent_code parentCode,	product_Type productType,
+		type,	domain,	path,	NAME,	`DESC_` `desc`,	`level` , `target` ,`icon`
+		from u_function f where f.is_deleted = 0 and type=1 and  f.parent_code in 
+		<iterate open="(" close=")" conjunction=",">
+			<![CDATA[ #value[].code:VARCHAR# ]]>
+		</iterate>
+		ORDER BY f.sort_value ASC
+	</select>
+	
+	<select id="getAllFunctionMerchantByUserId" parameterClass="Long" resultClass = "java.util.HashMap">
+		SELECT DISTINCT path,code FROM u_function f , (
+			SELECT function_id FROM u_role_function WHERE role_id in (992,993) and role_id IN (
+				SELECT role_id FROM u_user_role WHERE user_id = #value:BIGINT#   and is_deleted = 0
+			) and is_deleted = 0
+		) v  WHERE f.id = v.function_id  and is_deleted = 0
+	</select>
+	
+	<select id="getAllFunctionServiceByUserId" parameterClass="Long" resultClass = "java.util.HashMap">
+		SELECT DISTINCT path,code FROM u_function f , (
+			SELECT function_id FROM u_role_function WHERE role_id in (1079,1080) and role_id IN (
+				SELECT role_id FROM u_user_role WHERE user_id = #value:BIGINT#   and is_deleted = 0
+			) and is_deleted = 0
+		) v  WHERE f.id = v.function_id  and is_deleted = 0
+	</select>
+	
+	<select id="getAllFunctionByUserIdAndPlatformId" parameterClass="java.util.Map" resultMap="abatorgenerated_FunctionResult">
+		SELECT DISTINCT  id, code, parent_code, product_type, type, domain, path, name, desc_, level,
+	      is_available, is_deleted, version_no, create_userid, create_username, create_userip,
+	      create_usermac, create_time, create_time_db, server_ip, update_userid, update_username,
+	      update_userip, update_usermac, update_time, update_time_db, client_versionno, company_id, platform_id
+       FROM u_function f , (
+			SELECT function_id FROM u_role_function WHERE role_id IN (
+				SELECT role_id FROM u_user_role WHERE user_id = #userId:BIGINT#   and is_deleted = 0 
+				and role_id in (select id from u_role where is_deleted = 0 
+					<isNotNull property="platformId" prepend="and">
+				        platform_id= #platformId:BIGINT#
+				     </isNotNull>
+				     <isNotNull property="companyId" prepend="and">
+				        company_id = #companyId:BIGINT#
+				     </isNotNull>
+				)
+			) and is_deleted = 0
+		) v  WHERE f.id = v.function_id  and is_deleted = 0 and type=1
+		<isNotNull property="platformId" prepend="and">
+			platform_id= #platformId:BIGINT#
+		</isNotNull>
+		<!-- <isNotNull property="companyId" prepend="and">
+			company_id = #companyId:BIGINT#
+		</isNotNull> -->
+	</select>
+
+	<select id="getAllFunction" parameterClass="java.util.Map" resultMap="abatorgenerated_FunctionResult">
+		SELECT id, code, parent_code, product_type, type, domain, path, name, desc_, level,
+		is_available, is_deleted, version_no, create_userid, create_username, create_userip,
+		create_usermac, create_time, create_time_db, server_ip, update_userid, update_username,
+		update_userip, update_usermac, update_time, update_time_db, client_versionno, company_id, platform_id
+		FROM u_function f , (
+		SELECT function_id FROM u_role_function WHERE role_id IN (
+		SELECT role_id FROM u_user_role WHERE user_id = #userId:BIGINT#   and is_deleted = 0
+		and role_id in (select id from u_role where is_deleted = 0
+				<isNotNull property="platformId" prepend="and">
+					platform_id= #platformId:BIGINT#
+				</isNotNull>
+				<isNotNull property="companyId" prepend="and">
+				        company_id = #companyId:BIGINT#
+				</isNotNull>
+				)
+			) and is_deleted = 0
+		) v  WHERE f.id = v.function_id  and is_deleted = 0 /*and type=1*/
+		<isNotNull property="platformId" prepend="and">
+			platform_id= #platformId:BIGINT#
+		</isNotNull>
+	</select>
+	
+	<select id="getAllMenuFunctionByPlatform" parameterClass="java.util.Map" resultClass = "com.people2000.user.model.dto.FunctionTreeDTO">
+		select 	id,	CODE,	parent_code parentCode,	product_Type productType,
+		type,	domain,	path,	NAME,	`DESC_` `desc`,	`level` , `target` ,`icon`
+		from u_function f where f.is_deleted = 0 and type=1 
+		<isNotNull property="platformId" prepend="and">
+			platform_id= #platformId:BIGINT#
+		</isNotNull>
+		<isNotNull property="companyId" prepend="and">
+			company_id = #companyId:BIGINT#
+		</isNotNull>
+	</select>
+</sqlMap>

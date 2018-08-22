@@ -1,0 +1,87 @@
+@media only screen and (max-width: 1920px) {
+
+    .table-r-scroll table {
+        /*border-left: 1px solid #ddd*/
+    }
+
+    .table-r-scroll .table-r-content:after {
+        visibility: hidden;
+        display: block;
+        font-size: 0;
+        content: " ";
+        clear: both;
+        height: 0;
+    }
+
+    .table-r-scroll * html .table-r-content {
+        zoom: 1;
+    }
+
+    .table-r-scroll *:first-child + html .table-r-content {
+        zoom: 1;
+    }
+
+    .table-r-scroll table {
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    .table-r-scroll th,
+    .table-r-scroll td {
+        margin: 0;
+        vertical-align: top;
+    }
+
+    .table-r-scroll th {
+        text-align: left;
+    }
+
+    .table-r-scroll table {
+        display: block;
+        position: relative;
+        width: 100%;
+    }
+
+    .table-r-scroll thead {
+        display: block;
+        float: left;
+    }
+
+    .table-r-scroll tbody {
+        display: block;
+        width: auto;
+        position: relative;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .table-r-scroll thead tr {
+        display: block;
+    }
+    .table-r-scroll thead tr th{
+        font-weight: normal;
+        background: #fafbfc;
+        text-align: left;
+    }
+
+    .table-r-scroll th {
+        display: block;
+        text-align: right;
+    }
+    .table-bordered > thead > tr > th, .table-bordered > thead > tr > td{
+        border-bottom-width: 1px;
+    }
+
+    .table-r-scroll tbody tr {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .table-r-scroll td {
+        display: block;
+        min-height: 1.25em;
+        text-align: left;
+    }
+
+}

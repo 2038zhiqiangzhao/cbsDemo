@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="u_user_identity_card2">
+    <resultMap id="cerificationDTOResult" class="com.people2000.user.model.dto.CertificationDTO">
+        <result column="id" jdbcType="BIGINT" property="id"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="mobile" jdbcType="VARCHAR" property="mobile"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="registerTime"/>
+        <result column="identity_card_name" jdbcType="VARCHAR" property="identityCardName"/>
+        <result column="identity_card_number" jdbcType="VARCHAR" property="identityCardNumber"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="notpass_code" jdbcType="INTEGER" property="notpassCode"/>
+        <result column="notpass_message" jdbcType="VARCHAR" property="notpassMessage"/>
+        <result column="user_id" jdbcType="BIGINT" property="userId"/>
+    </resultMap>
+    <sql id="select_certification">
+         SELECT
+        a.`id`,a.`username`,a.`mobile`,a.`create_time`,b.`user_id`,b.`identity_card_name`,b.`identity_card_number`,b.`status`,b.`notpass_code`,b.`notpass_message`
+        FROM u_user a,u_user_identity_card b
+        WHERE a.`id`=b.`user_id` AND b.`is_deleted`=0
+    </sql>
+    <sql id="conditions">
+        <dynamic prepend="AND">
+            <isNotNull prepend="AND" property="username">
+                a.username LIKE CONCAT("%",#username#,"%")
+            </isNotNull>
+            <isNotNull prepend="AND" property="mobile">
+                a.mobile = #mobile:VARCHAR#
+            </isNotNull>
+            <isNotNull prepend="AND" property="identityCardName">
+                b.identity_card_name LIKE CONCAT("%",#identityCardName#,"%")
+            </isNotNull>
+            <isNotNull prepend="AND" property="identityCardNumber">
+                b.identity_card_number LIKE CONCAT("%",#identityCardNumber#,"%")
+            </isNotNull>
+            <isNotNull prepend="AND" property="status">
+                b.status =#status:INTEGER#
+            </isNotNull>
+            <isNotNull prepend="AND" property="createTimeBegin">
+                #createTimeBegin:TIMESTAMP# &lt; b.create_time
+            </isNotNull>
+            <isNotNull prepend="AND" property="createTimeEnd">
+                #createTimeEnd:TIMESTAMP# &gt; b.create_time
+            </isNotNull>
+            <isNotNull prepend="AND" property="companyId">
+                b.company_id = #companyId:BIGINT#
+            </isNotNull>
+        </dynamic>
+    </sql>
+    <select id="getCertificationById" parameterClass="java.lang.Long" resultMap="cerificationDTOResult">
+        <include refid="select_certification"></include>
+        AND b.id = #value#
+    </select>
+    <select id="getCertificationPageByQuery" parameterClass="com.people2000.user.model.dto.CertificationDTO"
+            resultMap="cerificationDTOResult">
+        <include refid="select_certification"></include>
+        <include refid="conditions"></include>
+        limit #startItem:INTEGER#,#itemsPerPage:INTEGER#
+    </select>
+    <select id="getCertificationCount" parameterClass="com.people2000.user.model.dto.CertificationDTO"
+            resultClass="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM u_user a,u_user_identity_card b WHERE a.`id`=b.`user_id` AND b.`is_deleted`=0
+        <include refid="conditions"></include>
+    </select>
+</sqlMap>

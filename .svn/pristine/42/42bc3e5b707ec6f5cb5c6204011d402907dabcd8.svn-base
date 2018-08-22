@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"
+        "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+    <settings cacheModelsEnabled="true"
+              enhancementEnabled="true"
+              lazyLoadingEnabled="false"
+              errorTracingEnabled="true"
+              maxTransactions="100"
+              maxRequests="320"
+              maxSessions="100"
+              useStatementNamespaces="true"/>
+
+    <!-- 自动生成sqlmap -->
+    <sqlMap resource="ibatis/u_user_SqlMap.xml"/>
+    <sqlMap resource="ibatis/u_function_SqlMap.xml"/>
+    <sqlMap resource="ibatis/u_role_function_SqlMap.xml"/>
+    <sqlMap resource="ibatis/u_role_SqlMap.xml"/>
+    <sqlMap resource="ibatis/u_user_role_SqlMap.xml"/>
+    <sqlMap resource="ibatis/u_user_cookie_SqlMap.xml"/>
+    <sqlMap resource="ibatis/u_user_login_SqlMap.xml"/>
+    <sqlMap resource="ibatis/u_captchas_SqlMap.xml"/>
+	<sqlMap resource="ibatis/u_platform_group_relation_SqlMap.xml"/>
+	<sqlMap resource="ibatis/u_platform_group_SqlMap.xml"/>
+	<sqlMap resource="ibatis/u_organization_SqlMap.xml"/>
+	<sqlMap resource="ibatis/u_organization_user_SqlMap.xml"/>
+	<sqlMap resource="ibatis/u_user_check_templete_SqlMap.xml"/>
+    <sqlMap resource="ibatis/u_union_login_SqlMap.xml"/>
+    <sqlMap resource="ibatis/u_union_config_SqlMap.xml"/>
+	<sqlMap resource="ibatis/u_position_SqlMap.xml"/>
+    <sqlMap resource="ibatis/u_user_address_SqlMap.xml"/>
+    <sqlMap resource="ibatis/u_user_identity_card_SqlMap.xml"/>
+    <sqlMap resource="ibatis/u_push_message_SqlMap.xml"/>
+    <sqlMap resource="ibatis/u_user_position_SqlMap.xml"/>
+    <sqlMap resource="ibatis/u_user_relate_info_SqlMap.xml"/>
+	<sqlMap resource="ibatis/u_user_action_log_SqlMap.xml"/>
+	
+    <sqlMap resource="ibatis/u_user_mapping_SqlMap.xml"/>
+    <sqlMap resource="ibatis/u_user_ext_SqlMap.xml"/>
+    <sqlMap resource="ibatis/user_account_SqlMap.xml"/>
+    <sqlMap resource="ibatis/user_grade_SqlMap.xml"/>
+	<sqlMap resource="ibatis/account_record_SqlMap.xml"/>
+	
+    <sqlMap resource="ibatis/ext/u_user_SqlMap2.xml"/>
+    <sqlMap resource="ibatis/ext/u_user_role_SqlMap2.xml"/>
+    <sqlMap resource="ibatis/ext/u_function_SqlMap2.xml"/>
+    <sqlMap resource="ibatis/ext/u_user_identity_card_SqlMap2.xml"/>
+    <sqlMap resource="ibatis/ext/u_captchas_SqlMap2.xml"/>
+	<sqlMap resource="ibatis/ext/u_platform_group_relation_SqlMap2.xml"/>
+	<sqlMap resource="ibatis/ext/u_role_function_SqlMap2.xml"/>
+    <sqlMap resource="ibatis/ext/u_organization_SqlMap2.xml"/>
+    <sqlMap resource="ibatis/ext/u_user_action_log_SqlMap2.xml"/>
+    <sqlMap resource="ibatis/ext/u_user_ext_SqlMap2.xml"/>
+    <sqlMap resource="ibatis/ext/u_user_login_SqlMap2.xml"/>
+
+</sqlMapConfig>

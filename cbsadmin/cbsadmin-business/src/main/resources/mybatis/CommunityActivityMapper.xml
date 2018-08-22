@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.people.cbsadmin.business.dao.CommunityActivityMapper">
+  <resultMap id="BaseResultMap" type="com.people.cbsadmin.model.po.CommunityActivity">
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="activity_name" jdbcType="VARCHAR" property="activityName" />
+    <result column="activity_time" jdbcType="TIMESTAMP" property="activityTime" />
+    <result column="activity_place" jdbcType="VARCHAR" property="activityPlace" />
+    <result column="registration_fee" jdbcType="DECIMAL" property="registrationFee" />
+    <result column="time_interval" jdbcType="TIMESTAMP" property="timeInterval" />
+    <result column="publish_state" jdbcType="INTEGER" property="publishState" />
+    <result column="activity_state" jdbcType="INTEGER" property="activityState" />
+    <result column="is_available" jdbcType="INTEGER" property="isAvailable" />
+    <result column="is_deleted" jdbcType="INTEGER" property="isDeleted" />
+    <result column="create_user_name" jdbcType="VARCHAR" property="createUserName" />
+    <result column="create_user_phone" jdbcType="VARCHAR" property="createUserPhone" />
+    <result column="surface_picture" jdbcType="VARCHAR" property="surfacePicture" />
+    <result column="is_time_publish" jdbcType="INTEGER" property="isTimePublish" />
+    <result column="apply_end_time" jdbcType="TIMESTAMP" property="applyEndTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_user_id" jdbcType="BIGINT" property="updateUserId" />
+    <result column="create_user_id" jdbcType="BIGINT" property="createUserId" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="qr_ext" jdbcType="VARCHAR" property="qrExt" />
+    <result column="activity_end_time" jdbcType="TIMESTAMP" property="activityEndTime" />
+    <result column="richTextArea" jdbcType="VARCHAR" property="richTextArea" />
+   <result column="auth_code" jdbcType="VARCHAR" property="authCode" />
+    <result column="admin_id" jdbcType="BIGINT" property="adminId" />
+  </resultMap>
+   <sql id="Base_column_List">
+    ca.id, ca.activity_name, ca.activity_time, ca.activity_place, ca.registration_fee, ca.time_interval, 
+    ca.publish_state, ca.activity_state,ca.is_available, 
+    ca.is_deleted,ca.create_user_name,ca.create_user_phone,ca.surface_picture,ca.is_time_publish,
+    ca.apply_end_time,ca.update_time,ca.create_time,ca.update_user_id,ca.create_user_id,ca.user_id,ca.qr_ext,
+    ca.activity_end_time,ca.richTextArea,ca.auth_code,ca.admin_id
+  </sql>
+   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_column_List" />
+    from community_activity ca
+    where ca.id = #{id,jdbcType=BIGINT}
+  </select>
+  <insert id="insert" parameterType="com.people.cbsadmin.model.po.CommunityActivity">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into community_activity (activity_name, activity_time, activity_place, 
+      registration_fee, time_interval, publish_state, 
+      activity_state, is_available, is_deleted, 
+      create_user_name, create_user_phone, surface_picture, 
+      is_time_publish, apply_end_time, update_time, 
+      create_time, update_user_id, create_user_id, 
+      user_id, qr_ext,activity_end_time,richTextArea,authCode,admin_id)
+    values (#{activityName,jdbcType=VARCHAR}, #{activityTime,jdbcType=TIMESTAMP}, #{activityPlace,jdbcType=VARCHAR}, 
+      #{registrationFee,jdbcType=DECIMAL}, #{timeInterval,jdbcType=TIMESTAMP}, #{publishState,jdbcType=INTEGER}, 
+      #{activityState,jdbcType=INTEGER}, #{isAvailable,jdbcType=INTEGER}, #{isDeleted,jdbcType=INTEGER}, 
+      #{createUserName,jdbcType=VARCHAR}, #{createUserPhone,jdbcType=VARCHAR}, #{surfacePicture,jdbcType=BIGINT}, 
+      #{isTimePublish,jdbcType=INTEGER}, #{applyEndTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateUserId,jdbcType=BIGINT}, #{createUserId,jdbcType=BIGINT}, 
+      #{userId,jdbcType=BIGINT}, #{qrExt,jdbcType=VARCHAR}), #{activityEndTime,jdbcType=TIMESTAMP}),#{richTextArea,jdbcType=VARCHAR}
+      ,#{authCode,jdbcType=VARCHAR},#{adminId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.people.cbsadmin.model.po.CommunityActivity"
+   useGeneratedKeys="true" >
+    <selectKey keyProperty="id" order="AFTER"  resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into community_activity
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="activityName != null">
+        activity_name,
+      </if>
+      <if test="activityTime != null">
+        activity_time,
+      </if>
+      <if test="activityPlace != null">
+        activity_place,
+      </if>
+      <if test="registrationFee != null">
+        registration_fee,
+      </if>
+      <if test="timeInterval != null">
+        time_interval,
+      </if>
+      <if test="publishState != null">
+        publish_state,
+      </if>
+      <if test="activityState != null">
+        activity_state,
+      </if>
+      <if test="isAvailable != null">
+        is_available,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="createUserName != null">
+        create_user_name,
+      </if>
+      <if test="createUserPhone != null">
+        create_user_phone,
+      </if>
+      <if test="surfacePicture != null">
+        surface_picture,
+      </if>
+      <if test="isTimePublish != null">
+        is_time_publish,
+      </if>
+      <if test="applyEndTime != null">
+        apply_end_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateUserId != null">
+        update_user_id,
+      </if>
+      <if test="createUserId != null">
+        create_user_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="qrExt != null">
+        qr_ext,
+      </if>
+      <if test="activityEndTime != null">
+        activity_end_time,
+      </if>
+      <if test="richTextArea != null">
+        richTextArea,
+      </if>
+       <if test="authCode != null">
+        auth_code,
+      </if>
+      <if test="adminId != null">
+        admin_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="activityName != null">
+        #{activityName,jdbcType=VARCHAR},
+      </if>
+      <if test="activityTime != null">
+        #{activityTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="activityPlace != null">
+        #{activityPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="registrationFee != null">
+        #{registrationFee,jdbcType=DECIMAL},
+      </if>
+      <if test="timeInterval != null">
+        #{timeInterval,jdbcType=TIMESTAMP},
+      </if>
+      <if test="publishState != null">
+        #{publishState,jdbcType=INTEGER},
+      </if>
+      <if test="activityState != null">
+        #{activityState,jdbcType=INTEGER},
+      </if>
+      <if test="isAvailable != null">
+        #{isAvailable,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=INTEGER},
+      </if>
+      <if test="createUserName != null">
+        #{createUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserPhone != null">
+        #{createUserPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="surfacePicture != null">
+        #{surfacePicture,jdbcType=BIGINT},
+      </if>
+      <if test="isTimePublish != null">
+        #{isTimePublish,jdbcType=INTEGER},
+      </if>
+      <if test="applyEndTime != null">
+        #{applyEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null">
+        #{updateUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createUserId != null">
+        #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="qrExt != null">
+        #{qrExt,jdbcType=VARCHAR},
+      </if>
+       <if test="activityEndTime != null">
+        #{activityEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="richTextArea != null">
+        #{richTextArea,jdbcType=VARCHAR},
+      </if>
+      <if test="authCode != null">
+        #{authCode,jdbcType=VARCHAR},
+      </if>
+      <if test="adminId != null">
+        #{adminId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  
+  <select id="selectByPrimaryKeyOnly" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_column_List" />
+    from community_activity ca
+    where ca.id = #{id,jdbcType=BIGINT}
+  </select>
+  
+</mapper>

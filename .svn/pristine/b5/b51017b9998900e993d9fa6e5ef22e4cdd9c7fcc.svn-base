@@ -1,0 +1,498 @@
+package com.people.cbsadmin.business.write.impl;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.people.cbsadmin.business.dao.CommunityActivityAdminMapper;
+import com.people.cbsadmin.business.dao.CommunityActivityMapper;
+import com.people.cbsadmin.business.dao.CommunityActivityOrderMapper;
+import com.people.cbsadmin.business.dao.CommunityMiddleAdminMapper;
+import com.people.cbsadmin.business.dao.UserMapper;
+import com.people.cbsadmin.business.dao.ext.BaseSequenceMapperExt;
+import com.people.cbsadmin.business.dao.ext.BaseSystemMapperExt;
+import com.people.cbsadmin.business.dao.ext.CommunityActivityAdminMapperExt;
+import com.people.cbsadmin.business.dao.ext.CommunityActivityMapperExt;
+import com.people.cbsadmin.business.utils.ConstantUtils;
+import com.people.cbsadmin.business.write.CommunityActivityWriterManager;
+import com.people.cbsadmin.model.constant.AllConstant;
+import com.people.cbsadmin.model.constant.ExceptionCodes;
+import com.people.cbsadmin.model.dto.CommunityActivityDto;
+import com.people.cbsadmin.model.dto.CommunityActivityTwoDto;
+import com.people.cbsadmin.model.po.CommunityActivity;
+import com.people.cbsadmin.model.po.CommunityActivityAdmin;
+import com.people.cbsadmin.model.po.CommunityActivityOrder;
+import com.people.cbsadmin.model.po.CommunityMiddleAdmin;
+import com.people.cbsadmin.model.po.User;
+import com.people.cbsadmin.model.vo.CommunityActivityOrderVo;
+import com.people.cbsadmin.model.vo.CommunityActivityVo;
+import com.people.cbsadmin.model.vo.CommunitySecret;
+import com.people2000.common.base.bean.BeanUtils;
+import com.people2000.common.base.date.DateUtil;
+import com.people2000.common.encrypt.MD5Support;
+import com.people2000.common.exception.BusinessException;
+
+
+@Service("communityActivityWriterManager")
+public class CommunityActivityWriterManagerImpl implements
+		CommunityActivityWriterManager {
+	@Autowired
+	private CommunityActivityOrderMapper mCommunityActivityOrderMapper;
+	@Autowired
+	private CommunityActivityMapperExt communityActivityMapperExt;
+	@Autowired
+	private CommunityActivityMapper communityActivityMapper;
+	@Autowired
+	private BaseSequenceMapperExt  baseSequenceMapperExt;
+	private SimpleDateFormat dateFormat = new SimpleDateFormat("yyMMdd");
+	@Autowired
+	private BaseSystemMapperExt baseSystemMapperExt;
+	@Autowired
+	private CommunityActivityAdminMapper communityActivityAdminMapper;
+	@Autowired
+	private CommunityActivityAdminMapperExt communityActivityAdminMapperExt;
+	@Autowired
+	private UserMapper userMapper;
+	@Autowired
+	private CommunityMiddleAdminMapper communityMiddleAdminMapper;
+
+	/**
+	 * 订单编号规则：年月日+订单数+业务类型（12位） 年月日：171213（6位） 订单数：5位（每天从0计数） 业务类型：1会议室 2餐饮 3
+	 * 活动（1位）
+	 */
+
+	@Override
+	public String createOrderCode() {
+		// 获取序列号
+		Integer code = baseSequenceMapperExt
+				.getSequenceNextval(ConstantUtils.ORDER_NUMBER);
+		String codeStr = code.toString();
+		if (codeStr.length() < 5) {
+			codeStr = String.format("%05d", code);// 0代表补位0，5代表总共5位数字 d-十进制
+		}
+		StringBuilder orderCode = new StringBuilder();
+		String businessCode = "3";// 这里给个定制活动的业务类型为3
+
+		orderCode.append(dateFormat.format(baseSystemMapperExt.queryNow()));// 年月日：171213（6位）
+		orderCode.append(codeStr);// 订单数：5位（每天从0计数）
+		orderCode.append(businessCode);
+
+		return orderCode.toString();
+	}
+
+	/**
+	 * 更新活动状态
+	 * 
+	 */
+	@Override
+	public void updateSelective(CommunityActivity dto) {
+		mCommunityActivityOrderMapper.selectByPrimaryKey(dto.getId());
+	}
+
+	@Override
+	public void updateSelective(CommunityActivityVo dto) {
+		mCommunityActivityOrderMapper.selectByPrimaryKey(dto.getId());
+
+	}
+
+	/**
+	 * 定时器任务处理活动状态
+	 * 
+	 * @throws BusinessException
+	 * 
+	 */
+	@SuppressWarnings("unused")
+	@Override
+	public void completeOrderWithTx(CommunityActivityDto mCommunityActivityDto)
+			throws BusinessException {
+		CommunityActivity communityActivity = communityActivityMapperExt
+				.queryActivityState(mCommunityActivityDto.getId());
+		if (mCommunityActivityDto == null) {
+			throw new BusinessException(ExceptionCodes.BUSSINESS_ERROR,
+					"该活动编号不存在！");
+		}
+
+		// 更新订单状态
+		CommunityActivity mCommunityActivity = new CommunityActivity();
+		mCommunityActivity.setId(communityActivity.getId());
+		mCommunityActivity
+				.setActivityState(AllConstant.AplyActivityStates.ACTIVITY_1);
+		communityActivityMapperExt
+				.updateByPrimaryKeySelective(mCommunityActivity);
+	}
+
+	@SuppressWarnings("unused")
+	@Override
+	public void completeOrderWithTxTwo(
+			CommunityActivityDto mCommunityActivityDto)
+			throws BusinessException {
+		CommunityActivity communityActivity = communityActivityMapperExt
+				.queryActivityState(mCommunityActivityDto.getId());
+		if (mCommunityActivityDto == null) {
+			throw new BusinessException(ExceptionCodes.BUSSINESS_ERROR,
+					"该活动编号不存在！");
+		}
+
+		// 更新订单状态
+		CommunityActivity mCommunityActivity = new CommunityActivity();
+		mCommunityActivity.setId(communityActivity.getId());
+		mCommunityActivity
+				.setActivityState(AllConstant.AplyActivityStates.ACTIVITY_2);
+		communityActivityMapperExt
+				.updateByPrimaryKeySelective(mCommunityActivity);
+
+	}
+
+	@Override
+	public void updateCommunityClass(CommunityActivityDto communityActivityDto) {
+		CommunityActivity record = new CommunityActivity();
+		BeanUtils.copyProperties(communityActivityDto, record);
+		communityActivityMapperExt.updateByPrimaryKeySelective(record);
+	}
+
+	@Override
+	public void addCommunityActivity(
+			CommunityActivityTwoDto communityActivityDto) {
+		CommunityActivity record = new CommunityActivity();
+		String formatDateTime = DateUtil.formatDateTime(new Date());
+		Date date = DateUtil.getDate(formatDateTime, "yyyy-MM-dd HH:mm:ss");
+		record.setCreateTime(date);
+		Date activityTime = DateUtil.getDate(
+				communityActivityDto.getActivityTime() + " "
+						+ communityActivityDto.getActivityTimeStartTime(),
+				"yyyy-MM-dd HH:mm");
+		record.setActivityTime(activityTime);
+		Date activityEndTime = DateUtil.getDate(
+				communityActivityDto.getActivityTime() + " "
+						+ communityActivityDto.getActivityEndTime(),
+				"yyyy-MM-dd HH:mm");
+		record.setActivityEndTime(activityEndTime);
+		Date applyEndTime = DateUtil.getDate(
+				communityActivityDto.getApplyEndTime() + " "
+						+ communityActivityDto.getApplyEndTimeStartTime(),
+				"yyyy-MM-dd HH:mm");
+		record.setApplyEndTime(applyEndTime);
+		record.setActivityName(communityActivityDto.getActivityName());
+		record.setActivityPlace(communityActivityDto.getActivityPlace());
+		if (communityActivityDto.getCreateUserName() != null
+				&& !communityActivityDto.getCreateUserName().equals("")) {
+			record.setCreateUserName(communityActivityDto.getCreateUserName());
+		}
+		if (communityActivityDto.getCreateUserPhone() != null
+				&& !communityActivityDto.getCreateUserPhone().equals("")) {
+			record.setCreateUserPhone(communityActivityDto.getCreateUserPhone());
+		}
+
+		record.setIsAvailable(communityActivityDto.getIsAvailable());
+		record.setRegistrationFee(communityActivityDto.getRegistrationFee());
+		record.setRichTextArea(communityActivityDto.getRichTextArea());
+		record.setSurfacePicture(communityActivityDto.getSurfacePicture());
+		if (communityActivityDto.getTimeInterval() + " "
+				+ communityActivityDto.getTimeIntervalStartTime() != null
+				&& !(communityActivityDto.getTimeInterval() + " " + communityActivityDto
+						.getTimeIntervalStartTime()).equals("")) {
+			Date timeInterval = DateUtil.getDate(
+					communityActivityDto.getTimeInterval() + " "
+							+ communityActivityDto.getTimeIntervalStartTime(),
+					"yyyy-MM-dd HH:mm");
+			record.setTimeInterval(timeInterval);
+		}
+		Long intCount = communityActivityMapper.insertSelective(record);
+		// intCount为1代表插入成功
+		if (intCount > 0) {
+			Long id = record.getId();
+			record.setAuthCode(AllConstant.QRURL + "{" + "id=" + id
+					+ ",secret=0" +",type:"+"4"+"}");
+			communityActivityMapperExt.updateByPrimaryKeySelective(record);
+		}
+
+	}
+
+	/**
+	 * 由于内容时间要转化一下和新增内容是想反的
+	 * 
+	 */
+	@Override
+	public void updateProduct(CommunityActivityTwoDto communityActivityDto) {
+		CommunityActivity record = new CommunityActivity();
+		String formatDateTime = DateUtil.formatDateTime(new Date());
+		Date date = DateUtil.getDate(formatDateTime, "yyyy-MM-dd HH:mm:ss");
+		record.setCreateTime(communityActivityDto.getCreateTime());
+		record.setUpdateTime(date);
+		record.setId(communityActivityDto.getId());
+		Date activityTime = DateUtil.getDate(
+				communityActivityDto.getActivityTime() + " "
+						+ communityActivityDto.getActivityTimeStartTime(),
+				"yyyy-MM-dd HH:mm");
+		record.setActivityTime(activityTime);
+		Date activityEndTime = DateUtil.getDate(
+				communityActivityDto.getActivityTime() + " "
+						+ communityActivityDto.getActivityEndTime(),
+				"yyyy-MM-dd HH:mm");
+		record.setActivityEndTime(activityEndTime);
+		Date applyEndTime = DateUtil.getDate(
+				communityActivityDto.getApplyEndTime() + " "
+						+ communityActivityDto.getApplyEndTimeStartTime(),
+				"yyyy-MM-dd HH:mm");
+		record.setApplyEndTime(applyEndTime);
+		record.setActivityName(communityActivityDto.getActivityName());
+		record.setActivityPlace(communityActivityDto.getActivityPlace());
+		if (communityActivityDto.getCreateUserName() != null
+				&& !communityActivityDto.getCreateUserName().equals("")) {
+			record.setCreateUserName(communityActivityDto.getCreateUserName());
+		}
+		if (communityActivityDto.getCreateUserPhone() != null
+				&& !communityActivityDto.getCreateUserPhone().equals("")) {
+			record.setCreateUserPhone(communityActivityDto.getCreateUserPhone());
+		}
+
+		record.setIsAvailable(communityActivityDto.getIsAvailable());
+		record.setRegistrationFee(communityActivityDto.getRegistrationFee());
+		record.setRichTextArea(communityActivityDto.getRichTextArea());
+		record.setSurfacePicture(communityActivityDto.getSurfacePicture());
+		if (communityActivityDto.getTimeInterval() != null
+				&& communityActivityDto.getTimeIntervalStartTime() != null) {
+			Date timeInterval = DateUtil.getDate(
+					communityActivityDto.getTimeInterval() + " "
+							+ communityActivityDto.getTimeIntervalStartTime(),
+					"yyyy-MM-dd HH:mm");
+			record.setTimeInterval(timeInterval);
+		} else {
+			record.setTimeInterval(null);
+		}
+		record.setIsTimePublish(communityActivityDto.getIsTimePublish());
+		communityActivityMapperExt.updateByPrimaryKeySelective(record);
+	}
+
+	@Override
+	public void updateCommunityClass(CommunityActivityVo communityVo)
+			throws BusinessException {
+		CommunityActivity record = new CommunityActivity();
+		BeanUtils.copyProperties(communityVo, record);
+		communityActivityMapperExt.updateByPrimaryKeySelective(record);
+	}
+
+	/**
+	 * 活动定时发布任务
+	 * 
+	 */
+	@Override
+	public void completeIsTimePublish(CommunityActivityDto mCommunityActivityDto) {
+		CommunityActivity record = new CommunityActivity();
+		mCommunityActivityDto.setPublishState(1);
+		BeanUtils.copyProperties(mCommunityActivityDto, record);
+		communityActivityMapperExt.updateByPrimaryKeySelective(record);
+	}
+
+	@Override
+	public void completeOrderWithTxTwo(
+			CommunityActivityOrderVo mCommunityActivityOrderVo) {
+		// 更新活动订单状态
+		CommunityActivityOrder mcommunityActivityOrder = new CommunityActivityOrder();
+		mcommunityActivityOrder.setId(mCommunityActivityOrderVo.getId());
+		mcommunityActivityOrder
+				.setStatus(mCommunityActivityOrderVo.getStatus());// 未开始
+		mCommunityActivityOrderMapper
+				.updateByPrimaryKeySelective(mcommunityActivityOrder);
+
+	}
+
+	@Override
+	public Object updateCommunitySecret(
+			CommunityActivityVo communityActivityVo, Boolean bo) {
+		CommunitySecret communitySecret = new CommunitySecret();
+		CommunityActivity selectByPrimaryKeyOnly = communityActivityMapper.selectByPrimaryKeyOnly(communityActivityVo.getId());
+		if (!bo) {
+
+			// 生成秘钥 秘钥由活动id和用户id组成
+			String md5 = MD5Support.MD5(communityActivityVo.getId() + ""
+					+ communityActivityVo.getUserId());
+			communityActivityVo.setAuthCode(AllConstant.QRURL + "{" + "id="
+					+ communityActivityVo.getId() + "&secret=" + md5 + "}");
+			CommunityActivity communityActivity = new CommunityActivity();
+			BeanUtils.copyProperties(communityActivityVo, communityActivity);
+			// 在更新之前先确保传入的id和数据库中的id匹配
+			String checkId = checkId(communityActivityVo.getId(), false);
+			if (checkId.equals("1")) {// 校验通过
+				communitySecret.setSecret(md5);
+				communitySecret.setCommunityId(communityActivityVo.getId());
+				communitySecret.setAlertMessage(AllConstant.ADMININFOCHCK);
+				return communitySecret;
+
+			} else if (checkId.equals("-1")) {
+				communitySecret.setAlertMessage(AllConstant.CHECKMESSAGE);
+				return communitySecret;
+			}
+		} else {
+			// 生成秘钥 秘钥由活动id和用户id组成
+			String md5 = MD5Support.MD5(communityActivityVo.getId() + ""
+					+ communityActivityVo.getUserId());
+			communityActivityVo.setAuthCode(AllConstant.QRURL + "{" + "id="
+					+ communityActivityVo.getId() + "&secret=" + md5 + "}");
+			CommunityActivity communityActivity = new CommunityActivity();
+			BeanUtils.copyProperties(communityActivityVo, communityActivity);
+			// 在更新之前先确保传入的id和数据库中的id匹配
+			String checkId = checkId(communityActivityVo.getId(), true);
+			if (!checkId.equals("-1")) {// 校验通过
+				// 拿到秘钥匹配数据库秘钥
+				if (checkId.equals(communityActivityVo.getSecret())) {// 表示当前的秘钥和数据库中的秘钥匹配成功，已经是管理员/活动组织者
+					communitySecret.setSecret(md5);
+					communitySecret.setCommunityId(communityActivityVo.getId());
+					communitySecret.setAlertMessage(AllConstant.ADMINMANAGWER+selectByPrimaryKeyOnly.getActivityName()+AllConstant.ADMINMANAGWERTWO);
+					return communitySecret;
+
+				} else {
+					communitySecret.setAlertMessage(AllConstant.ADMININFOCHCKSERY);
+					return communitySecret;
+				}
+
+			} else {
+				communitySecret.setAlertMessage(AllConstant.CHECKMESSAGE);
+				return communitySecret;
+			}
+		}
+		return communitySecret;
+
+	}
+	
+	
+	private String checkId(Long id, boolean bool) {
+		if (!bool) {
+			CommunityActivity selectByPrimaryKeyOnly = communityActivityMapper
+					.selectByPrimaryKeyOnly(id);
+			if(selectByPrimaryKeyOnly!=null){
+				String authCode = selectByPrimaryKeyOnly.getAuthCode();
+				// http://pan.baidu.com/share/qrcode?w=150&h=150&url={id=44,secret=0,type=4}
+				//https://www.kuaizhan.com/common/encode-png?large=false&data={id=44,secret=0,type=4}
+				String[] split = authCode.split("=");// id=44,secret=0,type=4}
+				String[] split2 = split[3].split(",");// id=44
+				if (split2[0].equals(id.toString())) {
+					// 说明传入的值是扫描到的id值
+					return "1";
+				}
+				return "-1";
+			}else{
+				return "-1";
+			}
+			
+		} else {
+			CommunityActivity selectByPrimaryKeyOnly = communityActivityMapper
+					.selectByPrimaryKeyOnly(id);
+			if(selectByPrimaryKeyOnly!=null){
+				//
+				String authCode = selectByPrimaryKeyOnly.getAuthCode();
+				String[] split = authCode.split("=");// id=44&secret=0}
+				String[] split2 = split[3].split(",");// id=44
+				if (split2[0].equals(id.toString())) {
+					String[] splitcode = authCode.split("=");// id=44&secret=0}
+					String[] split2code = splitcode[4].split(",");
+					String mSecycode = split2code[0];
+					return mSecycode;
+				} else {
+					return "-1";
+				}
+			}else{
+				return "-1";
+			}
+			
+
+		}
+
+	}
+//	public static void main(String ss[]){
+//		String authCode="https://www.kuaizhan.com/common/encode-png?large=false&data={id=45,secret=b56d9d8b6077fb56127d1c8ff84ece11,type=4}";
+//		String[] splitcode = authCode.split("=");// id=44&secret=0}
+//		String[] split2code = splitcode[4].split(",");
+//		String mSecycode = split2code[0];
+//	   System.out.println(mSecycode);
+//	}
+
+	@SuppressWarnings("unused")
+	@Override
+	public Object updateAuthCode(CommunitySecret communitySecret) {
+		Long communityId = communitySecret.getCommunityId();
+		communitySecret.setActivityId(communityId);
+		String secret = communitySecret.getSecret();
+		CommunityActivity  communityActivity=new CommunityActivity();
+		communityActivity.setId(communitySecret.getCommunityId());
+		// 向表中更新数据
+		String md5 = MD5Support.MD5(communitySecret.getActivityId() + ""
+				+ communitySecret.getUserId());
+		if(secret.equals(md5)){
+			communityActivity.setAuthCode(AllConstant.QRURL+"{"+"id="+communityId+",secret="+secret+",type=4"+"}");
+		}else{
+			return AllConstant.ADMININFOCHCKSERY;
+		}
+		
+		communityActivityMapperExt.updateByPrimaryKeySelective(communityActivity);
+		//授权成功后添加组织者表
+		CommunityActivityAdmin communityActivityAdmin=new CommunityActivityAdmin();
+		communityActivityAdmin.setUserId(communitySecret.getUserId());
+		communityActivityAdmin.setActivityId(communityId);
+		communityActivityAdmin.setCreatTime(new Date());
+		//根据用户id查询用户信息
+		User user = userMapper.selectByPrimaryKey(communitySecret.getUserId());
+		if(user!=null){
+			if(null!=user.getHeadPicUrl()){
+				communityActivityAdmin.setAdminHeadUrl(user.getHeadPicUrl());
+				}
+			if(null!=user.getNickname()){
+				communityActivityAdmin.setAdminName(user.getNickname());	
+			}
+			if(null!=user.getMobile()){
+				communityActivityAdmin.setAdminPhone(user.getMobile());
+			}
+		
+		}
+		
+		CommunityActivityAdmin communityActivityAdminUserId = communityActivityAdminMapperExt.queryUserId(communitySecret);
+		CommunityActivity selectByPrimaryKeyOnly = communityActivityMapper.selectByPrimaryKeyOnly(communitySecret.getCommunityId());
+		if(communityActivityAdminUserId!=null){
+			
+			//关联活动表更新设置组织者编号
+			Long id = communityActivityAdminUserId.getId();
+			CommunityActivity mCommunityActivity=new CommunityActivity();
+			
+			
+			
+			if(selectByPrimaryKeyOnly!=null){
+				//向中间表插入数据
+				CommunityMiddleAdmin communityMiddleAdmin =new CommunityMiddleAdmin();
+				communityMiddleAdmin.setActivityId(selectByPrimaryKeyOnly.getId());
+				communityMiddleAdmin.setAdminId(communityActivityAdminUserId.getId());
+				communityMiddleAdminMapper.insertSelective(communityMiddleAdmin);
+			}else{
+				return AllConstant.CHECKMESSAGE;
+			}
+			communitySecret.setAlertMessage(AllConstant.ADMINMANAGWER+selectByPrimaryKeyOnly.getActivityName()+AllConstant.ADMINMANAGWERTWO);
+			
+		}else{//当前用户没有授权为组织者，开始授权
+			//注意组织者id和用户id是一一对应的
+		
+			int insertSelective = communityActivityAdminMapper.insertSelective(communityActivityAdmin);
+		
+			if(insertSelective>0){
+				CommunityActivityAdmin communityActivityAdminUserId2 = communityActivityAdminMapperExt.queryUserId(communitySecret);
+				//插入成功后向活动表中插入数据
+				//插入成功
+					//向中间表插入数据
+					CommunityMiddleAdmin communityMiddleAdmin =new CommunityMiddleAdmin();
+					communityMiddleAdmin.setActivityId(communityActivityAdminUserId2.getActivityId());
+					communityMiddleAdmin.setAdminId(communityActivityAdminUserId2.getId());
+					communityMiddleAdminMapper.insertSelective(communityMiddleAdmin);
+				
+			}
+			
+			
+			
+			communitySecret.setAlertMessage(AllConstant.BINDADMINMANAGWER+selectByPrimaryKeyOnly.getActivityName()+AllConstant.BINDADMINMANAGWERTWO);
+		}
+		
+		return communitySecret;
+	}
+
+	 
+
+}

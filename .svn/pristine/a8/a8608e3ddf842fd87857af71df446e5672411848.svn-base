@@ -1,0 +1,143 @@
+<div class="wrapper-md bg-light b-b headerPadding">
+    <h1 class="m-n font-thin h3"><a href="">用户设置</a>&gt;<a href="">用户管理</a>&gt;<a href="">部门-员工</a>&gt;<a href="">岗位管理</a></h1>
+</div>
+<div class="wrapper-md">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <div class="col-sm-4 mgt15">
+                        <label class="col-sm-5 control-label">岗位名称:</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    <div ng-controller="timeCtrl">
+                        <div class="col-sm-4 mgt15">
+                            <label class="col-sm-5 control-label">创建时间:</label>
+                            <div class="col-sm-7">
+                                <input type="text" value="" class="timeiconbg form-control" datetimepicker for-id="from"
+                                       options="options2" close="close(from)" max-date="to" ng-model="from">
+                            </div>
+                        </div>
+                        <div class="col-sm-4 mgt15">
+                            <label class="col-sm-5 control-label">至</label>
+                            <div class="col-sm-7">
+                                <input type="text" value="" class="timeiconbg form-control" datetimepicker for-id="to"
+                                       options="options3" close="close(to)" min-date="from" ng-model="to">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-info">查询</button>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#formT">添加岗位</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="panel panel-default" ng-controller="yl_paginationCtrl">
+        <div class=" portlet-body flip-scroll">
+            <table class=" table-bordered table-striped table-condensed flip-content">
+                <thead>
+                <tr>
+                    <th>操作</th>
+                    <th>岗位名称</th>
+                    <th>岗位描述</th>
+                    <th>创建时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#formT">编辑</button>
+                        <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#deleteT">删除</button>
+                    </td>
+                    <td>超级管理员</td>
+                    <td>备注信息</td>
+                    <td>2016-07-04 10:10:10</td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#formT">编辑</button>
+                        <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#deleteT">删除</button>
+                    </td>
+                    <td>管理员</td>
+                    <td>备注信息</td>
+                    <td>2016-07-04 10:10:10</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <footer class="panel-footer">
+            <pagination total-items="totalItems1" ng-model="currentPage1"
+                        items-per-page="itemPerPage1"
+                        previous-text="上一页" next-text="下一页"
+                        page-sizes="pageSizes1"
+                        edit-page="editPage1"
+                        ng-change="getData(currentPage1,itemPerPage1)"></pagination>
+        </footer>
+    </div>
+</div>
+<!--弹窗-删除-->
+<div class="modal fade" id="deleteT" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog"
+     aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                </button>
+                <h4 class="modal-title" id="">
+                    信息提示 <span class="close-popup" data-dismiss="modal"></span>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <p>确定删除吗？</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                </button>
+                <button type="button" class="btn btn-info">
+                    确定
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--弹窗-表单-->
+<div class="modal fade" id="formT" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog"
+     aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                </button>
+                <h4 class="modal-title" id="">
+                    添加岗位-编辑 <span class="close-popup" data-dismiss="modal"></span>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" method="get">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">岗位名称：</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" placeholder="客服">
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg  "></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">角色描述：</label>
+                        <div class="col-sm-9">
+                            <textarea  class="form-control" placeholder="0-200字"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-info" data-dismiss="modal">保存</button>
+            </div>
+        </div>
+    </div>
+</div>

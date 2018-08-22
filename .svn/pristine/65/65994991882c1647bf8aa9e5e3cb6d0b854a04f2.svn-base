@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="renderer" content="wekit|ie-comp|ie-stand">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  
+<link href="/plugins/bootstrap-3.3.4/css/bootstrap.min.css" rel="stylesheet">
+<link href="/plugins/common/css/animate.min.css" rel="stylesheet" />
+<link href="/plugins/common/css/font-awesome.min.css" rel="stylesheet" />
+<link href="/plugins/common/css/simple-line-icons.css" rel="stylesheet" />
+<link href="/plugins/platform-include/css/platform.css" rel="stylesheet">
+
+<script src="/plugins/jquery/jquery.min.js"></script>
+<script src="/plugins/angular-1.2.29/js/angular.min.js"></script>
+<script src="/plugins/angular-1.2.29/js/angular-cookies.min.js"></script>
+<script src="/plugins/angular-1.2.29/js/angular-animate.min.js"></script>
+<script src="/plugins/angular-1.2.29/js/angular-route.min.js"></script>
+<script src="/plugins/angular-1.2.29/js/angular-ui-router.js"></script>
+<script src="/plugins/angular-1.2.29/js/ngStorage.min.js"></script>
+<script src="/plugins/angular-1.2.29/js/ui-load.js"></script>
+<script src="/plugins/angular-1.2.29/js/ui-jq.js"></script>
+<script src="/plugins/angular-1.2.29/js/ui-validate.js"></script>
+<script src="/plugins/angular-1.2.29/js/ui-bootstrap-tpls.min.js"></script>
+<script src="/plugins/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+<!--[if lt IE 9]>
+<script src="/plugins/ie_browser/js/html5shiv.min.js"></script>
+<script src="/plugins/ie_browser/js/respond.min.js"></script>
+
+<![endif]-->
+
+<script src="/plugins/platform-include/js/platformApp.js"></script>
+<script src="/plugins/platform-include/js/platformCtrl.js"></script>
+
+<script src="/plugins/platform-include/js/loginCtrl.js"></script>
+<script src="/plugins/platform-include/js/blankCtrl.js"></script>
+<style type="text/css">
+.w400px {
+  width: 550px;
+  padding-top: 35px;
+  padding-bottom: 30px;
+  box-shadow: 2px 2px 21px 0 #0953ca;
+  border-radius: 5px;
+  background: rgba(139, 220, 253, 0.2) none repeat scroll !important;
+  background: #8bdcfd;
+  filter: alpha(opacity=20);
+}
+.title {
+font-size: 30px;
+color: #fff;
+}
+
+</style>
+</head>
+
+<body style="background:url(images/bg.png) no-repeat">
+
+<div ng-app="app" class="container-fluid" ng-controller="loginCtrl" ng-init="init();">
+    <div class="loginBox">
+        <div class="col-xs-3"></div>
+        <div class="col-xs-4 text-left" style="margin-left:8%;margin-top:10%;">
+        	<div class="title">
+                <p class="title">用户登录</p>
+            </div>
+         <div class="w400px">
+         	
+            <form class="form-horizontal" style="margin-left:15%" novalidate autocomplete="off">
+                <div class="form-group"></div>
+                <div class="form-group">
+                </div>
+                <div class="form-group" style="height:22px;">
+                    <div style="color:red;" ng-bind="errorMessage"></div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group col-xs-10">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                        <input placeholder="用户名" class="form-control" type="text" autocomplete="off"
+                               ng-model="user.username" ng-change="loginCheck();">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group col-xs-10">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                        <input placeholder="密码" class="form-control" type="password" autocomplete="off"
+                               ng-model="user.password" ng-change="loginCheck();">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div ng-class="{true:'col-xs-4',false:'col-xs-10'}[showMerchantRegisterButton == 'true']">
+                        <button data-loading-text="登录中..." autocomplete="off" id="loginBtn" class="btn btn-danger btn-lg btn-block" ng-click="loginSubmit();">登录</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        </div>
+        <div class="col-xs-3"></div>
+    </div>
+</div>
+</body>

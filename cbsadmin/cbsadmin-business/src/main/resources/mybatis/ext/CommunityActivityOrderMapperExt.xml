@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.people.cbsadmin.business.dao.ext.CommunityActivityOrderMapperExt">
+	<resultMap id="BaseResultMap"
+		type="com.people.cbsadmin.model.po.CommunityActivityOrder">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="order_code" jdbcType="VARCHAR" property="orderCode" />
+		<result column="user_name" jdbcType="VARCHAR" property="userName" />
+		<result column="user_phone" jdbcType="INTEGER" property="userPhone" />
+		<result column="order_source" jdbcType="INTEGER" property="orderSource" />
+		<result column="activity_name" jdbcType="VARCHAR" property="activityName" />
+		<result column="activity_time" jdbcType="VARCHAR" property="activityTime" />
+		<result column="activity_place" jdbcType="VARCHAR" property="activityPlace" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="total_amount" jdbcType="DECIMAL" property="totalAmount" />
+		<result column="pay_way" jdbcType="INTEGER" property="payWay" />
+		<result column="status" jdbcType="INTEGER" property="status" />
+		<result column="is_entry" jdbcType="SMALLINT" property="isEntry" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+		<result column="is_deleted" jdbcType="INTEGER" property="isDeleted" />
+		<result column="is_available" jdbcType="INTEGER" property="isAvailable" />
+		<result column="create_user_id" jdbcType="BIGINT" property="createUserId" />
+		<result column="update_user" jdbcType="BIGINT" property="updateUser" />
+		<result column="bar_num" jdbcType="INTEGER" property="barNum" />
+		<result column="bar_area" jdbcType="VARCHAR" property="barArea" />
+		<result column="refund_state" jdbcType="INTEGER" property="refundState" />
+		<result column="isPlus" jdbcType="INTEGER" property="isplus" />
+		<result column="out_state" jdbcType="INTEGER" property="outState" />
+		<result column="out_code" jdbcType="INTEGER" property="outCode" />
+		<result column="main_type" jdbcType="INTEGER" property="mainType" />
+		<result column="pay_state" jdbcType="INTEGER" property="payState" />
+		<result column="pay_time" jdbcType="TIMESTAMP" property="payTime" />
+		<result column="reserve_name" jdbcType="VARCHAR" property="reserveName" />
+		<result column="reserve_phone" jdbcType="VARCHAR" property="reservePhone" />
+		<result column="community_activity_id" jdbcType="BIGINT"
+			property="communityActivityId" />
+		<result column="surface_picture" jdbcType="VARCHAR" property="surfacePicture" />
+		<result column="qr_url" jdbcType="VARCHAR" property="qrUrl" />
+		<result column="is_admin" jdbcType="INTEGER" property="isAdmin" />
+		<result column="is_sign" jdbcType="INTEGER" property="isSign" />
+		<result column="sign_time" jdbcType="TIMESTAMP" property="signTime" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		cao.id, cao.order_code, cao.user_name, cao.user_phone,
+		cao.order_source,
+		cao.activity_name, cao.activity_time,
+		cao.activity_place,
+		cao.create_time, cao.total_amount, cao.pay_way,
+		cao.status,
+		cao.is_entry,cao.update_time,
+		cao.is_deleted,
+		cao.is_available,
+		cao.create_user_id, cao.update_user, cao.bar_num,
+		cao.bar_area,
+		cao.refund_state,
+		cao.isPlus, cao.out_state, cao.out_code,
+		cao.main_type,
+		cao.pay_state, cao.pay_time,
+		cao.reserve_name,
+		cao.reserve_phone,
+		cao.community_activity_id,cao.surface_picture,cao.qr_url,cao.is_admin,cao.is_sign,cao.sign_time
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Long"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from community_activity_order cao
+		where cao.id = #{id,jdbcType=BIGINT}
+		and
+		cao.is_deleted=0
+	</select>
+	<!-- 通过活动id查找到活动订单并向订单传值 -->
+	<select id="updatePrimaryKeyByCommunityActivityId"
+		parameterType="java.lang.Long" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from community_activity_order cao
+		where cao.id = #{id,jdbcType=BIGINT}
+		and
+		cao.is_deleted=0
+	</select>
+	<!-- 通过用户id查询当前活动订单 -->
+	<select id="selectOrderByUserId" parameterType="java.lang.Long"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from community_activity_order cao
+		where cao.create_user_id =
+		#{createUserId,jdbcType=BIGINT} and cao.is_deleted=0
+	</select>
+	<!-- 根据订单编码查询订单 -->
+	<select id="queryOrderMainByOrderCode" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from
+		community_activity_order cao
+		where cao.order_code =
+		#{orderCode,jdbcType=VARCHAR} and cao.is_deleted = 0
+		limit 0, 1
+	</select>
+
+	<!-- 根据用户id和活动id查询订单信息 -->
+	<select id="selectOrderByUserIdAndActivityId" resultMap="BaseResultMap"
+		parameterType="com.people.cbsadmin.model.po.CommunityActivityOrder">
+		select
+		<include refid="Base_Column_List" />
+		from
+		community_activity_order cao
+		where cao.community_activity_id =
+		#{communityActivityId,jdbcType=BIGINT}
+		and cao.is_deleted=0
+		and
+		cao.create_user_id=#{createUserId,jdbcType=BIGINT}
+	</select>
+	<!-- 获取用户头像集合 -->
+	<select id="selectUserList" resultMap="BaseResultMap"
+		parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from
+		community_activity_order cao
+		where cao.community_activity_id =
+		#{communityActivityId,jdbcType=BIGINT} and
+		cao.is_deleted=0
+	</select>
+
+	<select id="countOrderMain" resultType="java.lang.Integer"
+		parameterType="com.people.cbsadmin.model.vo.CommunityActivityOrderVo">
+		select COUNT(1)
+		from
+		community_activity_order cao
+		<include refid="OderSelectWhereCase" />
+	</select>
+	<select id="selectAllPage" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from
+		community_activity_order cao
+		<include refid="baseWhereCase" />
+		order by cao.create_time desc
+		limit
+		#{startItem,jdbcType=INTEGER},#{itemsPerPage,jdbcType=INTEGER}
+	</select>
+	<select id="selectAll" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from
+		community_activity_order cao
+		<include refid="OderSelectWhereCase" />
+		order by cao.create_time desc
+		limit
+		#{startItem,jdbcType=INTEGER},#{itemsPerPage,jdbcType=INTEGER}
+	</select>
+	<sql id="OderSelectWhereCase">
+		<where>
+			and cao.is_deleted=0
+			<if test="communityActivityId != null">and cao.community_activity_id =
+				#{communityActivityId,jdbcType=BIGINT}
+			</if>
+
+		</where>
+	</sql>
+
+	<sql id="baseWhereCase">
+		<where>
+			and cao.is_deleted=0
+			<if test="ids != null and ids.size() > 0">
+				and cao.id in
+				<foreach collection="ids" item="id" open="(" close=")"
+					separator=",">
+					#{id,jdbcType=BIGINT}
+				</foreach>
+			</if>
+			<if test="orderCode != null and orderCode != '' ">and cao.order_code = #{orderCode,jdbcType=VARCHAR}</if>
+			<if test="orderCodes != null and orderCodes.size() > 0">
+				and cao.order_code in
+				<foreach collection="orderCodes" item="orderCode" open="("
+					close=")" separator=",">
+					#{orderCode,jdbcType=VARCHAR}
+				</foreach>
+			</if>
+		</where>
+	</sql>
+
+
+	<select id="queryUserIdAndActivityId" resultType="java.lang.Integer"
+	  parameterType="com.people.cbsadmin.model.vo.CommunityActivityOrderVo">
+		select
+		COUNT(1)
+		from
+		community_activity_order cao
+		where
+		cao.is_deleted=0
+		and
+		cao.community_activity_id =
+		#{communityActivityId,jdbcType=BIGINT}
+		and
+		cao.create_user_id =
+		#{createUserId,jdbcType=BIGINT}
+	</select>
+	<!-- 根据条件查询列表 -->
+	<select id="queryOrderMainPage"
+		parameterType="com.people.cbsadmin.model.vo.CommunityActivityOrderVo"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from community_activity_order cao
+		<include refid="baseWhereCase"></include>
+		order by cao.create_time desc
+		limit
+		#{startItem,jdbcType=INTEGER},#{itemsPerPage,jdbcType=INTEGER}
+	</select>
+	
+	<!-- 查询签到列表 -->
+	<select id="qurySignList"
+		parameterType="com.people.cbsadmin.model.po.CommunityActivityOrder"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from community_activity_order cao
+	     where cao.is_deleted=0 and cao.is_sign=1 and cao.community_activity_id=#{communityActivityId,jdbcType=BIGINT}
+		
+	</select>
+	
+	<!-- 查询报名列表 -->
+	<select id="quryReportList"
+		parameterType="com.people.cbsadmin.model.po.CommunityActivityOrder"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from community_activity_order cao
+	     where cao.is_deleted=0 and cao.community_activity_id=#{communityActivityId,jdbcType=BIGINT}
+		
+	</select>
+</mapper>

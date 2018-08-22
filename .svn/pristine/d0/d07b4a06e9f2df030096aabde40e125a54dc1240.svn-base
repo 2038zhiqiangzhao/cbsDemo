@@ -1,0 +1,16 @@
+package com.people.cbsadmin.business.dao;
+
+import java.util.List;
+
+import com.people.cbsadmin.model.po.CommunityActivity;
+
+
+public interface CommunityActivityMapper {
+	 int insert(CommunityActivity record);
+
+	 Long insertSelective(CommunityActivity record);
+	 List<CommunityActivity> selectByPrimaryKey(Long id);
+	 CommunityActivity selectByPrimaryKeyOnly(Long id);
+
+	
+}

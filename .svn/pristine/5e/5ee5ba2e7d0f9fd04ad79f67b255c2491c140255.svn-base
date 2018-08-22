@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.people.cbsadmin.business.dao.ext.BaseDicMapperExt">
+  <resultMap id="BaseResultMap" type="com.people.cbsadmin.model.po.BaseDic" extends="com.people.cbsadmin.business.dao.BaseDicMapper.BaseResultMap">
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, dic_key, dic_pkey, dic_value, dic_comment
+  </sql>
+  <sql id="baseWhereCase">
+      <where>
+          <if test="dicKeys != null and dicKeys.size() > 0">
+          and dicKey in 
+          	<foreach collection="dicKeys" item="dicKey" open="(" close=")" separator=",">
+          		#{dicKey,jdbcType=INTEGER}
+          	</foreach>
+          </if>
+          <if test="dicKey != null ">and dic_key = #{dicKey,jdbcType=INTEGER}</if>
+          <if test="dicPkey != null ">and dic_pkey = #{dicPkey,jdbcType=INTEGER}</if>
+      </where>
+  </sql>
+  
+  <!-- 根据条件查询列表-->
+  <select id="queryBaseDicList" parameterType="com.people.cbsadmin.model.vo.BaseDicQueryVo"
+      resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List" />
+      from base_dic
+      <include refid="baseWhereCase"></include>
+      order by dic_key
+  </select>
+  
+  <!-- 根据条件查询分页-->
+  <select id="queryBaseDicPage" parameterType="com.people.cbsadmin.model.vo.BaseDicQueryVo"
+      resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List" />
+      from base_dic
+      <include refid="baseWhereCase"></include>
+      order by dic_key
+      limit
+      #{startItem,jdbcType=INTEGER},#{itemsPerPage,jdbcType=INTEGER}
+  </select>
+
+  <!-- 根据条件统计数量-->
+  <select id="countBaseDic" resultType="java.lang.Integer"
+      parameterType="com.people.cbsadmin.model.vo.BaseDicQueryVo">
+      select
+      count(1)
+      from
+      base_dic
+      <include refid="baseWhereCase"></include>
+  </select>
+</mapper>

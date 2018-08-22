@@ -1,0 +1,66 @@
+<div class="wrapper-md">
+
+ <div class="panel panel-default">
+ 
+  <div class=" portlet-body flip-scroll">
+   <table
+    class="table-bordered table-striped table-condensed flip-content">
+    <thead>
+     <tr>
+      <th style="width: 20px"><label class="i-checks m-b-none">
+        <input type="checkbox" ng-click="selectAll()"
+        ng-model="checkAll"><i></i>
+      </label></th>
+      <th nowrap="nowrap" style="width: 50px">序号</th>
+      <th nowrap="nowrap">订单编号</th>
+      <th nowrap="nowrap">用户姓名</th>
+      <th nowrap="nowrap">手机号</th>
+      <th nowrap="nowrap">订单来源</th>
+      <th nowrap="nowrap">活动名称</th>
+      <th nowrap="nowrap">活动时间</th>
+      <th nowrap="nowrap">活动地点</th>
+      <th nowrap="nowrap">创建时间</th>
+      <th nowrap="nowrap">实际支付</th>
+      <th nowrap="nowrap">支付方式</th>
+      <th nowrap="nowrap">订单状态</th>
+      <th nowrap="nowrap">是否入场</th>
+      <th nowrap="nowrap">操作</th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr ng-repeat="record in records track by $index">
+      <td><label class="i-checks m-b-none"> <input
+        type="checkbox" ng-model="record.checked"
+        ng-click="selectItem(record)"><i></i>
+      </label>
+      </td>
+      <td>{{record.id}}</td>
+      <td>{{record.orderCode}}</td>
+      <td>{{record.userName}}</td>
+      <td>{{record.userPhone}}</td>
+      <td>{{record.orderSource}}</td>
+      <td>{{record.activityName}}</td>
+      <td>{{record.activityTime}}</td>
+      <td>{{record.activityPlace}}</td>
+      <td>{{record.createTime| date:'yyyy-MM-dd HH:mm:ss'}}</td>
+      <td>{{record.totalAmount}}</td>
+      <td>{{activityStatePayWayDec[record.payWay]}}</td>
+      <td>{{activityStateDec[record.status]}}</td>
+      <td>{{statusisEntryDescs[record.isEntry]}}</td>
+      <td>
+       <button class="btn btn-sm btn-info" ng-click="lookOption(record)">详情</button>
+      </td>
+     </tr>
+    </tbody>
+   </table>
+  </div>
+  <footer class="panel-footer">
+   <pagination total-items="totalItems"
+    ng-model="queryParams.currentPage"
+    items-per-page="queryParams.itemsPerPage" previous-text="上一页"
+    next-text="下一页" page-sizes="pageSizes" edit-page="editPage"
+    ng-change="getData()"></pagination>
+  </footer>
+
+ </div>
+</div>

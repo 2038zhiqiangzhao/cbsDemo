@@ -1,0 +1,204 @@
+<div class="wrapper-md bg-light b-b headerPadding">
+	<h1 class="m-n font-thin h3">
+		<a href="">岗位管理</a>&gt;<a href="">岗位管理</a>
+	</h1>
+</div>
+<div class="wrapper-md">
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<form class="form-horizontal" role="form">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">岗位名称:</label>
+					<div class="col-sm-3">
+						<input type="text" class="form-control" ng-model="positionName">
+					</div>
+					<label class="col-sm-2 control-label">创建时间:</label>
+					<div ng-controller="timeCtrl">
+						<div class="col-sm-4">
+							<div class="input-group input-large custom-date-range">
+							<input type="text" value="" class="timeiconbg form-control"
+								   datetimepicker for-id="from" options="options2"
+								   close="close(from)" max-date="to" ng-model="createTimeStart"
+								   id="from-time">
+							<span class="input-group-addon">-</span>
+							<input type="text" value="" class="timeiconbg form-control"
+								   datetimepicker for-id="to" options="options3" close="close(to)"
+								   min-date="from" ng-model="createTimeEnd" id="to-time">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group text-center">
+					<button class="btn btn-info" type="button" ng-click="query()">查询</button>
+					<button type="button" class="btn btn-info" data-toggle="modal"
+						data-target="#formT" ng-click="cleanData()">添加岗位</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="panel panel-default">
+
+
+		<div class="portlet-body">
+			<table
+				class=" table-bordered table-striped table-condensed flip-content">
+				<thead>
+					<tr>
+						<th class="col-xs-1" align="center">操作</th>
+						<th class="col-xs-1" align="center">岗位名称</th>
+						<th class="col-xs-1" align="center">岗位描述</th>
+						<th class="col-xs-1" align="center">创建时间</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="e in position_list">
+						<td class="col-xs-1" align="left">
+							<button class="btn btn-info" type="button" data-toggle="modal"
+								data-target="#formM"
+								ng-click="editData(e.id,e.positionName,e.positionDesc)">编辑</button>
+							<button class="btn btn-info" type="button" data-toggle="modal"
+								data-target="#deleteT" ng-click="editData2(e.id)">删除</button>
+						</td>
+						<td class="col-xs-1" align="left">{{e.positionName}}</td>
+						<td class="col-xs-1" align="left">{{e.positionDesc}}</td>
+						<td class="col-xs-1" align="left">{{e.createTime | date :
+							'yyyy-MM-dd HH:mm:ss'}}</td>
+					</tr>
+					<tr ng-show="hasResult">
+						<td class="col-xs-12" colspan="9" align="left" width="100%">没有查询到符合条件的数据</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<!-- grid结束 -->
+		<footer class="panel-footer">
+			<pagination total-items="totalItems1" ng-model="currentPage1"
+				items-per-page="itemsPerPage1" previous-text="上一页" next-text="下一页"
+				page-sizes="pageSizes1" edit-page="editPage1"
+				ng-change="query(currentPage1,itemPerPage1)"></pagination>
+		</footer>
+	</div>
+</div>
+<!--弹窗-删除-->
+		<div class="modal fade" id="deleteT" data-keyboard="false"
+			data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby=""
+			aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true"></button>
+						<h4 class="modal-title" id="">
+							信息提示 <span class="close-popup" data-dismiss="modal"></span>
+						</h4>
+					</div>
+					<div class="modal-body">
+						<p>确定删除吗？</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消
+						</button>
+						<button type="button" class="btn btn-info"
+							ng-click="deletePosition()">确定</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--弹窗-新增-->
+		<div class="modal fade" id="formT" data-keyboard="false"
+			data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby=""
+			aria-hidden="true">
+			<div class="modal-dialog ">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true"></button>
+						<h4 class="modal-title" id="">
+							添加岗位-新增 <span class="close-popup" data-dismiss="modal"></span>
+						</h4>
+					</div>
+					<div class="modal-body">
+						<form class="form-horizontal" method="get">
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label"><span style="color:red;">*
+								</span>岗位名称：</label>
+								<div class="col-sm-9">
+									<input type="text" ng-model="addPositionName"
+										class="form-control" placeholder="客服"
+										ng-blur="checkPositionName()">
+								</div>
+							</div>
+							<div class="line line-dashed b-b line-lg  "></div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">岗位描述：</label>
+								<div class="col-sm-9">
+									<textarea class="form-control" ng-model="addPositionDesc"
+										placeholder="0-200字"></textarea>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<div class="col-xs-12" colspan="9" align="left" width="100%"
+							ng-show="hasPositionName">
+							<font color="#FF0000">提示:岗位名称不能重复</font>
+						</div>
+						<button type="button" class="btn btn-default" data-dismiss="modal"
+							ng-click="backHasPositionNameValue()">取消</button>
+						<button type="button" class="btn btn-info"
+							ng-click="savePosition()" ng-disabled="saveCheckDisabled">保存</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--弹窗-编辑-->
+		<div class="modal fade" id="formM" data-keyboard="false"
+			data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby=""
+			aria-hidden="true">
+			<div class="modal-dialog ">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true"></button>
+						<h4 class="modal-title" id="">
+							添加岗位-编辑 <span class="close-popup" data-dismiss="modal"></span>
+						</h4>
+					</div>
+					<div class="modal-body">
+						<form class="form-horizontal" method="get">
+							<input type="hidden" ng-model="mdfposition.id"
+								class="form-control" />
+							<div class="form-group">
+								<span class="red">*</span><label class="col-sm-3 control-label"><span
+									class="red">* </span>岗位名称：</label>
+								<div class="col-sm-9">
+									<input type="text" ng-model="mdfposition.positionName"
+										class="form-control" ng-change="updateCheckPositionName()">
+								</div>
+							</div>
+							<div class="line line-dashed b-b line-lg  "></div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">岗位描述：</label>
+								<div class="col-sm-9">
+									<textarea class="form-control"
+										ng-model="mdfposition.positionDesc"></textarea>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<div class="col-xs-12" colspan="9" align="left" width="100%"
+							ng-show="hasPositionName">
+							<font color="#FF0000">提示:岗位名称不能重复</font>
+						</div>
+						<button type="button" class="btn btn-default" data-dismiss="modal"
+							ng-click="backHasPositionNameValue()">取消</button>
+						<button type="button" class="btn btn-info"
+							ng-click="updatePosition()" ng-disabled="saveCheckDisabled">保存</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+

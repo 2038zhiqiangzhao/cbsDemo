@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="u_organization2">
+	<resultMap class="com.people2000.user.model.po.ibatis.User" id="userResultMap">
+		<result column="id" jdbcType="BIGINT" property="id" />
+		<!-- <result column="original_id" jdbcType="VARCHAR" property="originalId" 
+			/> <result column="type" jdbcType="INTEGER" property="type" /> <result column="identity_type" 
+			jdbcType="INTEGER" property="identityType" /> <result column="parent_id" 
+			jdbcType="BIGINT" property="parentId" /> -->
+		<result column="username" jdbcType="VARCHAR" property="username" />
+		<!-- <result column="nickname" jdbcType="VARCHAR" property="nickname" /> 
+			<result column="company_name" jdbcType="VARCHAR" property="companyName" /> -->
+		<result column="contact_person" jdbcType="VARCHAR" property="contactPerson" />
+		<result column="mobile" jdbcType="VARCHAR" property="mobile" />
+		<!-- <result column="telephone" jdbcType="VARCHAR" property="telephone" 
+			/> -->
+		<result column="email" jdbcType="VARCHAR" property="email" />
+		<!-- <result column="address" jdbcType="VARCHAR" property="address" /> 
+			<result column="status" jdbcType="INTEGER" property="status" /> <result column="remarks" 
+			jdbcType="VARCHAR" property="remarks" /> <result column="points" jdbcType="DECIMAL" 
+			property="points" /> <result column="sex" jdbcType="INTEGER" property="sex" 
+			/> <result column="head_pic_url" jdbcType="VARCHAR" property="headPicUrl" 
+			/> <result column="birthday" jdbcType="TIMESTAMP" property="birthday" /> 
+			<result column="user_province" jdbcType="VARCHAR" property="userProvince" 
+			/> <result column="user_city" jdbcType="VARCHAR" property="userCity" /> <result 
+			column="user_region" jdbcType="VARCHAR" property="userRegion" /> <result 
+			column="user_address" jdbcType="VARCHAR" property="userAddress" /> <result 
+			column="check_time" jdbcType="TIMESTAMP" property="checkTime" /> <result 
+			column="check_user_id" jdbcType="BIGINT" property="checkUserId" /> <result 
+			column="identity_card_name" jdbcType="VARCHAR" property="identityCardName" 
+			/> <result column="is_certification" jdbcType="INTEGER" property="isCertification" 
+			/> <result column="legal_person_name" jdbcType="VARCHAR" property="legalPersonName" 
+			/> <result column="legal_personNo_number" jdbcType="VARCHAR" property="legalPersonnoNumber" 
+			/> <result column="organization_code" jdbcType="VARCHAR" property="organizationCode" 
+			/> <result column="business_license_number" jdbcType="VARCHAR" property="businessLicenseNumber" 
+			/> <result column="business_license_url" jdbcType="VARCHAR" property="businessLicenseUrl" 
+			/> <result column="company_type" jdbcType="INTEGER" property="companyType" 
+			/> -->
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	</resultMap>
+
+	<resultMap class="com.people2000.user.model.vo.UserOrgVo" id="userOrgResultMap2">
+		<result column="userId" jdbcType="BIGINT" property="userId" />
+		<result column="username" jdbcType="VARCHAR" property="username" />
+		<result column="type" jdbcType="INTEGER" property="type" />
+		<result column="identity_card_name" jdbcType="VARCHAR" property="identityCardName" />
+		<result column="mobile" jdbcType="VARCHAR" property="mobile" />
+		<result column="email" jdbcType="VARCHAR" property="email" />
+		<result column="is_available" jdbcType="INTEGER" property="isAvailable" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="create_userip" jdbcType="VARCHAR" property="createUserip" />
+		<result column="orgId" jdbcType="BIGINT" property="orgId" />
+		<result column="positionId" jdbcType="BIGINT" property="positionId" />
+	</resultMap>
+	
+	<resultMap class="com.people2000.user.model.po.ibatis.UOrganization" id="orgResultMap">
+		<result column="id" jdbcType="BIGINT" property="id" />
+	    <result column="code" jdbcType="VARCHAR" property="code" />
+	    <result column="parent_code" jdbcType="VARCHAR" property="parentCode" />
+	    <result column="org_name" jdbcType="VARCHAR" property="orgName" />
+	   	<result column="level" jdbcType="INTEGER" property="level" />  
+	</resultMap>
+	
+	<resultMap class="com.people2000.user.model.po.ibatis.UPosition" id="positionResultMap">
+		<result column="id" jdbcType="BIGINT" property="id" />
+	    <result column="position_code" jdbcType="VARCHAR" property="positionCode" />
+	    <result column="position_name" jdbcType="VARCHAR" property="positionName" />
+	</resultMap>
+
+	<select id="selectUserCntByParam" parameterClass="com.people2000.user.model.po.ibatis.OrganizationQuery"
+		resultClass="java.lang.Integer">
+		select count(id) from u_user a where
+		<isEqual property="flag" compareValue="1">
+			a.id in
+		</isEqual>
+		<isNotEqual property="flag" compareValue="1">
+			a.id not in
+		</isNotEqual>
+		(select user_id from u_organization_user b where b.is_deleted <![CDATA[<>]]>
+		1
+		<isNotEmpty property="companyId" prepend="and">
+			company_id=#companyId#
+		</isNotEmpty>
+		<isNotEmpty property="orgId" prepend="and">
+			organization_id =
+			#orgId#
+		</isNotEmpty>
+		)
+		<isNotEmpty property="username" prepend="and">
+			username=#username#
+		</isNotEmpty>
+		<isNotEmpty property="mobile" prepend="and">
+			mobile=#mobile#
+		</isNotEmpty>
+		<isNotEmpty property="userId" prepend="and">
+			id=#userId#
+		</isNotEmpty>
+		<isNotEmpty property="companyId" prepend="and">
+			company_id=#companyId#
+		</isNotEmpty>
+	</select>
+
+	<select id="selectUserPageByParam" parameterClass="com.people2000.user.model.po.ibatis.OrganizationQuery"
+		resultMap="userResultMap">
+		select id,username,mobile,email,contact_person,create_time from u_user
+		a where
+		<isEqual property="flag" compareValue="1">
+			a.id in
+		</isEqual>
+		<isNotEqual property="flag" compareValue="1">
+			a.id not in
+		</isNotEqual>
+		(select user_id from u_organization_user b where b.is_deleted <![CDATA[<>]]>
+		1
+		<isNotEmpty property="companyId" prepend="and">
+			company_id=#companyId#
+		</isNotEmpty>
+		<isNotEmpty property="orgId" prepend="and">
+			organization_id =
+			#orgId#
+		</isNotEmpty>
+		)
+		<isNotEmpty property="username" prepend="and">
+			username=#username#
+		</isNotEmpty>
+		<isNotEmpty property="mobile" prepend="and">
+			mobile=#mobile#
+		</isNotEmpty>
+		<isNotEmpty property="userId" prepend="and">
+			id=#userId#
+		</isNotEmpty>
+		<isNotEmpty property="companyId" prepend="and">
+			company_id=#companyId#
+		</isNotEmpty>
+		limit #startItems#,#itemsPerPage#
+	</select>
+
+	<update id="deleteOrgUser" parameterClass="com.people2000.user.model.po.ibatis.OrganizationQuery">
+		update u_organization_user a set a.is_deleted=1 where a.user_id in
+		<iterate property="userIds" conjunction="," open="(" close=")">
+			#userIds[]#
+		</iterate>
+		<isNotEmpty property="orgId" prepend="and">
+			a.organization_id=#orgId#
+		</isNotEmpty>
+		<isNotEmpty property="companyId" prepend="and">
+			company_id=#companyId#
+		</isNotEmpty>
+	</update>
+
+
+	<select id="selectUserCntByOrgInfo" parameterClass="com.people2000.user.model.po.ibatis.OrganizationQuery"
+		resultClass="java.lang.Integer">
+		select count(id) from u_user a where 1=1
+		<isNotEmpty property="orgId" prepend="and">
+			a.id in (select user_id from u_organization_user b,u_organization c where b.is_deleted <![CDATA[<>]]>1
+			<isNotEmpty property="level" prepend="and">
+				c.level=#level# and c.id=b.organization_id and c.is_deleted <![CDATA[<>]]> 1
+			</isNotEmpty>
+			<isNotEmpty property="companyId" prepend="and">
+				b.company_id=#companyId#
+			</isNotEmpty>
+			<isNotEmpty property="orgId" prepend="and">
+				b.organization_id =#orgId#
+			</isNotEmpty>
+			)
+		</isNotEmpty>
+		<isEmpty property="orgId">
+			<isNotEmpty property="level" prepend="and">
+				a.id in (select user_id from u_organization_user b,u_organization c where b.is_deleted <![CDATA[<>]]> 1
+				<isNotEmpty property="level" prepend="and">
+					c.level=#level# and c.id=b.organization_id and c.is_deleted <![CDATA[<>]]> 1
+				</isNotEmpty>
+				<isNotEmpty property="companyId" prepend="and">
+					b.company_id=#companyId#
+				</isNotEmpty>
+				)
+			</isNotEmpty>
+		</isEmpty>
+		<isNotEmpty property="positionId" prepend="and">
+			a.id in (select user_id from u_user_position c where c.is_deleted <![CDATA[<>]]>1
+			<isNotEmpty property="companyId" prepend="and">
+				company_id=#companyId#
+			</isNotEmpty>
+			<isNotEmpty property="positionId" prepend="and">
+				position_id=
+				#positionId#
+			</isNotEmpty>
+			)
+		</isNotEmpty>
+		<isNotEmpty property="username" prepend="and">
+			username like
+			#username#
+		</isNotEmpty>
+		<isNotEmpty property="identityCardName" prepend="and">
+			identity_card_name like CONCAT(#identityCardName#, '%')
+		</isNotEmpty>
+		<isNotEmpty property="companyId" prepend="and">
+			company_id=#companyId#
+		</isNotEmpty>
+		<isNotEmpty property="type" prepend="and">
+			type=#type#
+		</isNotEmpty>
+		<isNotEmpty property="mobile" prepend="and">
+			mobile=#mobile#
+		</isNotEmpty>
+	</select>
+
+	<select id="selectUserPageByOrgInfo" parameterClass="com.people2000.user.model.po.ibatis.OrganizationQuery"
+		resultMap="userOrgResultMap2">
+		select d.user_id userId
+		,d.username,d.type,d.identity_card_name,d.mobile,d.email,d.is_available,d.create_time,d.create_userip,e.organization_id
+		orgId,f.position_id positionId from(select a.id user_id
+		,a.username,a.type,a.identity_card_name,a.mobile,a.email,a.is_available,a.create_time,a.create_userip
+		from u_user a where 1=1
+		<isNotEmpty property="orgId" prepend="and">
+			a.id in (select user_id from u_organization_user b,u_organization c where b.is_deleted <![CDATA[<>]]>1
+			<isNotEmpty property="level" prepend="and">
+				c.level=#level# and c.id=b.organization_id and c.is_deleted <![CDATA[<>]]> 1
+			</isNotEmpty>
+			<isNotEmpty property="companyId" prepend="and">
+				b.company_id=#companyId#
+			</isNotEmpty>
+			<isNotEmpty property="orgId" prepend="and">
+				b.organization_id =#orgId#
+			</isNotEmpty>
+			)
+		</isNotEmpty>
+		<isEmpty property="orgId">
+			<isNotEmpty property="level" prepend="and">
+				a.id in (select user_id from u_organization_user b,u_organization c where b.is_deleted <![CDATA[<>]]> 1
+				<isNotEmpty property="level" prepend="and">
+					c.level=#level# and c.id=b.organization_id and c.is_deleted <![CDATA[<>]]> 1
+				</isNotEmpty>
+				<isNotEmpty property="companyId" prepend="and">
+					b.company_id=#companyId#
+				</isNotEmpty>
+				)
+			</isNotEmpty>
+		</isEmpty>
+		<isNotEmpty property="positionId" prepend="and">
+			a.id in (select user_id from u_user_position c where c.is_deleted <![CDATA[<>]]>1
+			<isNotEmpty property="companyId" prepend="and">
+				company_id=#companyId#
+			</isNotEmpty>
+			<isNotEmpty property="positionId" prepend="and">
+				position_id=
+				#positionId#
+			</isNotEmpty>
+			)
+		</isNotEmpty>
+		<isNotEmpty property="username" prepend="and">
+			username like
+			#username#
+		</isNotEmpty>
+		<isNotEmpty property="identityCardName" prepend="and">
+			identity_card_name like CONCAT(#identityCardName#, '%')
+		</isNotEmpty>
+		<isNotEmpty property="companyId" prepend="and">
+			company_id=#companyId#
+		</isNotEmpty>
+		<isNotEmpty property="mobile" prepend="and">
+			mobile=#mobile#
+		</isNotEmpty>
+		<isNotEmpty property="type" prepend="and">
+			type=#type#
+		</isNotEmpty>
+
+		<isNotEmpty property="mobile" prepend="and">
+			mobile=#mobile#
+		</isNotEmpty>
+		limit #startItems#,#itemsPerPage#) d left join u_organization_user e
+		on (d.user_id=e.user_id and e.is_deleted <![CDATA[<>]]> 1) left join u_user_position f on (d.user_id=f.user_id and f.is_deleted <![CDATA[<>]]> 1)
+	</select>
+	
+	<select id="getAllOrgInfo" parameterClass="java.util.Map" resultMap="orgResultMap">
+		select id,code,parent_code,org_name,level from u_organization a where a.is_deleted <![CDATA[<>]]> 1 
+		<isNotEmpty property="companyId" prepend="and">
+			a.company_id=#companyId#
+		</isNotEmpty>
+		order by a.code
+	</select>
+	
+	<select id="getAllPostitionInfo"  parameterClass="java.util.Map" resultMap="positionResultMap">
+		select id,position_code,position_name from u_position  a where  a.is_deleted <![CDATA[<>]]> 1
+		<isNotEmpty property="companyId" prepend="and">
+			a.company_id=#companyId#
+		</isNotEmpty>
+		order by a.position_code
+	</select>
+	
+	<update id="userOrgChange"  parameterClass="com.people2000.user.model.po.ibatis.OrganizationQuery">
+		update u_organization_user a  set a.is_deleted=1 where a.user_id in
+		<iterate property="userIds" conjunction="," open="(" close=")">
+  			#userIds[]#
+  		</iterate>
+  		<isNotEmpty property="companyId" prepend="and">
+			a.company_id=#companyId#
+		</isNotEmpty>
+	</update>
+	
+	<update id="updateOrgParentCode" parameterClass="com.people2000.user.model.po.ibatis.UOrganization">
+		update u_organization a set a.parent_code= #parentCode# where a.parent_code=#code#
+		<isNotEmpty property="companyId" prepend="and">
+			a.company_id=#companyId#
+		</isNotEmpty>
+	</update>
+
+
+
+</sqlMap>

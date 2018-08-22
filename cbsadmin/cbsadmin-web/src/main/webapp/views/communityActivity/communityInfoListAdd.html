@@ -1,0 +1,188 @@
+<div>
+	<div class="wrapper-md">
+		<div class="panel panel-body">
+			<form class="form-horizontal" method="POST" name="form">
+				<div class="form-group"
+					ng-class="{true: 'has-error', false: ''}[form.activityName.$invalid]">
+					<label class="col-sm-2 control-label"><i class="asterisk">*</i>活动名称</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" name="activityName"
+							ng-model="formData.activityName" maxlength="20" required
+							placeholder="请输入活动名称1-20个字">
+					</div>
+
+
+
+				</div>
+
+
+				<div class="form-group"
+					ng-class="{true: 'has-error', false: ''}[form.activityPlace.$invalid]">
+					<label class="col-sm-2 control-label"><i class="asterisk">*</i>活动地点</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" name="activityPlace"
+							ng-model="formData.activityPlace" required placeholder="请输入活动地点">
+					</div>
+				</div>
+				<div class="form-group"
+					ng-class="{true: 'has-error', false: ''}[form.activityTime.$invalid || form.activityEndTime.$invalid ]">
+					<label class="col-sm-2 control-label"><i class="asterisk">*</i>活动时间</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" name="activityTime"
+						  datetimepicker options="options0"
+							ng-model="formData.activityTime" required placeholder="年-月-日">
+					</div>
+					<div class="col-sm-7">
+				      <input type="text" class="w-md col-sm-1 form-control"
+				       name="activityTimeStartTime" datetimepicker options="options1"
+				       ng-model="formData.activityTimeStartTime" required maxlength="255"
+				       placeholder="起始时间整点半选择"> 
+				       <label class="col-sm-1 text-center">-</label>
+				      <input type="text" class="w-md col-sm-1 form-control col-sm-1"
+				       name="businessEndTime" datetimepicker options="options2"
+				       ng-model="formData.activityEndTime" required maxlength="255"
+				       placeholder="结束时间整点半选择">
+				     </div>
+                      
+				</div>
+
+				<div class="form-group"
+					ng-class="{true: 'has-error', false: ''}[form.registrationFee.$invalid]">
+					<label class="col-sm-2 control-label"><i class="asterisk">*</i>活动费用</label>
+					<div class="col-sm-3">
+						<input type="text" class="form-control" name="registrationFee"
+							ng-model="formData.registrationFee" required
+							ng-pattern="/^[0-9]+([.]{1}[0-9]{1,2})?$/"
+							placeholder="请输入活动费用,保留两位小数点。0.00免费">
+					</div>
+				</div>
+
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><i class="asterisk"></i>联系人</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" name="createUserName"
+							ng-model="formData.createUserName" placeholder="">
+					</div>
+					<label class="col-sm-2 control-label"><i class="asterisk"></i>联系电话</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" name="createUserPhone"
+							ng-model="formData.createUserPhone" placeholder="">
+
+
+					</div>
+				</div>
+
+
+
+				<div class="form-group"
+					ng-class="{true: 'has-error', false: ''}[form.surfacePicture.$invalid]">
+					<label class="col-sm-2 control-label"><i class="asterisk">*</i>封面图</label>
+					<div class="col-sm-3">
+						<span class="help-block m-b-none">请将图片处理后上传，建议像素150×150，大小不超过500KB</span>
+
+					</div>
+				</div>
+				<!-- 上传图片 -->
+				<div class="form-group"
+					ng-class="{true: 'has-error', false: ''}[form.surfacePicture.$invalid]">
+					<label class="col-sm-2 control-label"><i class="asterisk"></i>封面图</label>
+					<div class="col-sm-3">
+						<img ng-src="{{formData.surfacePicture}}"
+							required
+							style="width: 200px; height: 100px;" id="surfacePicture"></img> <a
+							href="javascript:void 0;" class="btn btn-sm btn-info"
+							onclick="file1.click()">上传图片</a> <input type="file" id="file1"
+							class="btn btn-info" nv-file-select=""
+							accept="image/gif,image/jpeg,image/png,image/jpg,image/bmp"
+							uploader="uploader1" style="display: none;" required>
+					</div>
+				</div>
+
+
+				<div class="form-group" style="margin-left: 55px"
+					ng-class="{true: 'has-error', false: ''}[form.isTimePublish.$invalid]">
+					<label class="col-sm-2 control-label"><i class="asterisk"></i>是否定时发布</label>
+					<div class="col-sm-3">
+						
+						<!--  ng-disabled="optionType==1" -->
+						<div class="radio-inline pdl0">
+							<label class="i-checks">
+							 <input type="radio" value="1" ng-click="isTimePublish(1)"
+							  name="isTimePublish" ng-model="formData.isTimePublish"
+								ng-checked="formData.isTimePublish == 1"> <i></i>是
+							</label>
+						</div>
+						<div class="radio-inline pdl0">
+							<label class="i-checks"> 
+							<input type="radio" value="0" ng-click="isTimePublish(0)"
+								name="isTimePublish" ng-model="formData.isTimePublish"
+								ng-checked="formData.isTimePublish == 0"> <i></i>否
+							</label>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group" 
+				    id="div_timeInterva"
+					ng-class="{true: 'has-error', false: ''}[form.timeInterval.$invalid]">
+					<label class="col-sm-2 control-label"><i class="asterisk">*</i>发布时间</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" name="timeInterval"
+						    datetimepicker options="options3"
+							ng-model="formData.timeInterval"  placeholder="年-月-日">
+					</div>
+					<div class="col-sm-7">
+				      <input type="text" class="w-md col-sm-1 form-control"
+				       name="timeIntervalStartTime" datetimepicker options="options4"
+				       ng-model="formData.timeIntervalStartTime"  maxlength="255"
+				       placeholder="时间整点半选择"> 
+				     </div>
+				</div>
+				<div class="form-group"
+					ng-class="{true: 'has-error', false: ''}[form.applyEndTime.$invalid]">
+					<label class="col-sm-2 control-label"><i class="asterisk">*</i>报名截止时间</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" name="applyEndTime"
+						 datetimepicker options="options5"
+							ng-model="formData.applyEndTime" required placeholder="年-月-日">
+					</div>
+					<div class="col-sm-7">
+				      <input type="text" class="w-md col-sm-1 form-control"
+				       name="applyEndTimeStartTime" datetimepicker options="options6"
+				       ng-model="formData.applyEndTimeStartTime" required maxlength="255"
+				       placeholder="时间整点半选择"> 
+				     </div>
+				</div>
+
+
+
+				<!--    富文本编辑 -->
+				<div class="form-group">
+				<label class="col-sm-2 control-label"><i class="asterisk"></i>活动图文详情</label>
+				<div
+					class="col-sm-2 col-sm-offset-20 text-center pull-left panel panel-body"
+					style="margin-top: 20px; margin-left: 5px">
+					<div class="col-sm-8" style="z-index: 0;">
+						<script id="editor" type="text/plain" style="height: 500px;width:1000px;"required
+						>
+
+                        </script>
+
+					</div>
+				</div>
+				</div>
+				<div class="line line-dashed b-b line-lg pull-in"></div>
+
+
+				<!-- 确认/返回 -->
+				<div class="form-group text-center">
+					<input type="button" class="btn btn-info" id="saveBtn"
+						ng-click="saveOption()" value="确认"> 
+						
+						<input type="button" class="btn btn-default" ng-click="back()" value="返回">
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,117 @@
+<div class="wrapper-md bg-light b-b headerPadding">
+ <h1 class="m-n font-thin h3">
+  <a href="">角色管理</a>&gt;<a href="">角色列表</a>
+ </h1>
+</div>
+<div class="wrapper-md" ng-controller="listCtrl" ng-init="init()">
+ <div class="panel panel-default">
+  <div class="panel-heading font-bold">信息查询</div>
+  <div class="panel-body">
+   <form class="form-horizontal ng-pristine ng-valid" role="form">
+    <div class="form-group">
+     <div class="col-sm-4 mgt15">
+      <label for="" class="col-sm-5 control-label">角色名称</label>
+      <div class="col-sm-7">
+       <input type="text" class="form-control" placeholder=""
+        id="query_roleName">
+      </div>
+     </div>
+     <div class="col-sm-4 mgt15">
+      <button type="submit" class="btn btn-info" id="query"
+       ng-click="loadDataByRoleName()">查询</button>
+      <button type="reset" class="btn btn-info">重置</button>
+      <button type="button" class="btn btn-info" data-toggle="modal"
+       data-target="#createRole">添加角色</button>
+     </div>
+    </div>
+   </form>
+  </div>
+ </div>
+
+ <div class="panel panel-default">
+  <div class="panel-heading font-bold">查询结果</div>
+  <div class=" portlet-body flip-scroll">
+
+   <table
+    class="table-bordered table-striped table-condensed flip-content">
+    <thead>
+     <tr>
+      <th>ID</th>
+      <th>角色名称</th>
+      <th>角色类型</th>
+      <th>系统数据</th>
+      <th>备注</th>
+      <th>状态</th>
+      <th>更新者</th>
+      <th>更新时间</th>
+      <th>操作</th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr ng-repeat="role in roles">
+      <td>{{role.id}}</td>
+      <td>{{role.roleName}}</td>
+      <td>{{role.roleSign}}</td>
+      <td ng-if="role.isSystem==1">是</td>
+      <td ng-if="role.isSystem==0">否</td>
+      <td>{{role.remarks}}</td>
+      <td ng-if="role.status==0">冻结</td>
+      <td ng-if="role.status==1">正常</td>
+      <td>{{role.updateBy}}</td>
+      <td ng-bind="role.updateTime | date:'yyyy-MM-dd hh:mm:ss'"></td>
+      <td>
+       <button class="btn btn-sm btn-info"
+        ui-sref="role_detail({id:role.id})" name="detail">查看</button>
+       <button class="btn btn-sm btn-info" data-toggle="modal"
+        data-target="#refund" name="update"
+        ui-sref="role_update({id:role.id})">修改</button>
+       <button class="btn btn-sm btn-info" data-toggle="modal"
+        data-target="#refund" name="update"
+        ui-sref="role_permission({id:role.id})">分配权限</button>
+       <button class="btn btn-sm btn-info" data-toggle="modal"
+        data-target="#refund" name="delete"
+        ng-click="deleteRole(role.id)">删除</button>
+      </td>
+     </tr>
+    </tbody>
+   </table>
+  </div>
+  <footer class="panel-footer">
+   <pagination total-items="totalItems1" ng-model="currentPage1"
+    items-per-page="itemPerPage1" previous-text="上一页" next-text="下一页"
+    page-sizes="pageSizes1" edit-page="editPage1"
+    ng-change="getData(currentPage1,itemPerPage1)"></pagination>
+  </footer>
+ </div>
+</div>
+<!--弹窗-表格--添加角色-->
+<div class="modal fade" id="createRole" data-keyboard="false"
+ data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby=""
+ aria-hidden="true">
+ <div class="modal-dialog ">
+  <div class="modal-content">
+   <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal"
+     aria-hidden="true"></button>
+    <h4 class="modal-title" id="">
+     添加角色 <span class="close-popup" data-dismiss="modal"></span>
+    </h4>
+   </div>
+   <div class="modal-body">
+    <form class="form-horizontal" method="get">
+     <div class="form-group">
+      <label class="col-sm-3 control-label"><i class="asterisk">*</i>
+       角色名称</label>
+      <div class="col-sm-9">
+       <input type="text" class="form-control">
+      </div>
+     </div>
+    </form>
+   </div>
+   <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+    <button type="button" class="btn btn-info" data-dismiss="modal">确定</button>
+   </div>
+  </div>
+ </div>
+</div>

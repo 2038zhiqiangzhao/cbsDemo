@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="u_role_function2">
+  <update id="updateRoleFunction" parameterClass="java.util.Map">
+    update u_role_function set is_deleted=#isDeleted:INTEGER#
+    where role_id=#roleId:BIGINT#   
+    <isNotNull property="platformId" prepend="and">
+        function_id in (select id from u_function where platform_id=#platformId:BIGINT#)
+    </isNotNull>
+  </update>
+  
+  <insert id="insertBatch" parameterClass="java.util.ArrayList">
+    insert into u_role_function (id,role_id, function_id, is_available, is_deleted, version_no,
+      create_userid, create_username, create_userip, create_usermac, create_time, create_time_db,
+      server_ip, update_userid, update_username, update_userip, update_usermac, update_time,
+      update_time_db, client_versionno, company_id)
+    values 
+    <iterate conjunction=",">
+    	<![CDATA[
+    		 (#v[].id#,#v[].roleId#, #v[].functionId#, #v[].isAvailable#, #v[].isDeleted#,
+		      #v[].versionNo#, #v[].createUserid#, #v[].createUsername#, #v[].createUserip#,
+		      #v[].createUsermac#, CURRENT_TIMESTAMP(), #v[].createTimeDb#, #v[].serverIp#,
+		      #v[].updateUserid#, #v[].updateUsername#, #v[].updateUserip#,
+		      #v[].updateUsermac#, #v[].updateTime#, #v[].updateTimeDb#,
+		      #v[].clientVersionno#, #v[].companyId#)
+    	]]>
+    </iterate>
+  </insert>
+</sqlMap>

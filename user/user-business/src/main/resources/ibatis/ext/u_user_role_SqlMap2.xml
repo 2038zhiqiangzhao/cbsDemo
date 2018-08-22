@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="u_user_role2">
+
+ <resultMap class="com.people2000.user.model.po.ibatis.Role" id="abatorgenerated_RoleResult">
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+  </resultMap>
+  
+  <select id="getRoleListByUserid" parameterClass="Long" resultClass="java.lang.Long">
+    select role_id from u_user_role
+    where user_id = #value:BIGINT# and is_deleted = 0
+  </select>
+  
+  <select id="getUserRoleListByUserId" parameterClass="Long" resultClass="java.util.HashMap">
+    SELECT a.id,b.name 
+	FROM u_user_role a
+	LEFT JOIN u_role b ON a.role_id = b.id
+	WHERE a.user_id = #value:BIGINT# AND a.is_deleted = 0 AND b.is_deleted = 0
+  </select>
+  
+  <select id="getUserRoleByUserId" parameterClass="Long" resultMap="abatorgenerated_RoleResult">
+    SELECT b.id,b.code,b.name 
+	FROM u_user_role a
+	LEFT JOIN u_role b ON a.role_id = b.id
+	WHERE a.user_id = #value:BIGINT# AND a.is_deleted = 0 AND b.is_deleted = 0
+  </select>
+
+  
+   <select id="getUserRoleListByPlatformId" parameterClass="java.util.Map" resultClass="java.lang.Long">
+    select role_id from u_user_role
+    where user_id = #userId:BIGINT# and is_deleted = 0 and role_id in (select id from u_role where is_deleted = 0 
+     <isNotNull property="platformId" prepend="and">
+        platform_id= #platformId:BIGINT#
+     </isNotNull>
+     <isNotNull property="companyId" prepend="and">
+        company_id = #companyId:BIGINT#
+     </isNotNull>
+     )
+  </select>
+
+
+    <select id="getUserRoleByParams" parameterClass="java.util.Map" resultMap="abatorgenerated_RoleResult">
+        SELECT b.id,b.code,b.name
+        FROM u_user_role a
+        LEFT JOIN u_role b ON a.role_id = b.id
+        WHERE a.user_id = #userId:BIGINT# AND a.is_deleted = 0
+        <isNotNull property="platformId" prepend="and">
+            b.platform_id= #platformId:BIGINT#
+        </isNotNull>
+        <isNotNull property="companyId" prepend="and">
+            b.company_id = #companyId:BIGINT#
+        </isNotNull>
+        <isNotNull property="entityType" prepend="and">
+            b.entity_type = #entityType:BIGINT#
+        </isNotNull>
+        <isNotNull property="entityId" prepend="and">
+            b.entity_id = #entityId:BIGINT#
+        </isNotNull>
+    </select>
+
+    <insert id="addRolesToUser" parameterClass="java.util.ArrayList">
+        insert into u_user_role (id,user_id, role_id, is_available, is_deleted, version_no, create_userid,
+        create_username, create_userip, create_usermac, create_time, create_time_db, server_ip,
+        update_userid, update_username, update_userip, update_usermac, update_time, update_time_db,
+        client_versionno, company_id)
+        values
+        <iterate conjunction=",">
+        <![CDATA[
+    		 (#v[].id#,#v[].userId#,#v[].roleId#, #v[].isAvailable#, #v[].isDeleted#,
+		      #v[].versionNo#, #v[].createUserid#, #v[].createUsername#, #v[].createUserip#,
+		      #v[].createUsermac#, CURRENT_TIMESTAMP(), #v[].createTimeDb#, #v[].serverIp#,
+		      #v[].updateUserid#, #v[].updateUsername#, #v[].updateUserip#,
+		      #v[].updateUsermac#, #v[].updateTime#, #v[].updateTimeDb#,
+		      #v[].clientVersionno#, #v[].companyId#)
+    	]]>
+         </iterate>
+    </insert>
+
+    <update id="batchDeleteUserRole" parameterClass="com.people2000.user.model.vo.UserRoleVo">
+        update u_user_role a set a.is_deleted=#isDeleted#
+        where a.id in
+        <iterate property="ids" conjunction="," open="(" close=")">
+            #ids[]#
+        </iterate>
+    </update>
+
+</sqlMap>

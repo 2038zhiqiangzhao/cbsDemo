@@ -1,0 +1,150 @@
+<div class="panel panel-default">
+	<div class="panel-heading">组织机构管理</div>
+	<div class="panel-body">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-3">
+					<ul id="treeDemo" class="ztree">
+					</ul>
+				</div>
+				<div class="col-md-8" style="overflow:auto;border-left:1px solid;">
+					<div>
+						<div class="col-md-12">
+							<form class="form-horizontal" ng-submit="submitted = true; add_Org();" novalidate autocomplete="off">
+								<div class="form-group mb5" style="background: #CCC; height: 40px; vertical-align: middle; padding: 5px;">
+									<div class="pull-left loginLabel ml10">新增下级组织机构</div>
+								</div>
+								<div class="form-group mt30">
+									<label class="control-label col-xs-2 my-form-label">组织机构代码：</label>
+									<div class="col-xs-4">
+										<input class="form-control" type="text" autocomplete="off" ng-model="addOrg.code">
+									</div>
+									<label class="control-label col-xs-2 my-form-label">组织机构名称：</label>
+									<div class="col-xs-4">
+										<input class="form-control" type="text" autocomplete="off" ng-model="addOrg.orgName">
+									</div>
+								</div>
+								<div class="form-group mt30">
+									<label class="control-label col-xs-2 my-form-label">上级组织代码：</label>
+									<div class="col-xs-4">
+										<input class="form-control" type="text" autocomplete="off" ng-model="addOrg.parentCode" readonly="readonly">
+									</div>
+									<label class="control-label col-xs-2 my-form-label">上级组织名称：</label>
+									<div class="col-xs-4">
+										<input class="form-control" type="text" autocomplete="off" ng-model="addOrg.parentName" readonly="readonly">
+									</div>
+								</div>
+								<div class="form-group mt30">
+									<label class="control-label col-xs-2 my-form-label">是虚拟组织：</label>
+									<div class="col-xs-4">
+										<select class="form-control input-sm" ng-model="addOrg.isVirtual">
+					                       	 <option value="1">是</option>
+					                       	 <option value="0">否</option>
+					                    </select>
+									</div>
+									<label class="control-label col-xs-2 my-form-label">备注：</label>
+									<div class="col-xs-4">
+										<input class="form-control" type="text" autocomplete="off" ng-model="addOrg.remarks">
+									</div>
+								</div>
+								<div class="form-group mt30">
+									<div class="col-xs-5"></div>
+									<div class="col-xs-2"><button class="btn btn-info btn-sm btn-block" ng-disabled="addDisabled">保存</button></div>
+									<div class="col-xs-5"></div>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div>
+						<div class="col-md-12">
+						<form class="form-horizontal" ng-submit="submitted = true; edit_Org();" novalidate autocomplete="off">
+								<div class="form-group mb5" style="background: #CCC; height: 40px; vertical-align: middle; padding: 5px;">
+									<div class="pull-left loginLabel ml10">修改组织机构</div>
+								</div>
+								<div>
+									<input class="form-control" type="text" autocomplete="off" ng-model="editOrg.id" ng-hide=true>
+								</div>
+								<div class="form-group mt30">
+									<label class="control-label col-xs-2 my-form-label">组织机构代码：</label>
+									<div class="col-xs-4">
+										<input class="form-control edit-zzdm" type="text" autocomplete="off" ng-model="editOrg.code">
+									</div>
+									<label class="control-label col-xs-2 my-form-label">组织机构名称：</label>
+									<div class="col-xs-4">
+										<input class="form-control" type="text" autocomplete="off" ng-model="editOrg.orgName">
+									</div>
+								</div>
+								<div class="form-group mt30">
+									<label class="control-label col-xs-2 my-form-label">上级组织代码：</label>
+									<div class="col-xs-4">
+										<input class="form-control" type="text" autocomplete="off" ng-model="editOrg.parentCode" readonly="readonly">
+									</div>
+									<label class="control-label col-xs-2 my-form-label">上级组织名称：</label>
+									<div class="col-xs-4">
+										<input class="form-control" type="text" autocomplete="off" ng-model="editOrg.parentName" readonly="readonly">
+									</div>
+								</div>
+								<div class="form-group mt30">
+									<label class="control-label col-xs-2 my-form-label">是虚拟组织：</label>
+									<div class="col-xs-4">
+										<select class="form-control input-sm" ng-model="editOrg.isVirtual">
+					                       	 <option value="1">是</option>
+					                       	 <option value="0">否</option>
+					                    </select>
+									</div>
+									<label class="control-label col-xs-2 my-form-label">备注：</label>
+									<div class="col-xs-4">
+										<input class="form-control" type="text" autocomplete="off" ng-model="editOrg.remarks">
+									</div>
+								</div>
+								<div class="form-group mt30">
+									<div class="col-xs-5"></div>
+									<div class="col-xs-2"><button class="btn btn-info btn-sm btn-block" ng-disabled="editDisabled">修改</button></div>
+									<div class="col-xs-5"></div>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div>
+						<div class="col-md-12">
+						<form class="form-horizontal" ng-submit="submitted = true; delete_Org();" novalidate autocomplete="off">
+								<div class="form-group mb5" style="background: #CCC; height: 40px; vertical-align: middle; padding: 5px;">
+									<div class="pull-left loginLabel ml10">删除组织机构</div>
+								</div>
+								<div>
+									<input class="form-control" type="text" autocomplete="off" ng-model="deleteOrg.id" ng-hide=true>
+								</div>
+								<div class="form-group mt30">
+									<label class="control-label col-xs-2 my-form-label">组织机构代码：</label>
+									<div class="col-xs-4">
+										<input class="form-control" type="text" autocomplete="off" ng-model="deleteOrg.code" readonly="readonly">
+									</div>
+									<label class="control-label col-xs-2 my-form-label">组织机构名称：</label>
+									<div class="col-xs-4">
+										<input class="form-control" type="text" autocomplete="off" ng-model="deleteOrg.orgName" readonly="readonly">
+									</div>
+								</div>
+								<div class="form-group mt30">
+									<label class="control-label col-xs-2 my-form-label">是否删除：</label>
+									<div class="col-xs-4">
+										<select class="form-control input-sm" ng-model="deleteOrg.isDeleted">
+					                       	 <option value="1">是</option>
+					                       	 <option value="0">否</option>
+					                    </select>
+									</div>
+								</div>
+								<div class="form-group mt30">
+									<div class="col-xs-5"></div>
+									<div class="col-xs-2"><button class="btn btn-info btn-sm btn-block" ng-disabled="deleteDisabled">删除</button></div>
+									<div class="col-xs-5"></div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>

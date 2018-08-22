@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="u_user_action_log2">
+    <resultMap id="abatorgenerated_actionLogResult" class="com.people2000.user.model.po.ibatis.UserActionLogPO"
+               extends="u_user_action_log.abatorgenerated_UserActionLogPOResult">
+
+    </resultMap>
+
+    <select id="selectByUserIdAndTypeForUpdate" parameterClass="java.util.Map"
+            resultMap="abatorgenerated_actionLogResult">
+        select id, type, remark, channel, user_id, msg_send_flag, point_send_flag, is_available,
+        is_deleted, version_no, create_userid, create_username, create_userip, create_usermac,
+        create_time, create_time_db, server_ip, update_userid, update_username, update_userip,
+        update_usermac, update_time, update_time_db, client_versionno, company_id
+        from u_user_action_log
+        where is_deleted = 0
+
+        <isNotEmpty prepend="and" property="type">
+            type=#type#
+        </isNotEmpty>
+
+        <isNotEmpty prepend="and" property="userId">
+            user_id=#userId#
+        </isNotEmpty>
+        for update
+    </select>
+</sqlMap>

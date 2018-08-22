@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.people.cbsadmin.business.dao.CommunityActivityAdminMapper">
+  <resultMap id="BaseResultMap" type="com.people.cbsadmin.model.po.CommunityActivityAdmin">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="activity_code" jdbcType="VARCHAR" property="activityCode" />
+    <result column="secret" jdbcType="VARCHAR" property="secret" />
+    <result column="activity_id" jdbcType="BIGINT" property="activityId" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="admin_ qr" jdbcType="VARCHAR" property="adminQr" />
+    <result column="creat_time" jdbcType="TIMESTAMP" property="creatTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+    <result column="is_available" jdbcType="TINYINT" property="isAvailable" />
+    <result column="admin_head_url" jdbcType="VARCHAR" property="adminHeadUrl" />
+    <result column="admin_name" jdbcType="VARCHAR" property="adminName" />
+    <result column="admin_phone" jdbcType="VARCHAR" property="adminPhone" />
+    <result column="is_sign" jdbcType="TINYINT" property="isSign" />
+    <result column="order_code_id" jdbcType="BIGINT" property="orderCodeId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, activity_code, secret, activity_id, user_id, "admin_ qr", creat_time, update_time, 
+    is_deleted, is_available, admin_head_url, admin_name, admin_phone, is_sign, order_code_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from community_activity_admin
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from community_activity_admin
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.people.cbsadmin.model.po.CommunityActivityAdmin">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into community_activity_admin (activity_code, secret, activity_id, 
+      user_id, "admin_ qr", creat_time, 
+      update_time, is_deleted, is_available, 
+      admin_head_url, admin_name, admin_phone, 
+      is_sign, order_code_id)
+    values (#{activityCode,jdbcType=VARCHAR}, #{secret,jdbcType=VARCHAR}, #{activityId,jdbcType=BIGINT}, 
+      #{userId,jdbcType=BIGINT}, #{adminQr,jdbcType=VARCHAR}, #{creatTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{isDeleted,jdbcType=TINYINT}, #{isAvailable,jdbcType=TINYINT}, 
+      #{adminHeadUrl,jdbcType=VARCHAR}, #{adminName,jdbcType=VARCHAR}, #{adminPhone,jdbcType=VARCHAR}, 
+      #{isSign,jdbcType=TINYINT}, #{orderCodeId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.people.cbsadmin.model.po.CommunityActivityAdmin">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into community_activity_admin
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="activityCode != null">
+        activity_code,
+      </if>
+      <if test="secret != null">
+        secret,
+      </if>
+      <if test="activityId != null">
+        activity_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="adminQr != null">
+        "admin_ qr",
+      </if>
+      <if test="creatTime != null">
+        creat_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="isAvailable != null">
+        is_available,
+      </if>
+      <if test="adminHeadUrl != null">
+        admin_head_url,
+      </if>
+      <if test="adminName != null">
+        admin_name,
+      </if>
+      <if test="adminPhone != null">
+        admin_phone,
+      </if>
+      <if test="isSign != null">
+        is_sign,
+      </if>
+      <if test="orderCodeId != null">
+        order_code_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="activityCode != null">
+        #{activityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="secret != null">
+        #{secret,jdbcType=VARCHAR},
+      </if>
+      <if test="activityId != null">
+        #{activityId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="adminQr != null">
+        #{adminQr,jdbcType=VARCHAR},
+      </if>
+      <if test="creatTime != null">
+        #{creatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="isAvailable != null">
+        #{isAvailable,jdbcType=TINYINT},
+      </if>
+      <if test="adminHeadUrl != null">
+        #{adminHeadUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="adminName != null">
+        #{adminName,jdbcType=VARCHAR},
+      </if>
+      <if test="adminPhone != null">
+        #{adminPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="isSign != null">
+        #{isSign,jdbcType=TINYINT},
+      </if>
+      <if test="orderCodeId != null">
+        #{orderCodeId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.people.cbsadmin.model.po.CommunityActivityAdmin">
+    update community_activity_admin
+    <set>
+      <if test="activityCode != null">
+        activity_code = #{activityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="secret != null">
+        secret = #{secret,jdbcType=VARCHAR},
+      </if>
+      <if test="activityId != null">
+        activity_id = #{activityId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="adminQr != null">
+        "admin_ qr" = #{adminQr,jdbcType=VARCHAR},
+      </if>
+      <if test="creatTime != null">
+        creat_time = #{creatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="isAvailable != null">
+        is_available = #{isAvailable,jdbcType=TINYINT},
+      </if>
+      <if test="adminHeadUrl != null">
+        admin_head_url = #{adminHeadUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="adminName != null">
+        admin_name = #{adminName,jdbcType=VARCHAR},
+      </if>
+      <if test="adminPhone != null">
+        admin_phone = #{adminPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="isSign != null">
+        is_sign = #{isSign,jdbcType=TINYINT},
+      </if>
+      <if test="orderCodeId != null">
+        order_code_id = #{orderCodeId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.people.cbsadmin.model.po.CommunityActivityAdmin">
+    update community_activity_admin
+    set activity_code = #{activityCode,jdbcType=VARCHAR},
+      secret = #{secret,jdbcType=VARCHAR},
+      activity_id = #{activityId,jdbcType=BIGINT},
+      user_id = #{userId,jdbcType=BIGINT},
+      "admin_ qr" = #{adminQr,jdbcType=VARCHAR},
+      creat_time = #{creatTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      is_deleted = #{isDeleted,jdbcType=TINYINT},
+      is_available = #{isAvailable,jdbcType=TINYINT},
+      admin_head_url = #{adminHeadUrl,jdbcType=VARCHAR},
+      admin_name = #{adminName,jdbcType=VARCHAR},
+      admin_phone = #{adminPhone,jdbcType=VARCHAR},
+      is_sign = #{isSign,jdbcType=TINYINT},
+      order_code_id = #{orderCodeId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

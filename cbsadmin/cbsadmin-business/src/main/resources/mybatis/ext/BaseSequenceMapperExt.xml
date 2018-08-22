@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.people.cbsadmin.business.dao.ext.BaseSequenceMapperExt">
+	<resultMap id="BaseResultMap" type="com.people.cbsadmin.model.po.BaseSequence">
+		<id column="sequence_id" jdbcType="INTEGER" property="sequenceId" />
+		<result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+		<result column="seq_name" jdbcType="VARCHAR" property="seqName" />
+		<result column="current_val" jdbcType="INTEGER" property="currentVal" />
+		<result column="increment_val" jdbcType="INTEGER" property="incrementVal" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		sequence_id, create_date, seq_name, current_val,
+		increment_val, name
+	</sql>
+	<sql id="baseWhereCase">
+		<where>
+			and is_delete=0
+		</where>
+	</sql>
+
+	<!-- 根据条件查询列表 -->
+	<select id="queryBaseSequenceList"
+		parameterType="com.people.cbsadmin.model.vo.BaseSequenceQueryVo"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from base_sequence
+		<include refid="baseWhereCase"></include>
+		order by create_time desc
+	</select>
+
+	<!-- 根据条件查询列表 -->
+	<select id="queryBaseSequencePage"
+		parameterType="com.people.cbsadmin.model.vo.BaseSequenceQueryVo"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from base_sequence
+		<include refid="baseWhereCase"></include>
+		order by create_time desc
+		limit
+		#{startItem,jdbcType=INTEGER},#{itemsPerPage,jdbcType=INTEGER}
+	</select>
+
+	<!-- 根据条件统计数量 -->
+	<select id="countBaseSequence" resultType="java.lang.Integer"
+		parameterType="com.people.cbsadmin.model.vo.BaseSequenceQueryVo">
+		select
+		count(1)
+		from
+		base_sequence
+		<include refid="baseWhereCase"></include>
+	</select>
+
+
+	<!-- 根据序列名称获取下个值 -->
+	<select id="getSequenceNextval" parameterType="java.lang.String"
+		resultType="java.lang.Integer">
+		select nextval(#{seqName}) from dual
+	</select>
+</mapper>

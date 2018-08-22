@@ -1,0 +1,47 @@
+<div class="wrapper-md bg-light b-b headerPadding">
+    <h1 class="m-n font-thin h3"><a href="">修改密码</a></h1>
+</div>
+<div class="wrapper-md">
+	<div class="panel panel-default">
+		<div class="panel-heading">修改密码</div>
+		<div class="panel-body">
+			<form class="form-horizontal">
+	       		<div class="form-group">
+	       			<div class="col-sm-5 mgt15">
+	       				<label for="" class="col-sm-3 control-label"><i class="asterisk ">*</i>原密码：</label>
+						<div class="col-sm-5" >
+							<input type="password" ng-model="user.password" class="form-control"  ng-init="password_tip = false; password_error_tip = true;" ng-focus="password_tip = true; password_error_tip = false;" ng-blur="password_tip = false; password_error_tip = true; passwordCheck(); passwordBlur();" ng-change="modifyPasswordCheck();">
+						</div>
+						<p ng-show="password_tip" class="form-control-static my-form-input-tip">6-18个字符,字母跟数字组合</p>
+						<p ng-show="password_error_tip && password_error" class="form-control-static my-form-input-error">{{password_error}}</p>
+					</div>
+	            </div>
+	            <div class="form-group">
+	       			<div class="col-sm-5 mgt15">
+	       				<label for="" class="col-sm-3 control-label"><i class="asterisk ">*</i>新密码：</label>
+						<div class="col-sm-5" >
+							<input type="password" ng-model="user.password1"  class="form-control" ng-init="password1_tip = false; password1_error_tip = true;" ng-focus="password1_tip = true; password1_error_tip = false;" ng-blur="password1_tip = false; password1_error_tip = true; password1Check();" ng-change="modifyPasswordCheck();">
+						</div>
+						<p ng-show="password1_tip" class="form-control-static my-form-input-tip">6-18个字符,字母跟数字组合</p>
+						<p ng-show="password1_error_tip && password1_error" class="form-control-static my-form-input-error">{{password1_error}}</p>
+					</div>
+	            </div>
+	            <div class="form-group">
+       				<div class="col-sm-5 mgt15">
+	       				<label for="" class="col-sm-3 control-label"><i class="asterisk">*</i>确认新密码：</label>
+						<div class="col-sm-5" >
+							<input type="password" ng-model="user.password2" class="form-control"  ng-init="password2_tip = false; password2_error_tip = true;" ng-focus="password2_tip = true; password2_error_tip = false;" ng-blur="password2_tip = false; password2_error_tip = true; password2Check(); password2Blur();" ng-change="modifyPasswordCheck();">
+						</div>
+						<p ng-show="password2_tip" class="form-control-static my-form-input-tip">6-18个字符,字母跟数字组合</p>
+						<p ng-show="password2_error_tip && password2_error" class="form-control-static my-form-input-error">{{password2_error}}</p>
+					</div>
+       			</div>
+       			<div class="col-sm-12 mt30">
+       			 	<div class="col-sm-2"></div>
+                  	<button class="btn btn-info" type="button" ng-click="save()">保存</button>
+                   	<div class="col-sm-12"></div>
+              	</div>
+            </form>				
+		</div>
+	</div>
+</div>

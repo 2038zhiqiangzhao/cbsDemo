@@ -1,0 +1,62 @@
+.inputFileWrapper label {
+	display: block;
+	float: left;
+	position: relative;
+}
+
+.inputFileWrapper input[type="file"] {
+	position: absolute;
+	width: 1px;
+	text-align: center;
+	height: 1px;
+	clip: rect(0, 0, 0, 0);
+}
+
+.inputFileWrapper .custorm-style {
+	display: block;
+	width: 600px;
+	height: 50px;
+}
+
+.inputFileWrapper .custorm-style .left-button {
+	width: 80px;
+	line-height: 40px;
+	background: #008ac7;
+	color: #fff;
+	display: block;
+	text-align: center;
+	float: left;
+	margin:10px 0px 0px 0px;
+}
+.excelbutton  {
+	width: 80px;
+	line-height: 40px;
+	background: #008ac7;
+	color: #fff;
+	display: block;
+	text-align: center;
+	float: left;
+	margin:8px 0px 0px 20px;
+}
+
+.inputFileWrapper .custorm-style .right-text {
+	width: 500px;
+	height: 40px;
+	line-height: 20px;
+	display: block;
+	float: right;
+	padding: 8px;
+	margin:10px 0px 10px 0px;
+	
+/* 上外边距是 10px
+    右外边距是 5px
+    下外边距是 15px
+    左外边距是 20px */
+	
+/* 	margin:10px 0px 0px 0px; */
+	border: 1px solid #008ac7;
+	overflow: hidden;
+	-ms-text-overflow: ellipsis;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}

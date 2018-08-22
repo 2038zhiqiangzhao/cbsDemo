@@ -1,0 +1,13 @@
+<div data-ng-include="'/plugins/platform-include/views/header.html'" class="app-header navbar"></div>
+
+<div data-ng-include="'/plugins/platform-include/views/menu.html'" class="app-aside hidden-xs {{app.settings.asideColor}}"></div>
+
+<div data-ng-include="'/plugins/platform-include/views/footer.html'" class="app-footer wrapper b-t bg-light"></div>
+
+<div class="app-content">
+    <div ui-butterbar></div>
+    <a href class="off-screen-toggle hide" ui-toggle-class="off-screen" data-target=".app-aside" ></a>
+    <div class="app-content-body fade-in-up" ui-view></div>
+</div>
+
+<div data-ng-include="'/plugins/platform-include/views/settings.html'" class="settings panel panel-default" ng-if="false"></div>

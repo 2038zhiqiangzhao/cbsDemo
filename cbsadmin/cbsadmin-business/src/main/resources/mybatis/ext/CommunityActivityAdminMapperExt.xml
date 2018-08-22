@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.people.cbsadmin.business.dao.ext.CommunityActivityAdminMapperExt">
+  <resultMap id="BaseResultMap" type="com.people.cbsadmin.model.po.CommunityActivityAdmin">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="activity_code" jdbcType="VARCHAR" property="activityCode" />
+    <result column="secret" jdbcType="VARCHAR" property="secret" />
+    <result column="activity_id" jdbcType="BIGINT" property="activityId" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="admin_ qr" jdbcType="VARCHAR" property="adminQr" />
+    <result column="creat_time" jdbcType="TIMESTAMP" property="creatTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+    <result column="is_available" jdbcType="TINYINT" property="isAvailable" />
+    <result column="admin_head_url" jdbcType="VARCHAR" property="adminHeadUrl" />
+    <result column="admin_name" jdbcType="VARCHAR" property="adminName" />
+    <result column="admin_phone" jdbcType="VARCHAR" property="adminPhone" />
+    <result column="is_sign" jdbcType="TINYINT" property="isSign" />
+    <result column="order_code_id" jdbcType="BIGINT" property="orderCodeId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, activity_code, secret, activity_id, user_id, "admin_ qr", creat_time, update_time, 
+    is_deleted, is_available, admin_head_url, admin_name, admin_phone, is_sign, order_code_id
+  </sql>
+ 
+ <select id="queryUserId" parameterType="com.people.cbsadmin.model.vo.CommunitySecret" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from community_activity_admin
+    where user_id = #{userId,jdbcType=BIGINT}
+    and
+    activity_id = #{activityId,jdbcType=BIGINT}
+    and 
+    is_deleted=0
+  </select>
+  
+  
+ <select id="queryUserIdAndActivityId" parameterType="com.people.cbsadmin.model.po.CommunityActivityAdmin" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from community_activity_admin 
+    where user_id = #{userId,jdbcType=BIGINT}
+    and 
+    is_deleted=0
+  </select>
+  
+  <select id="queryAdminMumber" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from community_activity_admin
+    where activity_id = #{activityId,jdbcType=BIGINT}
+    and 
+    is_deleted=0
+  </select>
+</mapper>

@@ -1,0 +1,222 @@
+/**
+ */
+'use strict';
+app.controller("communityActivityEditCtrl", [
+		'$scope',
+		'$state',
+		'$stateParams',
+		'$http',
+		'FileUploader',
+		'platformUtil',
+		'Dic',
+		function($scope, $state, $stateParams, $http, FileUploader,
+				platformUtil, Dic) {
+			'use strict';
+
+			// 常量定义
+		    var EDIT_URL= "communityActivity/updatecommunityById.do";
+			var ADD_URL = "communityActivity/addcommunityActivity.do";//表单提交数据
+			var LOADING_PIC_PATH = "image/loading.gif";
+			var PIC_SAVE_URL = "file/savePic.do";
+			var QUERY_EDIT_URL= "communityActivity/editcommunityActivityById.do";
+			if ($stateParams.id) {
+  				$scope.id = $stateParams.id;
+  			}
+			// 百度富文本编辑器配置
+			window.UEDITOR_CONFIG.maximumWords = 9999;
+			// 'editor' 为html 元素id
+			UE.delEditor("editor");
+			$scope.ue = UE.getEditor('editor');
+
+  			// 表单数据
+			$scope.formData = {
+					isAvailable : 0,
+					type : 3
+					
+			};
+			
+			//日期格式
+
+			$scope.options0 = {
+//                  mask:'9999/19/39 29:59',
+//					 format: 'Y/m/d H:i:s',
+		            format: 'Y-m-d',
+		            lang: 'zh',
+		            step: 1,
+		            timepickerScrollbar: false,
+		            datepicker:true,
+		            timepicker:false
+            };
+            $scope.options1 = {
+                    format : 'H:i',
+                    lang : 'zh',
+                    timepicker:true,
+                    datepicker:false,
+                    step:30
+            };
+            
+            $scope.options2 = {
+                    format : 'H:i',
+                    lang : 'zh',
+                    timepicker:true,
+                    datepicker:false,
+                    step:30
+            };
+        	$scope.options3= {
+//                  mask:'9999/19/39 29:59',
+//					 format: 'Y/m/d H:i:s',
+		            format: 'Y-m-d',
+		            lang: 'zh',
+		            step: 1,
+		            timepickerScrollbar: false,
+		            datepicker:true,
+		            timepicker:false
+            };
+        	 $scope.options4 = {
+                     format : 'H:i',
+                     lang : 'zh',
+                     timepicker:true,
+                     datepicker:false,
+                     step:30
+             };
+        	 $scope.options5 = {
+        			 format: 'Y-m-d',
+ 		            lang: 'zh',
+ 		            step: 1,
+ 		            timepickerScrollbar: false,
+ 		            datepicker:true,
+ 		            timepicker:false
+             };
+        	 $scope.options6 = {
+                     format : 'H:i',
+                     lang : 'zh',
+                     timepicker:true,
+                     datepicker:false,
+                     step:30
+             };
+        	 /*图片上传*/
+			$scope.uploader1 = new FileUploader({
+				url : PIC_SAVE_URL,
+				autoUpload : true,
+				removeAfterUpload : true,
+				onAfterAddingFile : function(fileItem) {
+					// 图片格式仅限JPG、PNG
+					if ("image/png" != fileItem._file.type
+							&& "image/jpg" != fileItem._file.type
+							&& "image/jpeg" != fileItem._file.type) {
+						platformUtil.showAlert('提示', '图片格式不正确，只能上传JPG、PNG格式');
+						$scope.canUpload = 1;
+						return false;
+					}
+					// 不得大于500K
+					if (fileItem._file.size > 512000) {
+						platformUtil.showAlert('提示', '图片超出最大限制，图片最大限制为500KB');
+						$scope.canUpload = 1;
+						return false;
+					}
+					$scope.formData['lineMapUrl'] = LOADING_PIC_PATH;
+				},
+				onCompleteItem : function(fileItem, response, status, headers) {
+					$scope.formData.surfacePicture = response.data;
+				},
+				filters : [ {
+					name : 'customFilter',
+					fn : function(item /* {File|FileLikeObject} */, options) {
+						return this.queue.length < 10;
+					}
+				} ]
+			});
+		
+			
+            //初始化数据
+            $scope.init = function() {
+                //初始化编辑信息
+					$scope.queryFormData();
+            };
+            
+             //是否定时发布
+            $scope.isTimePublish = function(result) {
+          	  var isTimeState=result;
+				if(isTimeState==0){
+					//定时发布默认隐藏
+	            	document.getElementById("div_timeInterva").style.display="none";//隐藏
+				}else{
+					//定时发布显示
+	            	document.getElementById("div_timeInterva").style.display="block";//显示
+				}
+
+            };
+            /**
+  			 * 查询表单数据
+  			 */
+  			$scope.queryFormData = function() {
+  				$http.post(QUERY_EDIT_URL, angular.toJson({
+  					id : $scope.id
+  				})).success(function(result) {
+  					if (result.code == 0) {
+  						//formData
+  						$scope.formData = result.data;
+  						var varisTimeState= result.data.isTimePublish ;
+  						if(varisTimeState==0){
+  							//定时发布默认隐藏
+  			            	document.getElementById("div_timeInterva").style.display="none";//隐藏
+  						}else{
+  							//定时发布显示
+  			            	document.getElementById("div_timeInterva").style.display="block";//显示
+  						}
+  					   //给ueditor富文本编辑赋值
+  						$scope.getEditorForm();
+  						
+  	                  
+  					}
+  				}).error(function(err) {
+  				});
+  			};
+  			/**
+  			 * 富文本编辑必须准备实例
+  			 * 
+  			 */
+  			$scope.getEditorForm= function(){
+  				$scope.ue.ready(function(){
+						 $scope.ue.setContent($scope.formData.richTextArea);
+					})
+  			};
+  			 $scope.reset = function(){
+             	
+             	$scope.queryFormData();
+               };
+  			$scope.saveOption = function() {
+  				var richTextArea = $scope.ue.getContent();
+            	  $scope.formData['richTextArea'] = richTextArea;
+
+  				if($scope.formData.surfacePicture==null){
+  					return;
+  				}
+  				if ($scope.form.$invalid) {
+  					return;
+  				}
+  				var isTimePublish=$scope.formData.isTimePublish;
+				if(isTimePublish==1){
+					if($scope.formData.timeInterval==null||$scope.formData.timeIntervalStartTime==null)
+						return;
+				}
+				
+  				$("#saveBtn").button("loading");
+  				$http.post(EDIT_URL, angular.toJson($scope.formData)).success(
+  						function(result) {
+  							$("#saveBtn").button("reset");
+  							platformUtil.showAlert('提示', '操作成功');
+  							$scope.back();
+  						}).error(function(err) {
+  					console.log("HTTP访问失败");
+  				});
+  			};
+  			
+			/**
+			 * 返回
+			 */
+			$scope.back = function() {
+				$state.go('communityActivity');
+			}
+			$scope.init();
+		} ]);

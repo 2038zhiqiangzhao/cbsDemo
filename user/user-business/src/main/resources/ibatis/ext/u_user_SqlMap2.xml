@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="u_user2">
+    <resultMap id="abatorgenerated_UserResult" class="com.people2000.user.model.dto.User2"
+               extends="u_user.abatorgenerated_UserResult">
+        <result property="roleIds" column="id" select="u_user_role2.getRoleListByUserid"></result>
+       <!--  <result column="qq" jdbcType="VARCHAR" property="qq" />
+   		<result column="source" jdbcType="INTEGER" property="source" /> -->
+    </resultMap>
+    
+    <resultMap id="abatorgenerated_UserResult1" class="com.people2000.user.model.dto.User2"
+               extends="u_user.abatorgenerated_UserResult">
+    </resultMap>
+    
+    <resultMap id="abatorgenerated_UserResult2" class="com.people2000.user.model.dto.User3"
+               extends="u_user.abatorgenerated_UserResult">
+        <result column="org_id" jdbcType="BIGINT" property="orgId" />
+	    <result column="position_id" jdbcType="BIGINT" property="positionId" />
+	    <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime" />
+	    <result column="last_login_ip" jdbcType="VARCHAR" property="lastLoginIp" />
+    </resultMap>
+    
+
+    <select id="abatorgenerated_selectByExample" resultMap="abatorgenerated_UserResult"
+            parameterClass="com.people2000.user.model.po.ibatis.UserExample">
+      select id, original_id, type, identity_type, parent_id, username, password, nickname,
+      company_name, contact_person, mobile, telephone, email, address, status, remarks, points, sex,
+      head_pic_url, birthday, user_province, user_city, user_region, user_address, check_time,
+      check_user_id, identity_card_name, is_certification, legal_person_name, legal_personNo_number,
+      organization_code, business_license_number, business_license_url, company_type,
+      business_scope, business_start, business_end, registered_address, registered_capital,
+      population, is_available, is_deleted, version_no, create_userid, create_username,
+      create_userip, create_usermac, create_time, create_time_db, server_ip, update_userid,
+      update_username, update_userip, update_usermac, update_time, update_time_db, client_versionno,
+      company_id, birthday_update_count, f_algorithm_version, b_algorithm_version, f_salt,
+      f_salt_update_time, b_salt, b_salt_update_time, platform_group_id,platform_id,qq,source,entity_type, entity_id,
+      employe_num, grade_id, name_card_url, industry, profession, referee_mobile
+      from u_user
+        <isParameterPresent>
+            <include refid="u_user.abatorgenerated_Example_Where_Clause"/>
+            <isNotNull property="orderByClause">
+                order by $orderByClause$
+            </isNotNull>
+        </isParameterPresent>
+    </select>
+    
+    <select id="selectByUsernameAndCompanyId" parameterClass="java.util.Map" resultMap="abatorgenerated_UserResult">
+    	select * from u_user where username=#username# and is_deleted=0
+    	<isNotNull property="companyId" prepend="and">
+                company_id=#companyId#
+        </isNotNull>
+    </select>
+    
+     <select id="selectByMobileAndPlatformId" parameterClass="java.util.Map" resultMap="abatorgenerated_UserResult">
+    	select * from u_user where mobile=#mobile# and type= 4 and is_deleted=0
+    	<isNotNull property="platformId" prepend="and">
+                platform_group_id in (select distinct platform_group_id from u_platform_group_relation where platform_id =#platformId#)
+        </isNotNull>
+    	<isNotNull property="companyId" prepend="and">
+                company_id=#companyId#
+        </isNotNull>
+    </select>
+    
+    <select id="selectByUserNameAndPlatformId" parameterClass="java.util.Map" resultMap="abatorgenerated_UserResult">
+    	select * from u_user where username=#username# and is_deleted=0 
+         <isEqual property="type" compareValue="1">
+           and type not in(4)
+        </isEqual>
+        <isNotEqual property="type" compareValue="1">
+           and type=4
+        </isNotEqual>
+    	<isNotNull property="password" prepend="and">
+    		password=#password#
+    	</isNotNull> 
+    	<isNotNull property="platformId" prepend="and">
+                platform_group_id in (select distinct platform_group_id from u_platform_group_relation where platform_id =#platformId#)
+        </isNotNull>
+    	<isNotNull property="companyId" prepend="and">
+                company_id=#companyId#
+        </isNotNull>
+    </select>
+    
+    <select id="selectByMobilePassAndPlatformId" parameterClass="java.util.Map" resultMap="abatorgenerated_UserResult">
+    	select * from u_user where mobile=#username# and is_deleted=0
+        <isEqual property="type" compareValue="1">
+           and type not in(4)
+        </isEqual>
+        <isNotEqual property="type" compareValue="1">
+           and type=4
+        </isNotEqual>
+    	<isNotNull property="password" prepend="and">
+    		password=#password#
+    	</isNotNull> 
+    	<isNotNull property="platformId" prepend="and">
+                platform_group_id in (select distinct platform_group_id from u_platform_group_relation where platform_id =#platformId#)
+        </isNotNull>
+    	<isNotNull property="companyId" prepend="and">
+                company_id=#companyId#
+        </isNotNull>
+    </select>
+    
+    <select id="selectCountByMobileAndPlatformId" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+    	select count(id) from u_user where (mobile=#mobile# or username=#mobile#) and type=4 and is_deleted=0
+    	<isNotNull property="platformId" prepend="and">
+                platform_group_id in (select distinct platform_group_id from u_platform_group_relation where platform_id =#platformId#)
+        </isNotNull>
+        <isNotNull property="companyId" prepend="and">
+                company_id=#companyId#
+        </isNotNull>
+    </select>
+    
+    <select id="selectCountByUserNameAndPlatformId" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+    	select count(id) from u_user where (username=#username# or mobile=#username#) and type=4 and is_deleted=0
+    	<isNotNull property="platformId" prepend="and">
+                platform_group_id in (select distinct platform_group_id from u_platform_group_relation where platform_id =#platformId#)
+        </isNotNull>
+        <isNotNull property="companyId" prepend="and">
+                company_id=#companyId#
+        </isNotNull>
+    </select>
+    
+    <!-- 普通注册用户 -->
+    <select id="selectCountByMobileAndCompanyId" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+    	select count(id) from u_user where (mobile=#mobile# or username=#mobile#) and type=4 and is_deleted=0
+    	<isNotNull property="companyId" prepend="and">
+                company_id=#companyId#
+        </isNotNull>
+    </select>
+    
+    <select id="selectCountByUserNameAndCompanyId" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+    	select count(id) from u_user where (username=#username# or mobile=#username#) and type=4 and is_deleted=0
+    	<isNotNull property="companyId" prepend="and">
+                company_id=#companyId#
+        </isNotNull>
+    </select>
+    
+    <select id="selectListUserByuser" parameterClass="com.people2000.user.model.po.ibatis.User" resultMap="abatorgenerated_UserResult">
+   	   select id, original_id, type, identity_type, parent_id, username, password, nickname,
+      company_name, contact_person, mobile, telephone, email, address, status, remarks, points, sex,
+      head_pic_url, birthday, user_province, user_city, user_region, user_address, check_time,
+      check_user_id, identity_card_name, is_certification, legal_person_name, legal_personNo_number,
+      organization_code, business_license_number, business_license_url, company_type,
+      business_scope, business_start, business_end, registered_address, registered_capital,
+      population, is_available, is_deleted, version_no, create_userid, create_username,
+      create_userip, create_usermac, create_time, create_time_db, server_ip, update_userid,
+      update_username, update_userip, update_usermac, update_time, update_time_db, client_versionno,
+      company_id, birthday_update_count, f_algorithm_version, b_algorithm_version, f_salt,
+      f_salt_update_time, b_salt, b_salt_update_time, platform_group_id,platform_id,qq,source,entity_type, entity_id, 
+      employe_num, grade_id, name_card_url, industry, profession, referee_mobile
+      from u_user
+      <dynamic prepend ="where">
+	    <isNotNull property="id" prepend="and">
+	    	id=#id#
+	    </isNotNull>
+	    <!-- <isNotNull property="originalId" prepend="and">
+	    	original_id=#originalId#
+	    </isNotNull> -->
+	    <isNotNull property="username" prepend="and">
+	    	username=#username#
+	    </isNotNull>
+	    <isNotNull property="mobile" prepend="and">
+	    	mobile=#mobile#
+	    </isNotNull>
+	    <isNotNull property="email" prepend="and">
+	    	email=#email#
+	    </isNotNull>
+	    <isNotNull property="type" prepend="and">
+	    	type=#type#
+	    </isNotNull>
+	    <isNotNull property="companyId" prepend="and">
+	    	company_id=#companyId#
+	    </isNotNull>
+	    <isNull property="isDeleted" prepend="and">
+	    	is_deleted=0
+	    </isNull>
+	    <isNotNull property="isDeleted" prepend="and">
+	    	is_deleted=#isDeleted#
+	    </isNotNull>
+	    <isNotNull property="password" prepend="and">
+	    	password=#password#
+	    </isNotNull>
+	    <isNotNull property="platformId" prepend="and">
+                platform_group_id in (select distinct platform_group_id from u_platform_group_relation where platform_id =#platformId#)
+        </isNotNull>    
+	 </dynamic>
+    </select>
+    
+    
+    <select id="getUserCntByConditionWithPage" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+    	select count(1)  from u_user where is_deleted <![CDATA[<>]]> 1
+    		<isNotEmpty property="id" prepend="and">
+    			 id = #id#
+    		</isNotEmpty>
+    		<isNotEmpty property="userIdList" prepend="and">
+    			 id in 
+    			 <iterate property="userIdList" conjunction="," open="(" close=")">
+			  		#userIdList[]#
+			  	</iterate>
+    		</isNotEmpty>
+    		<isNotEmpty property="excludeUserNameList" prepend="and">
+    			 username not in 
+    			 <iterate property="excludeUserNameList" conjunction="," open="(" close=")">
+			  		#excludeUserNameList[]#
+			  	</iterate>
+    		</isNotEmpty>
+	      	<isNotEmpty property="originalId" prepend="and">
+    			 original_id = #originalId#
+    		</isNotEmpty>  
+    		<isNotEmpty property="companyId" prepend="and">
+    			 company_id = #companyId#
+    		</isNotEmpty>  
+    		<isNotEmpty property="mobile" prepend="and">
+    			 mobile = #mobile#
+    		</isNotEmpty>    		
+    		<isNotEmpty property="username" prepend="and">
+    			 username like #username#
+    		</isNotEmpty>
+    		<isNotEmpty property="email" prepend="and">
+    			 email = #email#
+    		</isNotEmpty>
+    		<isNotEmpty property="telephone" prepend="and">
+    			 telephone = #telephone#
+    		</isNotEmpty>
+    		<isNotEmpty property="identityCardName" prepend="and">
+    			 identity_card_name like #identityCardName#
+    		</isNotEmpty>
+			<isNotEmpty property="nickName" prepend="and">
+				nickname like #nickName#
+			</isNotEmpty>
+    		<isNotEmpty property="isAvailable" prepend="and">
+	    		<isEqual property="isAvailable" compareValue="1">
+	    			(is_available=1 or is_available is null)
+	    		</isEqual>
+	    		<isNotEqual property="isAvailable" compareValue="1">
+	    			is_available=#isAvailable#
+	    		</isNotEqual>
+    		</isNotEmpty>
+    		<isNotEmpty property="type" prepend="and">
+    			 type = #type#
+    		</isNotEmpty>
+    		<isNotEmpty property="createUserId" prepend="and">
+    			<!--  (create_userid = #createUserId# or create_userid is null) -->
+    			create_userid = #createUserId#
+    		</isNotEmpty>
+    		<isNotEmpty property="startTime" prepend="and">
+    			create_time<![CDATA[>=]]>#startTime#
+    		</isNotEmpty>
+    		<isNotEmpty property="endTime" prepend="and">
+    			create_time<![CDATA[<]]>#endTime#
+    		</isNotEmpty>
+    		<isNotEmpty property="departId" prepend="and">
+    			id in (select user_id from u_organization_user where organization_id=#departId#
+    			<isNotEmpty property="companyId" prepend="and">
+    			 company_id = #companyId#
+    			</isNotEmpty>
+				and (is_deleted=0 or is_deleted is null)
+				)
+    		</isNotEmpty>
+    </select>
+    
+    <select id="getUserListByConditionWithPage" parameterClass="java.util.Map" resultMap="abatorgenerated_UserResult1">
+	     select id, original_id, type, identity_type, parent_id, username, password, nickname,
+	      company_name, contact_person, mobile, telephone, email, address, status, remarks, points, sex,
+	      head_pic_url, birthday, user_province, user_city, user_region, user_address, check_time,
+	      check_user_id, identity_card_name, is_certification, legal_person_name, legal_personNo_number,
+	      organization_code, business_license_number, business_license_url, company_type,
+	      business_scope, business_start, business_end, registered_address, registered_capital,
+	      population, is_available, is_deleted, version_no, create_userid, create_username,
+	      create_userip, create_usermac, create_time, create_time_db, server_ip, update_userid,
+	      update_username, update_userip, update_usermac, update_time, update_time_db, client_versionno,
+	      company_id, birthday_update_count, f_algorithm_version, b_algorithm_version, f_salt,
+	      f_salt_update_time, b_salt, b_salt_update_time, platform_group_id,platform_id,qq,source,entity_type,
+			<isNotEmpty property="departId" >
+				($departId$) as org_id,
+				(select org_name from u_organization where id=#departId#) as org_name,
+			</isNotEmpty>
+		  entity_id, employe_num, grade_id, name_card_url, industry, profession, referee_mobile
+	      from u_user where is_deleted <![CDATA[<>]]> 1
+	      	<isNotEmpty property="id" prepend="and">
+    			 id = #id#
+    		</isNotEmpty>
+    		<isNotEmpty property="userIdList" prepend="and">
+    			 id in 
+    			 <iterate property="userIdList" conjunction="," open="(" close=")">
+			  		#userIdList[]#
+			  	</iterate>
+    		</isNotEmpty>
+    		<isNotEmpty property="excludeUserNameList" prepend="and">
+    			 username not in 
+    			 <iterate property="excludeUserNameList" conjunction="," open="(" close=")">
+			  		#excludeUserNameList[]#
+			  	</iterate>
+    		</isNotEmpty>
+	      	<isNotEmpty property="originalId" prepend="and">
+    			 original_id = #originalId#
+    		</isNotEmpty>  
+	     	<isNotEmpty property="companyId" prepend="and">
+    			 company_id = #companyId#
+    		</isNotEmpty>   
+    		<isNotEmpty property="mobile" prepend="and">
+    			 mobile = #mobile#
+    		</isNotEmpty> 		
+    		<isNotEmpty property="username" prepend="and">
+    			 username like #username#
+    		</isNotEmpty>
+    		<isNotEmpty property="email" prepend="and">
+    			 email = #email#
+    		</isNotEmpty>
+    		<isNotEmpty property="telephone" prepend="and">
+    			 telephone = #telephone#
+    		</isNotEmpty>
+    		<isNotEmpty property="identityCardName" prepend="and">
+    			 identity_card_name like #identityCardName#
+    		</isNotEmpty>
+			<isNotEmpty property="nickName" prepend="and">
+				nickname like #nickName#
+			</isNotEmpty>
+    		<isNotEmpty property="isAvailable" prepend="and">
+    			<isEqual property="isAvailable" compareValue="1">
+	    			(is_available=1 or is_available is null)
+	    		</isEqual>
+	    		<isNotEqual property="isAvailable" compareValue="1">
+	    			is_available=#isAvailable#
+	    		</isNotEqual>
+    		</isNotEmpty>
+    		<isNotEmpty property="type" prepend="and">
+    			 type = #type#
+    		</isNotEmpty>
+    		<isNotEmpty property="createUserId" prepend="and">
+    			 <!-- (create_userid = #createUserId# or create_userid is null) -->
+    			 create_userid = #createUserId#
+    		</isNotEmpty>
+    		<isNotEmpty property="startTime" prepend="and">
+    			create_time<![CDATA[>=]]>#startTime#
+    		</isNotEmpty>
+    		<isNotEmpty property="endTime" prepend="and">
+    			create_time<![CDATA[<]]>#endTime#
+    		</isNotEmpty>
+    		<isNotEmpty property="departId" prepend="and">
+    			id in (select user_id from u_organization_user where organization_id=#departId#
+    			<isNotEmpty property="companyId" prepend="and">
+    			 company_id = #companyId#
+    			</isNotEmpty>
+				and (is_deleted=0 or is_deleted is null)
+				)
+    		</isNotEmpty>
+    		order by create_time desc
+    		limit #startItem#,#itemsPerPage#
+    </select>
+    
+    <update id="activeOrInactiveUser" parameterClass="com.people2000.user.model.dto.UserDto">
+    	update u_user a  set a.is_available=#isAvailable# where a.id in
+    	<iterate property="userIds" conjunction="," open="(" close=")">
+  			#userIds[]#
+  		</iterate>
+  		<isNotEmpty property="companyId" prepend="and">
+			company_id = #companyId#
+		</isNotEmpty>
+    </update>
+    
+    <select id="validateRepeatOrNotByParams" parameterClass="com.people2000.user.model.dto.UserDto" resultClass="java.lang.Integer">
+    	select count(1) from u_user  where is_deleted <![CDATA[<>]]> 1
+    	<isNotEmpty property="companyId" prepend="and">
+    		 company_id = #companyId#
+   		</isNotEmpty>
+   		<isNotEmpty property="username" prepend="and">
+    		 (username = #username# or mobile=#username#)
+   		</isNotEmpty>
+   		<isNotEmpty property="mobile" prepend="and">
+    		 (username = #mobile# or mobile=#mobile#)
+   		</isNotEmpty>
+   		<isNotEmpty property="email" prepend="and">
+    		 email = #email#
+   		</isNotEmpty>
+   		<isNotEmpty property="identityCardName" prepend="and">
+    		 identity_card_name = #identityCardName#
+   		</isNotEmpty>
+   		<isNotEmpty property="companyName" prepend="and">
+    		 company_name = #companyName#
+   		</isNotEmpty>
+   		<isNotEmpty property="organizationCode" prepend="and">
+    		 organization_code = #organizationCode#
+   		</isNotEmpty>
+   		<isNotEmpty property="businessLicenseNumber" prepend="and">
+    		 business_license_number = #businessLicenseNumber#
+   		</isNotEmpty>
+   		<isNotEmpty property="id" prepend="and"><!--查询不是此userId的记录  -->
+    		 id <![CDATA[<>]]>  #id#
+   		</isNotEmpty> 	
+    </select>
+    
+    <update id="batchDeleteUser" parameterClass="com.people2000.user.model.dto.UserDto">
+    	update  u_user set is_deleted = 1 where id in
+    	<iterate property="userIds" conjunction="," open="(" close=")">
+  			#userIds[]#
+  		</iterate>
+  		<isNotEmpty property="companyId" prepend="and">
+			company_id=#companyId#
+		</isNotEmpty>
+    
+    </update>
+    <select id="getUnionAccounts" parameterClass="java.util.ArrayList" resultClass="HashMap">
+    	select id, user_id "userId", oauth_open_id "openId", oauth_source_system "source"  from u_union_login where user_id in 
+    	<iterate open="(" close=")" conjunction=",">
+			<![CDATA[ #v[].id# ]]>
+		</iterate>
+    	order by user_id
+    </select>
+    
+     <select id="getUserDetailById" resultMap="abatorgenerated_UserResult2"
+           parameterClass="java.util.Map">
+      select u.id, u.original_id, u.type, u.identity_type, u.parent_id, u.username, u.password, u.nickname,
+      u.company_name, u.contact_person, u.mobile, u.telephone, u.email, u.address, u.status, u.remarks, u.points, u.sex,
+      u.head_pic_url, u.birthday, u.user_province, u.user_city, u.user_region, u.user_address, u.check_time,
+      u.check_user_id, u.identity_card_name, u.is_certification, u.legal_person_name, u.legal_personNo_number,
+      u.organization_code, u.business_license_number, u.business_license_url, u.company_type,
+      u.business_scope, u.business_start, u.business_end, u.registered_address, u.registered_capital,
+      u.population, u.is_available, u.is_deleted, u.version_no, u.create_userid, u.create_username,
+      u.create_userip, u.create_usermac, u.create_time, u.create_time_db, u.server_ip, u.update_userid,
+      u.update_username, u.update_userip, u.update_usermac, u.update_time, u.update_time_db, u.client_versionno,
+      u.company_id, u.birthday_update_count, u.f_algorithm_version, u.b_algorithm_version, u.f_salt,
+      u.f_salt_update_time, u.b_salt, u.b_salt_update_time, u.platform_group_id, u.platform_id, u.qq, u.source,u.entity_type, u.entity_id, 
+      u.employe_num, u.grade_id, u.name_card_url, u.industry, u.profession, u.referee_mobile
+      ,(select organization_id from u_organization_user where user_id=u.id and is_deleted=0 limit 1) org_id
+      ,(select position_id from u_user_position where user_id=u.id and is_deleted=0 limit 1) position_id
+      ,(select ip from u_user_login where user_id=u.id and is_deleted=0 and login_result=0 order by create_time  limit 1) last_login_ip
+      ,(select create_time from u_user_login where user_id=u.id and is_deleted=0 and login_result=0 order by create_time  limit 1) last_login_time
+      from u_user u where u.id=#userId#
+    </select>
+</sqlMap>

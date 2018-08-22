@@ -1,0 +1,140 @@
+<section class="row" ng-init="init();">
+	<div class="col-xs-2"></div>
+	<div class="col-xs-8" style="border: 1px solid #CCC;">
+			<form class="form-horizontal" ng-submit="submitted = true; registerSubmit();" novalidate autocomplete="off">
+				<div class="form-group mb5" style="background: #CCC; height: 40px; vertical-align: middle; padding: 5px;">
+					<div class="pull-left loginLabel ml10">客户注册</div>
+					<div class="pull-right mr10"><a class="btn btn-default btn-block btn-sm" href="#/login">我已注册，去登录</a></div>
+				</div>
+				<div class="clearfix" style="border-bottom: 2px solid #CCC; padding: 10px; font-size: 14px;">
+					<div class="pull-left">账户信息</div>
+				</div>
+				<div class="form-group mt30">
+					<label class="control-label col-xs-4 my-form-label"><b class="red">*</b>　用户名：</label>
+					<div class="col-xs-4">
+						<input class="form-control" type="text" autocomplete="off" ng-model="user.username" ng-init="username_tip = false; username_error_tip = true;" ng-focus="username_tip = true; username_error_tip = false;" ng-blur="username_tip = false; username_error_tip = true; userNameCheck();" ng-change="registerCheck();">
+					</div>
+					<div class="col-xs-4 pl0">
+						<p ng-show="username_tip" class="form-control-static my-form-input-tip">6-20个字符，支持汉字，不能有空格</p>
+						<p ng-show="username_error_tip && username_error" class="form-control-static my-form-input-error">{{username_error}}</p>
+					</div>
+				</div>
+				<div class="form-group mt30">
+					<label class="control-label col-xs-4 my-form-label"><b class="red">*</b>　请设置密码：</label>
+					<div class="col-xs-4">
+						<input class="form-control" type="password" autocomplete="off" ng-model="user.password" ng-init="password_tip = false; password_error_tip = true;" ng-focus="password_tip = true; password_error_tip = false;" ng-blur="password_tip = false; password_error_tip = true;" ng-change="registerCheck();">
+					</div>
+					<div class="col-xs-4 pl0">
+						<p ng-show="password_tip" class="form-control-static my-form-input-tip">6-20个字符</p>
+						<p ng-show="password_error_tip && password_error" class="form-control-static my-form-input-error">{{password_error}}</p>
+					</div>
+				</div>
+				<div class="form-group mt30">
+					<label class="control-label col-xs-4 my-form-label"><b class="red">*</b>　请确认密码：</label>
+					<div class="col-xs-4">
+						<input class="form-control" type="password" autocomplete="off" ng-model="user.confirmPassword" ng-init="confirmPassword_tip = false; confirmPassword_error_tip = true;" ng-focus="confirmPassword_tip = true; confirmPassword_error_tip = false;" ng-blur="confirmPassword_tip = false; confirmPassword_error_tip = true; confirmPasswordBlur();" ng-change="registerCheck();">
+					</div>
+					<div class="col-xs-4">
+						<p ng-show="confirmPassword_tip" class="form-control-static my-form-input-tip">6-20个字符</p>
+						<p ng-show="confirmPassword_error_tip && confirmPassword_error" class="form-control-static my-form-input-error">{{confirmPassword_error}}</p>
+					</div>
+				</div>
+				<div class="clearfix" style="border-bottom: 2px solid #CCC; padding: 10px; font-size: 14px;">
+					<div class="pull-left">公司信息</div>
+				</div>
+				<div class="form-group mt30">
+					<label class="control-label col-xs-4 my-form-label"><b class="red">*</b>　公司名称：</label>
+					<div class="col-xs-4">
+						<input class="form-control" type="text" autocomplete="off" ng-model="user.companyName" ng-init="companyName_tip = false; companyName_error_tip = true;" ng-focus="companyName_tip = true; companyName_error_tip = false;" ng-blur="companyName_tip = false; companyName_error_tip = true;" ng-change="registerCheck();">
+					</div>
+					<div class="col-xs-4">
+						<p ng-show="companyName_tip" class="form-control-static my-form-input-tip">请输入“企业营业执照”中的“名称”，4-40位字符</p>
+						<p ng-show="companyName_error_tip && companyName_error" class="form-control-static my-form-input-error">{{companyName_error}}</p>
+					</div>
+				</div>
+				<div class="form-group mt30">
+					<label class="control-label col-xs-4 my-form-label"><b class="red">*</b>　联系人姓名：</label>
+					<div class="col-xs-4">
+						<input class="form-control" type="text" autocomplete="off" ng-model="user.contactPerson" ng-init="contactPerson_tip = false; contactPerson_error_tip = true;" ng-focus="contactPerson_tip = true; contactPerson_error_tip = false;" ng-blur="contactPerson_tip = false; contactPerson_error_tip = true;" ng-change="registerCheck();">
+					</div>
+					<div class="col-xs-4">
+						<p ng-show="contactPerson_tip" class="form-control-static my-form-input-tip">2-20位字符</p>
+						<p ng-show="contactPerson_error_tip && contactPerson_error" class="form-control-static my-form-input-error">{{contactPerson_error}}</p>
+					</div>
+				</div>
+				<div class="form-group mt30">
+					<label class="control-label col-xs-4 my-form-label"><b class="red">*</b>　联系人手机：</label>
+					<div class="col-xs-4">
+						<input class="form-control" type="text" autocomplete="off" ng-model="user.mobile" ng-init="mobile_tip = false; mobile_error_tip = true;" ng-focus="mobile_tip = true; mobile_error_tip = false;" ng-blur="mobile_tip = false; mobile_error_tip = true;" ng-change="registerCheck();">
+					</div>
+					<div class="col-xs-4">
+						<p ng-show="mobile_tip" class="form-control-static my-form-input-tip">请输入手机号码，11个字符</p>
+						<p ng-show="mobile_error_tip && mobile_error" class="form-control-static my-form-input-error">{{mobile_error}}</p>
+					</div>
+				</div>
+				<div class="form-group mt30">
+					<label class="control-label col-xs-4 my-form-label"><b class="red">*</b>　短信验证码：</label>
+					<div class="col-xs-2">
+						<input class="form-control" type="text" autocomplete="off" ng-model="user.smsCode" ng-init="smsCode_tip = false; smsCode_error_tip = true;" ng-focus="smsCode_tip = true; smsCode_error_tip = false;" ng-blur="smsCode_tip = false; smsCode_error_tip = true;" ng-change="registerCheck();">
+					</div>
+					<div class="col-xs-2" style="padding-left: 0;">
+						<button id="btn" class="btn btn-default" ng-click="getCaptchas()" ng-disabled="btndisabled">获取短信验证码</button>
+					</div>
+					<div class="col-xs-4">
+						<p ng-show="smsCode_tip" class="form-control-static my-form-input-tip">请输入短信验证码，6个字符</p>
+						<p ng-show="smsCode_error_tip && smsCode_error" class="form-control-static my-form-input-error">{{smsCode_error}}</p>
+					</div>
+				</div>
+				<div class="form-group mt30">
+					<label class="control-label col-xs-4 my-form-label"><b class="red">*</b>联系人邮箱：</label>
+					<div class="col-xs-4">
+						<input class="form-control" type="text" autocomplete="off" ng-model="user.email" ng-init="email_tip = false; email_error_tip = true;" ng-focus="email_tip = true; email_error_tip = false;" ng-blur="email_tip = false; email_error_tip = true;" ng-change="registerCheck();">
+					</div>
+					<div class="col-xs-4">
+						<p ng-show="email_tip" class="form-control-static my-form-input-tip">请输入邮箱</p>
+						<p ng-show="email_error_tip && email_error" class="form-control-static my-form-input-error">{{email_error}}</p>
+					</div>
+				</div>
+				<div class="form-group mt30">
+					<div class="col-xs-4"></div>
+				<div class="col-xs-4">
+					<div class="input-group">
+						<input id="agreeCheckbox" type="checkbox" disabled="disabled" /><label class="my-form-label">&nbsp;我已阅读并同意相关</label><a id="modal-524826" style="cursor: pointer;" ng-click="showAgreement();" data-toggle="modal">《服务条款和隐私政策》</a>
+					</div>
+				</div>
+					<div class="col-xs-4"></div>
+				</div>
+				<div class="form-group mt30">
+					<div class="col-xs-4"></div>
+					<div class="col-xs-4"><p ng-show="errorMessage" class="form-control-static my-form-input-error">{{errorMessage}}</p></div>
+					<div class="col-xs-4"></div>
+				</div>
+				<div class="form-group mt30">
+					<div class="col-xs-4"></div>
+					<div class="col-xs-4"><button class="btn btn-danger btn-lg btn-block" ng-disabled="disabled">立即注册</button></div>
+					<div class="col-xs-4"></div>
+				</div>
+			</form>
+	</div>
+	<div class="col-xs-2"></div>
+</section>
+<div id="agreementDialog" class="modal fade">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">服务条款和隐私政策</h4>
+			</div>
+			<div class="modal-body">
+<pre style="height: 400px;">
+
+</pre>
+			</div>
+			<div class="modal-footer text-center">
+				<div class="col-xs-3"></div>
+				<div class="col-xs-3"><button type="button" class="btn btn-danger btn-lg btn-block" data-dismiss="modal" ng-click="iagree = true;">我已阅读并同意</button></div>
+				<div class="col-xs-3"><button type="button" class="btn btn-default btn-lg btn-block" data-dismiss="modal" ng-click="iagree = false;">拒绝</button></div>
+				<div class="col-xs-3"></div>
+			</div>
+		</div>
+	</div>
+</div>

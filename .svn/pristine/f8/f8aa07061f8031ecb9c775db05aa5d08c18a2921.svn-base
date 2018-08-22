@@ -1,0 +1,217 @@
+<div class="wrapper-md bg-light b-b headerPadding">
+    <h1 class="m-n font-thin h3"><a href="">角色管理</a>&gt;<a href="">角色管理</a></h1>
+</div>
+<div class="wrapper-md">
+<div class="panel panel-default">
+    <div class="panel-body">
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+            	<label class="col-sm-1 control-label"></label>
+            	<div class="col-sm-2">
+                	<select class="form-control"
+				    	ng-options="platform as platform.platformName for platform in platforms"
+						ng-model="platform">
+						<option value="">所属平台</option>
+					</select>
+        		</div>
+   	            <label class="col-sm-1 control-label">角色名称:</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" ng-model="querycontent.name">
+                </div>
+                
+                <label class="col-sm-1 control-label">创建时间:</label>
+                <div ng-controller="timeCtrl">
+                    <div class="col-sm-4">
+                        <div class="input-group input-large custom-date-range">
+                            <input type="text" value="" class="timeiconbg form-control" datetimepicker for-id="querycontent.begin"
+                                   options="options2" close="close(querycontent.begin)" max-date="querycontent.end" ng-model="querycontent.begin">
+                             <span class="input-group-addon">-</span>
+                             <input type="text" value="" class="timeiconbg form-control" datetimepicker for-id="querycontent.end"
+                                   options="options3" close="close(querycontent.end)" min-date="querycontent.begin" ng-model="querycontent.end">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group text-center mgt30">
+                <button type="submit" class="btn btn-info" ng-click="query()">查询</button>
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addForm" ng-click="cleanData()">添加角色</button>
+            </div>
+        </form>
+    </div>
+</div>
+    <div class="panel panel-default">
+        <div class=" portlet-body flip-scroll">
+            <table class=" table-bordered table-striped table-condensed flip-content">
+                <thead>
+                <tr>
+                    <th>操作</th>
+                    <th>角色代码</th>
+                    <th>角色名称</th>
+                    <th>角色描述</th>
+                    <th>所属平台</th>
+                    <th>创建时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="e in role_list">
+                    <td>
+                        <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#editForm" ng-click="roleById(e.id)">编辑</button>
+                        <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#editFunctionForm" ng-click="showRoleFunction(e.id)">权限修改</button>
+                        <button class="btn btn-sm btn-info" type="button" ng-click="deleteRole(e.id)">删除</button>
+                    </td>
+                    <td>{{e.code}}</td>
+                    <td>{{e.name}}</td>
+                    <td>{{e.desc}}</td>
+                    <td>{{showPlatform(e.platformId)}}</td>
+                    <td>{{e.createTime | date : 'yyyy-MM-dd HH:mm:ss'}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <footer class="panel-footer">
+            <pagination total-items="totalItems" ng-model="currentPage"
+                        items-per-page="itemsPerPage"
+                        previous-text="上一页" next-text="下一页"
+                        page-sizes="pageSizes"
+                        edit-page="editPage"
+                        ng-change="query(currentPage,itemPerPage)"></pagination>
+        </footer>
+    </div>
+</div>
+<!--弹窗-新增-->
+<div class="modal fade" id="addForm" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog"
+     aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                </button>
+                <h4 class="modal-title" id="">
+               		    添加角色 <span class="close-popup" data-dismiss="modal"></span>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" method="get">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">角色名称：</label>
+                        <div class="col-sm-9">
+                           <input type="text" ng-model="addRole.name" placeholder="20字以内" class="form-control" ng-blur="checkRoleByName()"/>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">角色代码：</label>
+                        <div class="col-sm-9">
+                            <input type="text" ng-model="addRole.code" placeholder="只能是数字、字母、下划线" class="form-control" ng-blur="checkRoleByCode()"/>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg"></div>
+                    <div class="form-group">
+						<label class="col-sm-3 control-label">所属平台:</label>
+						<div class="col-sm-9">
+							<select class="form-control"
+								ng-options="platform as platform.platformName for platform in platforms"
+								ng-change="changePlatform()"
+								ng-model="addPlatform">
+								<option value="">请选择</option>
+							</select>
+						</div>
+					</div>
+                    <div class="line line-dashed b-b line-lg"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">角色描述：</label>
+                        <div class="col-sm-9">
+                            <textarea  class="form-control" placeholder="0-200字" ng-model="addRole.desc"></textarea>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg"></div>
+                    <div class="clearfix">
+                        <div class="col-md-12" style="overflow:auto;border:1px solid">
+							<ul id="treeDemo" class="ztree" style="width: 100%;height: 300px"></ul>
+						</div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+            	<div class="col-xs-12" colspan="9" align="left" width="100%" ng-show="hasRole">
+					<font color="#FF0000">提示:角色名或code不能重复</font>
+				</div>
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cleanMessage()">取消</button>
+                <button type="button" class="btn btn-info"  ng-click="saveRole()"  ng-disabled="saveCheckDisabled">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--弹窗-修改表单-->
+<div class="modal fade" id="editForm" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog"
+     aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                </button>
+                <h4 class="modal-title" id="">
+               		    修改角色 <span class="close-popup" data-dismiss="modal"></span>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" method="get">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">角色名称：</label>
+                        <div class="col-sm-9">
+                           <input type="text" ng-model="editRole.name" class="form-control" ng-change="checkRoleByNameE()"/>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">角色代码：</label>
+                        <div class="col-sm-9">
+                            <input type="text" ng-model="editRole.code" placeholder="只能是数字、字母、下划线" class="form-control" ng-change="checkRoleByCodeE()"/>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">角色描述：</label>
+                        <div class="col-sm-9">
+                            <textarea  class="form-control" placeholder="0-200字" ng-model="editRole.desc"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+            	<div class="col-xs-12" colspan="9" align="left" width="100%" ng-show="hasRoleE">
+					<font color="#FF0000">提示:角色名或code不能重复</font>
+				</div>
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cleanMessage()">取消</button>
+                <button type="button" class="btn btn-info" ng-click="updateRole()" ng-disabled="saveCheckDisabledE">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--弹窗-表单-->
+<div class="modal fade" id="editFunctionForm" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog"
+     aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content" style="height:600px">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                </button>
+                <h4 class="modal-title" id="">
+               		    修改权限 <span class="close-popup" data-dismiss="modal"></span>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group col-md-12" >
+					<div class="col-md-12" style="overflow:auto;border:1px solid">
+						<ul id="treeDemo1" class="ztree" style="100%;height: 450px"></ul>
+					</div>
+				</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-info" data-dismiss="modal" ng-click="updateRoleFunction()">确定</button>
+            </div>
+        </div>
+    </div>
+</div>

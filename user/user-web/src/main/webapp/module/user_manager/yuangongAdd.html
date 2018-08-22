@@ -1,0 +1,165 @@
+<div class="wrapper-md bg-light b-b headerPadding">
+    <h1 class="m-n font-thin h3"><a href="">用户权限管理</a>&gt;<a href="index.html#/org-user">部门节点及员工管理</a>&gt;添加员工</h1>
+</div>
+<div class="wrapper-md">
+    <div class="panel panel-default">
+        <div class="panel-heading font-bold mgb10">
+            	添加员工账号
+        </div>
+        <form class="form-horizontal" method="get">
+            <div class="form-group">
+                <label class="col-sm-2 control-label"><i class="asterisk">*</i>用户名：</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" ng-model="addYonghu.username" placeholder="6-20个字符" ng-init="username_error_tip =false;">
+                    <span ng-show="username_error_tip" class="help-block m-b-none" style="color:red;">{{username_error}}</span>
+                </div>
+            </div>
+            <div class="line line-dashed b-b line-lg  "></div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label"><i class="asterisk">*</i> 密码：</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" ng-model="addYonghu.password" placeholder="密码需为6位-18位，包含字母+数字" ng-init="password_error_tip =false;">
+                    <span ng-show="password_error_tip" class="help-block m-b-none" style="color:red;">{{password_error}}</span>
+                </div>
+            </div>
+            <div class="line line-dashed b-b line-lg  "></div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label"><i class="asterisk">*</i> 姓名：</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" ng-model="addYonghu.identityCardName" placeholder="2-20个字符" ng-init="idCardName_error_tip =false;">
+                    <span ng-show="idCardName_error_tip" class="help-block m-b-none" style="color:red;">{{idCardName_error}}</span>
+                </div>
+            </div>
+            <div class="line line-dashed b-b line-lg  "></div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label"><i class="asterisk">*</i>手机号</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" ng-model="addYonghu.mobile" ng-init="mobile_error_tip =false;">
+                    <span ng-show="mobile_error_tip" class="help-block m-b-none" style="color:red;">{{mobile_error}}</span>
+                </div>
+            </div>
+            <div class="line line-dashed b-b line-lg  "></div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">邮箱：</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" ng-model="addYonghu.email" ng-init="email_error_tip=false;">
+                    <span ng-show="email_error_tip" class="help-block m-b-none" style="color:red;">{{email_error}}</span>
+                </div>
+            </div>
+            <div class="line line-dashed b-b line-lg  "></div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label"><i class="asterisk">*</i>部门：</label>
+                <div class="col-sm-4">
+                   <!--  <select class="  form-control" ng-model="addYonghu.orgId" ng-init="org_error_tip=false;">
+                        <option ng-repeat="x in orgList" value="{{x.id}}">{{x.orgName}}</option>
+                    </select>
+                    <span ng-show="org_error_tip" class="help-block m-b-none" style="color:red;">{{org_error}}</span> -->
+                    <input class="form-control"  class="col-sm-12" id="citySel" type="text" readonly ng-click="showMenu();$event.stopPropagation();"  ng-model="orgNameChange" style="cursor:default;"/>
+				    <input ng-show="false" class="form-control" type="text" ng-model="addYonghu.orgId" ng-init="org_error_tip=false;">
+				    <div id="menuContent" class="col-sm-12" ng-click="$event.stopPropagation();" class="menuContent" style="display:none; position: absolute">
+					 	 <ul id="treeDemo2" class="ztree" style="margin-top: 0;border: 1px solid #617775; background: #FFF; height: 360px; overflow-y: scroll; overflow-x: auto;"></ul>
+				    </div>
+					<span ng-show="org_error_tip" class="help-block m-b-none" style="color:red;">{{org_error}}</span>
+                </div>
+                
+            </div>
+            <div class="line line-dashed b-b line-lg  " function-code-check="30OU03"></div>
+            <div class="form-group" function-code-check="30OU03">
+                <label class="col-sm-2 control-label">角色：</label>
+                <div class="row">
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" ng-model="addUserRoleList">
+                    <input type="text" ng-show="false" class="form-control" ng-model="addYonghu.roleIds">
+                </div>
+                    <div class="col-sm-3">
+                       <button type="button" class="btn btn-info"  data-toggle="modal" data-target="#formT">选择</button>
+                    </div>
+                </div>
+            </div>
+            <div class="line line-dashed b-b line-lg  "></div>
+            <div class="form-group" function-code-check="30OU0105">
+                <label class="col-sm-2 control-label">岗位：</label>
+                <div class="col-sm-4">
+                    <select class="form-control" ng-model="addYonghu.positionId">
+                       <option ng-repeat="x in positionList" value="{{x.id}}">{{x.positionName}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group text-center">
+                <button class="btn btn-info btn-lg w-md " ng-disabled="addYonghuDisabled" ng-click="addOneUser()">注册</button>
+                <button class="btn btn-default btn-lg w-md" ng-click="cancel()">返回</button>
+            </div>
+            </form>
+        </div>
+    </div>
+<!--弹窗-表单-->
+<div class="modal fade" id="formT" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog"
+     aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                </button>
+                <h4 class="modal-title" id="">
+               		     选择角色 <span class="close-popup" data-dismiss="modal"></span>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <!-- <div class="panel-body" ng-controller="selectMerchantsCtrl"> -->
+                <div class="panel-body"">
+                <form class="form-horizontal" method="get">
+                    <div class="form-group ">
+                        <label class="col-sm-2 control-label">已选角色</label>
+                        <div class="col-sm-10">
+                            <!-- <span class="siteSpan" ng-repeat="a in siteList1" ng-click="delSite($index)">{{a.test}}<i -->
+                            <span class="siteSpan" ng-repeat="a in selectRoleList" ng-click="delSite($index)">{{a.name}}
+                            <iclass="icon-close"></i></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                    	<label class="col-sm-2 control-label">所属平台:</label>
+                    	<div class="col-sm-3">
+                    		 <select class="form-control" ng-model="queryRoleCondition.platformId">
+                             <option ng-repeat="x in platFormList" value="{{x.id}}">{{x.platformName}}</option>                                                                            
+                        </select>
+                    	</div>
+                        <label class="col-sm-2 control-label">角色名:</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" ng-model="queryRoleCondition.name">
+                        </div>
+                        <div class="col-sm-2">
+                                <button class="btn" ng-click="queryRoleInfo();">搜索</button>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="portlet-body flip-scroll">
+                            <table class=" table-striped table-condensed flip-content">
+                                <thead>
+                                <tr>
+                                    <th>角色编号</th>
+                                    <th>角色名</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="e in roleList">
+                                    <td>{{e.code}}</td>
+                                    <td>{{e.name}}</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-info" ng-click="addRoleForUser(e)">添加</button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </form>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" ng-click="userRoleBack()">返回</button>
+                <button type="button" class="btn btn-info" ng-click="savaUserRole()">保存</button>
+            </div>
+        </div>
+    </div>
+</div>

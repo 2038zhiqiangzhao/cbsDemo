@@ -1,0 +1,54 @@
+<div class="wrapper-md bg-light b-b headerPadding">
+ <h1 class="m-n font-thin h3">
+  <a href="">角色管理</a>&gt;<a ui-sref="role_list">角色列表</a>&gt;<a href="#">查看角色信息</a>
+ </h1>
+</div>
+<div class="wrapper-md" ng-controller="detailCtrl">
+ <div class="panel panel-default">
+  <div class="panel-body">
+   <form class="form-horizontal ng-pristine ng-valid" role="form">
+
+    <div class="form-group">
+     <label class="col-sm-2 control-label">角色ID</label>
+     <div class="col-sm-9">{{role.id}}</div>
+    </div>
+    <div class="form-group">
+     <label class="col-sm-2 control-label">角色名称</label>
+     <div class="col-sm-9">{{role.roleName}}</div>
+    </div>
+    <div class="form-group">
+     <label class="col-sm-2 control-label">角色等级</label>
+     <div class="col-sm-9">{{role.roleSign}}</div>
+    </div>
+    <div class="form-group">
+     <label class="col-sm-2 control-label">状态</label>
+     <div class="col-sm-9" ng-if="role.status==1">正常</div>
+     <div class="col-sm-9" ng-if="role.status==0">冻结</div>
+    </div>
+    <div class="form-group">
+     <label class="col-sm-2 control-label">创建时间</label>
+     <div class="col-sm-9"
+      ng-bind="role.createTime | date:'yyyy-MM-dd hh:mm:ss'"></div>
+    </div>
+    <div class="form-group">
+     <label class="col-sm-2 control-label">创建人</label>
+     <div class="col-sm-9">{{role.createBy}}</div>
+    </div>
+    <div class="form-group">
+     <label class="col-sm-2 control-label">更新时间</label>
+     <div class="col-sm-9"
+      ng-bind="role.updateTime | date:'yyyy-MM-dd hh:mm:ss'"></div>
+    </div>
+    <div class="form-group">
+     <label class="col-sm-2 control-label">更新人</label>
+     <div class="col-sm-9">{{role.updateBy}}</div>
+    </div>
+    <div class="form-group text-center">
+     <a class="btn btn-default btn-lg w-left "
+      href="javascript:history.back(-1)">返回</a>
+    </div>
+   </form>
+  </div>
+ </div>
+
+</div>

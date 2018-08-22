@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="u_platform_group_relation2">
+  <resultMap class="com.people2000.user.model.dto.PlatformGroupRelationDTO" id="PlatformGroupRelationResult">
+    <result column="platform_group_id" jdbcType="BIGINT" property="platformGroupId" />
+    <result column="platform_group_name" jdbcType="VARCHAR" property="platformGroupName" />
+    <result column="platform_id" jdbcType="BIGINT" property="platformId" />
+    <result column="company_id" jdbcType="BIGINT" property="companyId" />
+  </resultMap>
+ 
+  <select id="selectPlatformGroupList" parameterClass="com.people2000.user.model.dto.PlatformGroupRelationDTO" resultMap="PlatformGroupRelationResult">
+    select upgr.platform_group_id,upgr.platform_id,upg.platform_group_name,upg.company_id from u_platform_group_relation upgr,u_platform_group upg where upgr.platform_group_id=upg.id 
+     <isNotNull property="platformGroupName" prepend="and">
+        upg.platform_group_name like CONCAT(#platformGroupName#,"%") 
+     </isNotNull>
+     <isNotNull property="companyId" prepend="and">
+        upg.company_id = #companyId#
+     </isNotNull>
+  </select>
+  
+   <select id="selectPlatformGroupListOnly" parameterClass="com.people2000.user.model.dto.PlatformGroupRelationDTO" resultMap="PlatformGroupRelationResult">
+    select upgr.platform_group_id,upgr.platform_id,upg.platform_group_name,upg.company_id from u_platform_group_relation upgr,u_platform_group upg where upgr.platform_group_id=upg.id 
+    and upg.id =#platformGroupId#
+  </select>
+  
+  <delete id="deleteUPlatformGroupRelationByGroup" parameterClass="com.people2000.user.model.po.ibatis.UPlatformGroupRelationPO">
+    delete from u_platform_group_relation where platform_group_id=#platformGroupId#
+  </delete>
+  
+</sqlMap>

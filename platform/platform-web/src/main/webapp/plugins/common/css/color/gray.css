@@ -1,0 +1,162 @@
+a {
+  color:#53697E;
+}
+.badge {
+  background-color: #f5f5f5;
+}
+
+/* frank.luo */
+.nav-pills>li.active>a,
+.nav-pills>li.active>a:focus,
+.nav-pills>li.active>a:hover {
+  color: #fff;
+  background-color: #545456;
+}
+
+.navbar-inverse {
+  background-color: #545456;
+}
+.navbar-inverse .navbar-nav > li > a {
+  color: #fff;
+}
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus {
+  color: #fff;
+  background-color: #0171E0;
+}
+.navbar-inverse .navbar-toggle:hover,
+.navbar-inverse .navbar-toggle:focus {
+  background-color: #0171E0;
+}
+.navbar-inverse .navbar-toggle .icon-bar {
+  background-color: #fff;
+}
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav > .open > a:focus {
+  color: #fff;
+  background-color: #313135;
+}
+.breadcrumb a{
+  color: #53697e;
+}
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+    color: #fff;
+    background-color: #545456;
+    border-color: #545456;
+}
+body{
+  background-color: #fff;
+}
+.page-container .sidebar{
+  background-color: #bdc3c7;
+  border-right: 1px solid #d9d9d9;
+}
+/* 左侧菜单样式 */
+.tree-nav a{
+  color: #666666;
+}
+.tree-nav a:hover{
+  color: #000 !important;
+}
+.tree-nav a.active{
+  color: #fff !important;
+  background-color: #727278;
+}
+.tree-nav .level0 > li > a{
+  color: #333;
+}
+.tree-nav i{
+  background-image: url('/images/zhuGeNew/icons.png');
+}
+.arrow.right{
+  border-left: 4px solid #666;
+}
+.arrow.bottom{
+  border-top: 4px solid #666;
+}
+.tree-nav a:hover .arrow.right{
+  border-left-color: #000;
+}
+.tree-nav a:hover .arrow.bottom{
+  border-top-color: #000;
+}
+.tree-nav a.active .arrow.right{
+  border-left-color: #fff;
+}
+.tree-nav a.active .arrow.bottom{
+  border-top-color: #fff;
+}
+/* 左侧菜单样式结束 */
+.ifcontent{
+  color: #546776;
+}
+.ifcontent .container-fluid{
+  background-color: #fff;
+}
+fieldset[disabled] .form-control {
+  background-color: #fafafa;
+}
+/* 按钮 */
+.btn-primary {
+  background-color: #74747c;
+}
+.btn-guide{
+  color: #fff;
+  background-color: #a0a0a3;
+}
+.btn-primary:hover,
+.btn-guide:hover{
+  background-color: #31313b;
+}
+.btn-guide:active,
+.btn-guide.active,
+.btn-primary:active,
+.btn-primary.active{
+  background-color: #4b4b59;
+}
+.btn-guide:focus{
+  background-color: #a0a0a3; 
+}
+.btn-primary:focus{
+  background-color: #74747c;
+}
+.progress .progress-bar{
+  background-color: #74747c;
+}
+.btn-link{
+  color: #74747c;
+}
+.btn-info{
+  background-color: #74747c;
+}
+.btn-info:hover{
+  background-color: #616169; 
+}
+.btn-info:active,
+.btn-info:focus,
+.btn-info.active{
+  background-color: #4a4a53 !important; 
+}
+.modal-dialog .modal-header {
+  color: #fff;
+  background-color: #74747c !important;
+}
+.modal-dialog .panel-heading{
+  color: #fff;
+  background-color: #74747c;
+}
+.table-title{
+  color: #74747c;
+  border-bottom: 2px solid #74747c;
+}
+/* 底部信息 */
+.footer {
+  background-color: #E4E9EF;
+}

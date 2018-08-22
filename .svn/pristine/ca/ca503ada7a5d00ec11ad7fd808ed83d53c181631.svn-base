@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE abatorConfiguration PUBLIC "-//Apache Software Foundation//DTD Abator for iBATIS Configuration 1.0//EN"
+        "http://ibatis.apache.org/dtd/abator-config_1_0.dtd" >
+<abatorConfiguration>
+    <abatorContext>
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://192.168.88.170:3306/mhp"
+                        userId="root" password="people2000">
+            <classPathEntry location="D:\develop\abator\mysql-connector-java-5.1.29.jar"/>
+        </jdbcConnection>
+
+        <javaModelGenerator targetPackage="com.people2000.user.model.po.ibatis" targetProject="../../user-model/src/main/java"/>
+        <sqlMapGenerator targetPackage="ibatis" targetProject="../../user-business/src/main/resources"/>
+        <daoGenerator type="GENERIC-CI" targetPackage="com.people2000.user.business.read.dao"
+                      targetProject="../../user-business/src/main/java"/>
+ 
+        <table tableName="user_account" domainObjectName="UserAccount">
+            <generatedKey column="id" sqlStatement="select last_insert_id() as value" identity="true"/>
+        </table>
+        <table tableName="user_grade" domainObjectName="UserGrade">
+            <generatedKey column="id" sqlStatement="select last_insert_id() as value" identity="true"/>
+        </table>
+    </abatorContext>
+</abatorConfiguration>

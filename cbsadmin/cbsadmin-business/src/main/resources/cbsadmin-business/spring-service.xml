@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.1.xsd
+	http://www.springframework.org/schema/task
+    http://www.springframework.org/schema/task/spring-task-3.2.xsd"> 
+
+    <bean id="dcenterCommonPropertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+        <property name="locations">
+            <list>
+                <value>file:${global.config.path}/cbsadmin/cbsadmin-business/jdbc.write.properties</value>
+                <value>file:${global.config.path}/cbsadmin/cbsadmin-business/jdbc.read.properties</value>
+                 <value>file:${global.config.path}/sms/smsclient.properties</value>
+                  <value>file:${global.config.path}/file/file-uploader.properties</value>
+                  <value>file:${global.config.path}/cache/redis.properties</value>
+                  <value>file:${global.config.path}/apppush/apppush.properties   </value>
+             
+                  <value>file:${global.config.path}/cache/redis.properties</value>
+                   <value>file:${global.config.path}/cbsadmin/cbsadmin-business/alipay.properties
+                </value>
+                <value>file:${global.config.path}/cbsadmin/cbsadmin-business/wechatpay.properties
+                </value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- 开启自动扫描 -->
+    <context:component-scan base-package="com.people.cbsadmin.business"></context:component-scan>
+    <!-- 启用注解-->
+    <context:annotation-config/>
+    <!-- false 接口代理 true 继承类代理 -->
+    <aop:aspectj-autoproxy proxy-target-class="false"/>
+    <tx:annotation-driven/>
+
+    <!-- 开启这个配置，spring才能识别@Scheduled注解   -->
+    <task:annotation-driven />
+
+    <!-- 写数据源配置-->
+    <bean id="dataSourceWrite" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"
+          lazy-init="true">
+        <property name="driverClassName">
+            <value>${jdbc.write.driverClassName}</value>
+        </property>
+        <property name="url">
+            <value>${jdbc.write.url}</value>
+        </property>
+        <property name="username">
+            <value>${jdbc.write.username}</value>
+        </property>
+        <property name="password">
+            <value>${jdbc.write.password}</value>
+        </property>
+        <property name="minIdle">
+            <value>${jdbc.write.minIdle}</value>
+        </property>
+        <property name="initialSize">
+            <value>${jdbc.write.initialSize}</value>
+        </property>
+        <property name="maxActive">
+            <value>${jdbc.write.maxActive}</value>
+        </property>
+        <property name="maxIdle">
+            <value>${jdbc.write.maxIdle}</value>
+        </property>
+        <property name="maxWait">
+            <value>${jdbc.write.maxWait}</value>
+        </property>
+        <property name="defaultAutoCommit">
+            <value>${jdbc.write.defaultAutoCommit}</value>
+        </property>
+        <property name="removeAbandonedTimeout">
+            <value>${jdbc.write.removeAbandonedTimeout}</value>
+        </property>
+        <property name="testOnBorrow">
+            <value>${jdbc.write.testOnBorrow}</value>
+        </property>
+        <property name="testOnReturn">
+            <value>${jdbc.write.testOnReturn}</value>
+        </property>
+        <property name="validationQuery">
+            <value>${jdbc.write.validationQuery}</value>
+        </property>
+        <property name="validationQueryTimeout">
+            <value>${jdbc.write.validationQueryTimeout}</value>
+        </property>
+        <property name="testWhileIdle">
+            <value>${jdbc.write.testWhileIdle}</value>
+        </property>
+    </bean>
+
+    <!-- 读数据源配置-->
+    <bean id="dataSourceRead" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"
+          lazy-init="true">
+        <property name="driverClassName">
+            <value>${jdbc.read.driverClassName}</value>
+        </property>
+        <property name="url">
+            <value>${jdbc.read.url}</value>
+        </property>
+        <property name="username">
+            <value>${jdbc.read.username}</value>
+        </property>
+        <property name="password">
+            <value>${jdbc.read.password}</value>
+        </property>
+        <property name="minIdle">
+            <value>${jdbc.read.minIdle}</value>
+        </property>
+        <property name="initialSize">
+            <value>${jdbc.read.initialSize}</value>
+        </property>
+        <property name="maxActive">
+            <value>${jdbc.read.maxActive}</value>
+        </property>
+        <property name="maxIdle">
+            <value>${jdbc.read.maxIdle}</value>
+        </property>
+        <property name="maxWait">
+            <value>${jdbc.read.maxWait}</value>
+        </property>
+        <property name="defaultAutoCommit">
+            <value>${jdbc.read.defaultAutoCommit}</value>
+        </property>
+        <property name="removeAbandonedTimeout">
+            <value>${jdbc.read.removeAbandonedTimeout}</value>
+        </property>
+        <property name="testOnBorrow">
+            <value>${jdbc.read.testOnBorrow}</value>
+        </property>
+        <property name="testOnReturn">
+            <value>${jdbc.read.testOnReturn}</value>
+        </property>
+        <property name="validationQuery">
+            <value>${jdbc.read.validationQuery}</value>
+        </property>
+        <property name="validationQueryTimeout">
+            <value>${jdbc.read.validationQueryTimeout}</value>
+        </property>
+        <property name="testWhileIdle">
+            <value>${jdbc.read.testWhileIdle}</value>
+        </property>
+    </bean>
+
+    <!--事务配置-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="cbsadminReadWriteDataSource"/>
+    </bean>
+
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <!-- 方法后缀是WithTx加入事务 -->
+            <tx:method name="*WithTx" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <!-- <bean id="memcacheExtend" class="com.shendi.cache.MemcacheExtend" factory-method="getInstance">
+        <constructor-arg>
+            <value>
+                file:${global.config.path}/cbsadmin/cbsadmin-business/cbsadmin-business-memcache.xml
+            </value>
+        </constructor-arg>
+    </bean> -->
+
+    <!-- <bean id="cache" class="com.odianyun.cache.CacheProxy" factory-method="getCacheProxy" factory-bean="memcacheExtend">
+        <constructor-arg>
+            <value>cbsadmin</value>
+        </constructor-arg>
+    </bean> -->
+    
+    
+    <!-- 读写切换数据源 -->
+    <bean id="cbsadminReadWriteDataSource"
+        class="com.people2000.common.base.datasource.ReadWriteDataSource">
+        <!--默认数据源 -->
+        <property name="defaultTargetDataSource" ref="dataSourceWrite" />
+        <!--配置读写分离数据源 -->
+        <property name="targetDataSources">
+            <map>
+                <!--写数据源 -->
+                <entry key="write" value-ref="dataSourceWrite" />
+                <!--读数据源 -->
+                <entry key="read" value-ref="dataSourceRead" />
+            </map>
+        </property>
+    </bean>
+	<bean id="cbsadminSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="cbsadminReadWriteDataSource"/>
+		<property name="mapperLocations">
+			<list>
+				<value>classpath*:mybatis/common.xml</value>
+				<value>classpath*:mybatis/*.xml</value>
+				<value>classpath*:mybatis/ext/*.xml</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="cbsadminScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="sqlSessionFactoryBeanName" value="cbsadminSessionFactory"/>
+		<property name="basePackage" value="com.people.cbsadmin.business.dao"/>
+	</bean>
+
+
+	 <!--切换数据源的AOP类 -->
+    <bean id="cbsadminDataSourceAop" class="com.people2000.common.base.datasource.DataSourceAop" />
+    <!--事务配置在写的切面上,顺序必须位于dataSourceAop之后 -->
+	<!--事务配置在写的切面上,顺序必须位于dataSourceAop之后-->
+	<aop:config>
+		<!--写方法的切面配置-->
+		<aop:pointcut id="cbsadminWritePointCut" expression="execution(* com.people.cbsadmin.business.write.manage.impl..*.*(..))"/>
+		<aop:pointcut id="cbsadminReadPointCut" expression="execution(* com.people.cbsadmin.business.read.manage.impl..*.*(..))"/>
+		<!--写方法的事务配置 顺序必须位于merchantReadPointCut之后-->
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="cbsadminWritePointCut" order="1"/>
+		<!--写数据源切换的切面配置-->
+		<aop:aspect ref="cbsadminDataSourceAop" order="1">
+			<aop:before pointcut-ref="cbsadminWritePointCut" method="beforeWriteMethod"/>
+			<aop:after pointcut-ref="cbsadminWritePointCut" method="afterExecution"/>
+		</aop:aspect>
+		
+		<!--读方法的切面配置-->
+		<aop:aspect ref="cbsadminDataSourceAop" order="0">
+			<aop:before pointcut-ref="cbsadminReadPointCut" method="beforeReadMethod"/>
+			<aop:after pointcut-ref="cbsadminReadPointCut" method="afterExecution"/>
+		</aop:aspect>
+	</aop:config>
+	
+	
+	
+	<bean id="springUtils" class="com.people2000.user.client.utils.SpringUtils"></bean>
+
+    <bean id="redisClient" class="com.people2000.common.cache.redis.RedisClient">
+        <property name="configString">
+            <value>${redis.config}</value>
+        </property>
+    </bean>
+
+    <bean id="cacheProxy" class="com.people2000.common.cache.storage.RedisCacheProxy">
+        <property name="client" ref="redisClient">
+        </property>
+    </bean>
+     <!-- 图片上传：阿里云OSS上传文件 -->
+   <!--  <bean id="fileUploader" class="com.people2000.common.file.OSSImageUploadUtil">
+        <property name="ENDPOINT">
+            <value>${fileUploader.ENDPOINT}</value>
+        </property>
+        <property name="BACKET_NAME">
+            <value>${fileUploader.BACKET_NAME}</value>
+        </property>
+        <property name="ACCESS_KEY_ID">
+            <value>${fileUploader.ACCESS_KEY_ID}</value>
+        </property>
+        <property name="ACCESS_KEY_SECRET">
+            <value>${fileUploader.ACCESS_KEY_SECRET}</value>
+        </property>
+        <property name="FOLDER">
+            <value>${fileUploader.FOLDER}</value>
+        </property>
+    </bean> -->
+<!--  图片上传到文件服务器 -->
+     <bean id="fileUploader" class="com.people2000.common.file.FileUploader">
+        <property name="ip">
+            <value>${fileUploader.ip}</value>
+        </property>
+        <property name="shareName">
+            <value>${fileUploader.shareName}</value>
+        </property>
+        <property name="domain">
+            <value>${fileUploader.domain}</value>
+        </property>
+        <property name="username">
+            <value>${fileUploader.user}</value>
+        </property>
+        <property name="password">
+            <value>${fileUploader.password}</value>
+        </property>
+    </bean> 
+</beans>

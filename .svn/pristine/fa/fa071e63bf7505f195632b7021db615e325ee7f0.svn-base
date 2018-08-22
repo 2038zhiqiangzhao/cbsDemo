@@ -1,0 +1,11 @@
+.attrValueDiv {margin-top: 15px;margin-left: 10px;border: 1px groove;width: 210px;height: 230px;float: left;}
+.attrValueDiv label {margin-left: 5px;}
+.attrValueDiv input[type="text"] {margin-top: 5px;width: 80px;height: 23px;}
+.attrValueInput {margin-left: 5px;}
+.formDiv {width: 98%;}
+button[type="button"] {margin-left: 10px;width: 100px;height: 30px;}
+#btnList {margin-left: 20px;margin-top: 5px;padding: 5px 0px 0px;}
+#btnList button {width: 85px;height: 25px;text-align: center;}
+.btnLabel {margin-top: 3px;font-size: 20px;color: blue;}
+.btnLabel:HOVER {color: green;cursor: pointer;}
+.divAttrValueCls {overflow: auto;height: 200px;}

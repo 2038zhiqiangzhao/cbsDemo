@@ -1,0 +1,47 @@
+package com.people2000.common.base.page;
+
+public class Pagination {
+	private int currentPage = 1;
+	private int itemsPerPage = 10;
+
+	public Pagination() {
+
+	}
+
+	public Pagination(int currentPage, int itemsPerPage) {
+		this.currentPage = currentPage;
+		this.itemsPerPage = itemsPerPage;
+	}
+
+	public int getStartItem() {
+		int start = (this.currentPage - 1) * this.itemsPerPage;
+		if (start < 0) {
+			start = 0;
+		}
+		return start;
+	}
+
+	public static int getStartItem(int currentPage, int itemsPerPage) {
+		int start = (currentPage - 1) * itemsPerPage;
+		if (start < 0) {
+			start = 0;
+		}
+		return start;
+	}
+
+	public int getCurrentPage() {
+		return this.currentPage;
+	}
+
+	public void setCurrentPage(int currentPage) {
+		this.currentPage = currentPage;
+	}
+
+	public int getItemsPerPage() {
+		return this.itemsPerPage;
+	}
+
+	public void setItemsPerPage(int itemsPerPage) {
+		this.itemsPerPage = itemsPerPage;
+	}
+}

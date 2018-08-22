@@ -1,0 +1,151 @@
+<div class="wrapper-md">
+
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<div class="form-group">
+				<div class="col-sm-4">
+					<button type="button" class="btn btn-sm btn-info"
+						ng-click="addOption()">新增</button>
+					<button type="button" class="btn btn-sm btn-info"
+						ng-click="deleteBatchOption()">删除</button>
+				</div>
+			</div>
+		</div>
+		<div class=" portlet-body flip-scroll">
+			<table
+				class="table-bordered table-striped table-condensed flip-content">
+				<thead>
+					<tr>
+						<th style="width: 20px"><label class="i-checks m-b-none">
+								<input type="checkbox" ng-click="selectAll()"
+								ng-model="checkAll"><i></i>
+						</label></th>
+						<th nowrap="nowrap" style="width: 50px">序号</th>
+						<th nowrap="nowrap">活动名称</th>
+						<th nowrap="nowrap">时间</th>
+						<th nowrap="nowrap">活动地点</th>
+						<th nowrap="nowrap">报名费</th>
+						<th nowrap="nowrap">定时发布</th>
+						<th nowrap="nowrap">管理员授权码</th>
+						<th nowrap="nowrap">发布状态</th>
+						<th nowrap="nowrap">活动状态</th>
+						<th nowrap="nowrap">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="record in records track by $index">
+						<td><label class="i-checks m-b-none"> <input
+								type="checkbox" ng-model="record.checked"
+								ng-click="selectItem(record)"><i></i>
+						</label></td>
+						<td>{{record.id}}</td>
+						<td
+							style="max-width: 80px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{record.activityName}}</td>
+						<td>{{record.activityTime | date:'yy/MM/dd HH:mm-HH:mm'}}</td>
+						<td>{{record.activityPlace}}</td>
+						<td>{{record.registrationFee}}</td>
+						<td>{{record.timeInterval | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+						<td><img ng-src="{{record.authCode}}"
+							ng-click="imageLarge(record)" style="width: 50px; height: 50px;"
+							ng-if="record.authCode"> </img> 
+							<span class="help-block m-b-none"  style="width:30%; height:50%;">点击当前页面放大</span>
+						</td>
+
+						<td>{{statusDescs[record.publishState]}}</td>
+						<td>{{activityStateDescs[record.activityState]}}</td>
+						<td>
+							<button class="btn btn-sm btn-info" ng-click="editOption(record)">编辑</button>
+							<button class="btn btn-sm btn-info"
+								ng-click="publishOption(record, 1)"
+								ng-if="record.publishState == 0">发布</button>
+							<button class="btn btn-sm btn-info"
+								ng-click="publishOption(record, 0)"
+								ng-if="record.publishState == 1">下架</button>
+							<button class="btn btn-sm btn-info"
+								ng-click="oderLookOption(record)">订单管理</button>
+							<button class="btn btn-sm btn-info"
+								ng-click="oderAdminOption(record)">活动组织者</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<footer class="panel-footer">
+			<pagination total-items="totalItems"
+				ng-model="queryParams.currentPage"
+				items-per-page="queryParams.itemsPerPage" previous-text="上一页"
+				next-text="下一页" page-sizes="pageSizes" edit-page="editPage"
+				ng-change="getData()"></pagination>
+		</footer>
+
+	</div>
+</div>
+
+<!-- MODEL 组织者信息框 -->
+<div class="modal fade ng-scope in" id="serviceDiv"
+	style="display: none;" false" data-backdrop="static" tabindex="-1"
+	role="dialog" aria-labelledby="" aria-hidden="true">
+	<div class="modal-dialog ">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="">
+					活动组织者 <span class="close-popup" data-dismiss="modal"
+						ng-click="closeDialog()"></span>
+				</h4>
+			</div>
+
+
+			<div contenteditable="true"
+				class="col-md-40 portlet-body flip-scroll">
+				<table
+					class="table-bordered table-striped table-condensed flip-content">
+					<thead>
+						<tr>
+							<th nowrap="nowrap" style="width: 50px">序号</th>
+							<th nowrap="nowrap">用户名称</th>
+							<th nowrap="nowrap">手机号</th>
+							<th nowrap="nowrap">头像</th>
+						</tr>
+					</thead>
+					<tbody>
+
+						<tr ng-repeat="record in resDescs track by $index">
+							<td>{{record.id}}</td>
+							<td>{{record.adminName}}</td>
+							<td>{{record.adminPhone}}</td>
+							<td><img ng-src="{{record.adminHeadUrl}}"
+								style="width: 50px; height: 50px;" ng-if="record.adminHeadUrl"></img></td>
+						</tr>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+
+		</div>
+	</div>
+</div>
+
+
+
+
+<!-- MODEL 二维码弹出框 -->
+<div class="modal fade ng-scope in" id="imageDiv" style="display: none;"
+	false" data-backdrop="static" tabindex="-1" role="dialog"
+	aria-labelledby="" aria-hidden="true" >
+	<div class="modal-dialog" >
+		<div class="modal-content" style="width:30%; height:50%;">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+					<span class="close-popup" data-dismiss="modal"
+						ng-click="closeDialogimage()"></span>
+			</div>
+			<img ng-src="{{image}}"
+				style="width: 200px; height: 200px;" >
+			</img>
+		</div>
+	</div>
+</div>

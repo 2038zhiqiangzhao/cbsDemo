@@ -1,0 +1,166 @@
+a {
+  color:#53697E;
+}
+.badge {
+  background-color: #F50850;
+}
+
+/* frank.luo */
+.nav-pills>li.active>a,
+.nav-pills>li.active>a:focus,
+.nav-pills>li.active>a:hover {
+  color: #fff;
+  background-color: #3399FE;
+}
+
+.navbar-inverse {
+  background-color: #3399FE;
+}
+.navbar-inverse .navbar-nav > li > a {
+  color: #fff;
+}
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus {
+  color: #fff;
+  background-color: #0171E0;
+}
+.navbar-inverse .navbar-toggle:hover,
+.navbar-inverse .navbar-toggle:focus {
+  background-color: #0171E0;
+}
+.navbar-inverse .navbar-toggle .icon-bar {
+  background-color: #fff;
+}
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav > .open > a:focus {
+  color: #fff;
+  background-color: #0171E0;
+}
+.breadcrumb a{
+  color: #53697e;
+}
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+    color: #fff;
+    background-color: #3399FE;
+    border-color: #3399FE;
+}
+body{
+  background-color: #fff;
+}
+.page-container .sidebar{
+  background-color: #334049;
+  border-right: none;
+}
+/* 左侧菜单样式 */
+.tree-nav a{
+  color: #BABBBD;
+}
+.tree-nav a:hover{
+  color: #fff !important;
+}
+.tree-nav a.active{
+  color: #fff !important;
+  background-color: #3399FE;
+}
+.tree-nav .level0 > li > a{
+  color: #BABBBD;
+}
+.tree-nav i{
+  background-image: url('/images/zhuGeNew/icons.png');
+}
+.arrow.right{
+  border-left: 4px solid #BABBBD;
+}
+.arrow.bottom{
+  border-top: 4px solid #BABBBD;
+}
+.tree-nav a:hover .arrow.right{
+  border-left-color: #fff;
+}
+.tree-nav a:hover .arrow.bottom{
+  border-top-color: #fff;
+}
+.tree-nav a.active .arrow.right{
+  border-left-color: #fff;
+}
+.tree-nav a.active .arrow.bottom{
+  border-top-color: #fff;
+}
+/* 左侧菜单样式结束 */
+.ifcontent{
+  color: #546776;
+}
+.ifcontent .container-fluid{
+  background-color: #fff;
+}
+fieldset[disabled] .form-control {
+  background-color: #fafafa;
+}
+/* 按钮 */
+.btn-primary {
+  background-color: #3399FE;
+}
+.btn-guide{
+  color: #fff;
+  background-color: #5cadfe;
+}
+.btn-primary:hover,
+.btn-guide:hover{
+  background-color: #2f8ce7;
+}
+.btn-guide:active,
+.btn-guide.active,
+.btn-primary:active,
+.btn-primary.active{
+  color: #fff;
+  background-color: #2064a7;
+}
+.btn-primary:focus{
+  background-color: #3399FE;
+}
+.btn-guide:focus{
+  color: #fff;
+  background-color: #5cadfe;
+}
+.progress .progress-bar{
+  background-color: #3399FE;
+}
+.btn-link{
+  color: #3399FE;
+}
+.btn-info{
+  background-color: #3399FE; 
+}
+.btn-info:hover{
+  background-color: #2e8be7; 
+}
+.btn-info:active,
+.btn-info.active{
+  background-color: #277bcd;
+}
+.btn-info:focus{
+  background-color: #3399FE;
+}
+.modal-dialog .modal-header {
+  color: #fff;
+  background-color: #3399FE !important;
+}
+.modal-dialog .panel-heading{
+  color: #fff;
+  background-color: #3399FE;
+}
+.table-title{
+  color: #3399FE;
+  border-bottom: 2px solid #3399FE;
+}
+/* 底部信息 */
+.footer {
+  background-color: #E4E9EF;
+}

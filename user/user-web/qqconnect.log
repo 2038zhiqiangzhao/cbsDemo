@@ -1,0 +1,5 @@
+5818 DEBUG [2018-06-25 11:08:42]  Searching for key 'spring.liveBeansView.mbeanDomain' in [systemProperties]
+5819 DEBUG [2018-06-25 11:08:42]  Searching for key 'spring.liveBeansView.mbeanDomain' in [systemEnvironment]
+5819 DEBUG [2018-06-25 11:08:42]  Could not find key 'spring.liveBeansView.mbeanDomain' in any property source. Returning [null]
+5819 DEBUG [2018-06-25 11:08:42]  Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+5819 INFO  [2018-06-25 11:08:42]  Root WebApplicationContext: initialization completed in 5785 ms

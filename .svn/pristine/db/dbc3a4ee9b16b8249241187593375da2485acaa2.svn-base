@@ -1,0 +1,490 @@
+<div class="wrapper-md bg-light b-b headerPadding" id="container">
+    <h1 class="m-n font-thin h3">
+        <a href="">部门-员工</a>&gt;<a href="">部门节点及员工管理</a>
+    </h1>
+</div>
+
+<style type="text/css">
+    .skin {
+        width : 60px;
+        height:70px;
+        border : 1px solid #c0c0c0;
+        padding : 2px;
+        text-align: center;
+        visibility : hidden;
+        position : absolute;
+        font-size: 12px;
+        font-family: Verdana, Arial, Helvetica, AppleGothic, sans-serif;
+        background-color: #fafafa;
+    }
+
+    #menu.menuitems {
+        margin : 1px 0;
+    }
+
+    #menu.menuitems a {
+        text-decoration : none;
+    }
+
+    #menu.menuitems:hover {
+        background-color : #f0f3f4;
+    }
+</style>
+<div class="wrapper-md">
+    <div class="col-sm-3  b-b b-l b-r b-t"
+         style="background: #fff; padding: 20px 0">
+        <div style="margin-left:10px;">
+            <a class="input-group">
+                <input class="form-control ng-pristine ng-valid" ng-model="input.keyword" ng-change="changeColor('treeDemo','name',input.keyword)" style="width: 80%;" type="text">
+	         	<span class="input-group-btn" style="float:left">
+		         	<button type="submit" class="btn btn-default">
+		         		<i class="glyphicon glyphicon-search fa fa-search"></i>
+		         	</button>
+	         	</span>
+            </a>
+        </div>
+        <div>
+            <ul id="treeDemo" class="ztree">
+            </ul>
+        </div>
+        <div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-11" style="margin-top:20px">
+                <div class="col-sm-4">
+                    <button class="btn btn-sm btn-info " ng-click="oneOrgAdd()">添加部门</button>
+                </div>
+                <div class="col-sm-4">
+                    <button class="btn btn-sm btn-info " ng-click="oneOrgedit()">编辑部门</button>
+                </div>
+                <div class="col-sm-4">
+                    <button class="btn btn-sm btn-info " ng-click="oneOrgdel()">删除部门</button>
+                </div>
+            </div>
+        </div>
+        <div id="menu" class="skin" style="visibility:hidden">
+            <div class="menuitems">
+                <a href="javascript:void(0);" ng-click="oneOrgAdd2()">添加部门</a>
+            </div>
+            <div class="menuitems">
+                <a href="javascript:void(0);" ng-click="oneOrgedit2()">编辑部门</a>
+            </div>
+            <div class="menuitems">
+                <a href="javascript:void(0);" ng-click="oneOrgdel2()">删除部门</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-9">
+        <div class="panel panel-default" id="tabContent1">
+            <div class="panel-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">姓名:</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" ng-model="queryCondition.identityCardName">
+                        </div>
+                        <label class="col-sm-2 control-label">用户名:</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" ng-model="queryCondition.username">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">手机号:</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" ng-model="queryCondition.mobile">
+                        </div>
+                        <!-- <label class="col-sm-2 control-label">岗位:</label>
+                        <div class="col-sm-3">
+                            <select class="form-control" ng-model="queryCondition.positionId">
+                                <option value="">全部</option>
+                                <option ng-repeat="x in positionList" value="{{x.id}}">{{x.positionName}}</option>
+                            </select>
+                        </div> -->
+                    </div>
+                    <div class="form-group" function-code-check="30OU0105">
+                    	<label class="col-sm-2 control-label">岗位:</label>
+                        <div class="col-sm-3">
+                            <select class="form-control" ng-model="queryCondition.positionId">
+                                <option value="">全部</option>
+                                <option ng-repeat="x in positionList" value="{{x.id}}">{{x.positionName}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-info" ng-disabled="queryDepartmentInfoDisabled" ng-click="queryTransDepartment()">查询</button>
+                        <button type="reset" class="btn btn-info" ng-click="resetInfo()">重置</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="col-sm-12 m-b-xs">
+                    <div class="col-sm-2">
+                        <button class="btn btn-info" ng-click="orgChange()">移动至</button>
+                    </div>
+                    <div class="col-sm-5">
+                        <input class="form-control" id="citySel" type="text" readonly
+                               ng-click="showMenu($event);$event.stopPropagation();" placeholder="选择部门" ng-model="orgNameChange" style="cursor:default;width: 300px;"/>
+                        <input ng-show="false" class="form-control" type="text" ng-model="orgChangeInfo.orgId">
+
+                        <div id="menuContent" class="menuContent" ng-click="$event.stopPropagation();"
+                             style="display:none; position: absolute">
+                            <ul id="treeDemo2" class="ztree" style="margin-top: 0;width: 300px; border: 1px solid #617775; background: #FFF; height: 360px; overflow-y: scroll; overflow-x: auto;"></ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-3" style="margin-left:40px;">
+                        <button class="btn btn-info" ng-click="addgongyuan()">添加员工</button>
+                    </div>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <table
+                        class=" table-bordered table-striped table-condensed flip-content col-xs-12">
+                    <thead>
+                    <tr>
+                        <th><label class="i-checks m-b-none"><input id="topCheckBox" type="checkbox" ng-click="selectAll()"><i></i></label> 全选
+                        </th>
+                        <th>用户名</th>
+                        <th>姓名</th>
+                        <th>手机号</th>
+                        <th>部门</th>
+                        <th function-code-check="30OU0105">岗位</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="e in orgUserList">
+                        <th><label class="i-checks m-b-none"><input type="checkbox" name="userList" value="{{e.userId}}"><i></i></label></th>
+                        <!-- <td class="text-center" ng-show=false>{{e.userId}}</td> -->
+                        <td>{{e.username}}</td>
+                        <td>{{e.identityCardName}}</td>
+                        <td>{{e.mobile}}</td>
+                        <td>{{e.orgName}}</td>
+                        <td function-code-check="30OU0105">{{e.positionName}}</td>
+                        <td>{{e.isAvailableValue}}</td>
+                        <td>
+                            <button class="btn btn-sm btn-info" data-toggle="modal"
+                                    data-target="#editForm" ng-click="initEdit(e.userId)">编辑
+                            </button>
+                            <button class="btn btn-sm btn-info" ng-click="doorCardEdit(e.userId)">门禁卡
+                            </button>
+                            <button class="btn btn-sm btn-info" ng-click="serviceSpace(e.userId)">服务区
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <footer class="panel-footer">
+                <pagination total-items="totalItems1" ng-model="currentPage1"
+                            items-per-page="itemsPerPage1" previous-text="上一页" next-text="下一页"
+                            page-sizes="pageSizes1" edit-page="editPage1"
+                            ng-change="getData(currentPage1,itemsPerPage1)"></pagination>
+            </footer>
+        </div>
+    </div>
+</div>
+
+<!-- 部门弹框 -->
+<div class="modal fade" id="orgDialog1" data-keyboard="false"
+     data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby=""
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-hidden="true"></button>
+                <h4 class="modal-title" >
+                    新增部门 <span class="close-popup" data-dismiss="modal"></span>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">上级部门</label>
+                        <div class="col-sm-8">
+                            <span class="help-block m-b-none">{{newPOrg}}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">上级部门编码</label>
+                        <div class="col-sm-8">
+                            <span class="help-block m-b-none">{{newPOrgCode}}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">部门代码</label>
+
+                        <div class="col-sm-8">
+                            <input ng-show="false" type="text" class="form-control" ng-model="orgNewInfo.parentCode">
+                            <input type="text" class="form-control" ng-model="orgNewInfo.code">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">部门名称</label>
+
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control"ng-model="orgNewInfo.orgName">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                </button>
+                <button type="button" class="btn btn-info" ng-disabled="addDisabled"  ng-click="saveNewOrg()">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 部门弹框 -->
+<div class="modal fade" id="orgDialog2" data-keyboard="false"
+     data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby=""
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-hidden="true"></button>
+                <h4 class="modal-title" >
+                    编辑部门 <span class="close-popup" data-dismiss="modal"></span>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">上级部门</label>
+                        <div class="col-sm-8">
+                            <span class="help-block m-b-none">{{editPOrg}}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">上级部门编码</label>
+                        <div class="col-sm-8">
+                            <span class="help-block m-b-none">{{editPOrgCode}}</span>
+                        </div>
+                        <input ng-show="false" type="text" class="form-control" ng-model="orgEditInfo.parentCode">
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">部门代码</label>
+                        <input ng-show="false" type="text" class="form-control" ng-model="orgEditInfo.id">
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" ng-model="orgEditInfo.code">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">部门名称</label>
+
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control"ng-model="orgEditInfo.orgName">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                </button>
+                <button type="button" class="btn btn-info" ng-disabled="editDisabled" ng-click="saveEditOrg()">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="comfirmDeleteOrgModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="panel panel-default" style="margin-bottom:0px;padding-bottom:0px;">
+                <div class="panel-body" >
+                    <div class="row" style="margin-bottom:20px;">
+                        &nbsp;&nbsp;&nbsp;&nbsp;删除操作不可恢复,确认删除该部门?
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <button class="btn btn-info" type="button" style="padding: 4px 20px;margin-right:15px;" ng-disabled="delDisabled"  ng-click="delOneOrg()">确定</button>
+                            <button class="btn btn-info" type="button" style="padding: 4px 20px;margin-right:15px;" data-dismiss="modal" aria-hidden="true">返回</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="editForm" data-keyboard="false"
+     data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby=""
+     aria-hidden="true">
+    <div class="modal-dialog w80">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-hidden="true"></button>
+                <h4 class="modal-title" >
+                    账户详情 <span class="close-popup" data-dismiss="modal"></span>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <tabset class="tab-container clearfix" style="overflow:hidden;">
+                    <tab>
+                        <tab-heading>基本信息</tab-heading>
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <form class="form-horizontal" role="form">
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">账号状态</label>
+                                            <div class="col-sm-6">
+                                                <select class="form-control" ng-model="editUser.isAvailable">
+                                                    <option value="">请选择</option>
+                                                    <option value="1">正常</option>
+                                                    <option value="0">停用</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">用户名:</label>
+                                            <div class="col-sm-9">
+                                                <span class="help-block m-b-none">{{editUser.username}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">姓名:</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control" ng-model="editUser.identityCardName">
+                                            </div>
+                                        </div>
+                                        <!-- <div class="form-group">
+                                            <label class="col-sm-2 control-label">注册时间:</label>
+                                            <div class="col-sm-9">
+                                                <span class="help-block m-b-none">{{editUser.createTime | date : 'yyyy-MM-dd HH:mm:ss'}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">注册IP:</label>
+                                            <div class="col-sm-9">
+                                                <span class="help-block m-b-none">{{editUser.createUserip}}</span>
+                                            </div>
+                                        </div> -->
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">最后登录时间:</label>
+                                            <div class="col-sm-9">
+                                                <span class="help-block m-b-none">{{editUser.lastLoginTime | date : 'yyyy-MM-dd HH:mm:ss'}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">最后登录IP:</label>
+
+                                            <div class="col-sm-9">
+                                                <span class="help-block m-b-none">{{editUser.lastLoginIp}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">部门：</label>
+                                            <div class="col-sm-6">
+                                                <select class=" form-control" ng-model="editUser.orgId">
+                                                    <option ng-repeat="x in orgList" value="{{x.id}}">{{x.orgName}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" function-code-check="30OU0105">
+                                            <label class="col-sm-2 control-label">岗位：</label>
+                                            <div class="col-sm-6">
+                                                <select class="form-control" ng-model="editUser.positionId">
+                                                    <option ng-repeat="x in positionList" value="{{x.id}}">{{x.positionName}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">手机号:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" class="form-control" ng-model="editUser.mobile">
+                                                </div>
+                                                <div class="cos-sm-4">
+                                                    <button type="button" class="btn btn-info" ng-click="resetPassWord()">重置新密码</button>
+                                                </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">邮箱:</label>
+
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control" ng-model="editUser.email">
+                                            </div>
+                                            <div class="col-sm-6" colspan="9" align="center" width="100%" ng-show="hasEmail">
+                                                <font color="#FF0000">提示:该邮箱地址已存在!</font>
+                                            </div>
+
+                                            <!--<div class="col-sm-6">
+                                                <input type="text" class="form-control" ng-model="editUser.email" ng-change="checkEmail()" ng-blur="checkEmail()">
+                                            </div>
+                                            <div class="col-sm-6" colspan="9" align="center" width="100%" ng-show="hasEmail">
+												<font color="#FF0000">提示:该邮箱地址已存在!</font>
+											</div>-->
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group text-center">
+                                        <button type="submit" class="btn btn-info w-md" ng-click="updateUser()" ng-disabled="saveCheckDisabled">保存</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </tab>
+                    <tab function-code-check="30OU03">
+                        <tab-heading> 角色</tab-heading>
+                        <div class="clearfix">
+                            <div class="col-sm-5">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <form class="form-horizontal" role="form">
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">已有角色</label>
+                                                <div class="col-sm-9">
+                                                    <select id="ownRoleSelect" style="height: 264px;" class="form-control" multiple ng-model="ownRoleChecks">
+                                                        <option ng-repeat="x in ownRoleList" value="{{x.id}}">{{x.name}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-1">
+                                <button class="btn btn-info" ng-click="addRole()">添加</button><br/><br/>
+                                <button class="btn btn-info" ng-click="deleteRole()">删除</button><br/><br/>
+                                <button class="btn btn-info" ng-click="saveRole()">保存</button>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <form class="form-horizontal" role="form">
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">可分配角色</label>
+                                                <div class="row">
+                                                    <div class="col-sm-5">
+                                                        <input type="text" class="form-control" ng-model="queryRoleContent.name">
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <button class="btn" ng-click="queryRole()">搜索</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">可分配角色</label>
+                                                <div class="col-sm-9">
+                                                    <select id="allRoleSelect" class="form-control"  style="height: 202px;"
+                                                            multiple ng-model="allRoleChecks">
+                                                        <option ng-repeat="x in roleList" value="{{x.id}}">{{x.name}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </tab>
+            </div>
+        </div>
+    </div>
+</div>

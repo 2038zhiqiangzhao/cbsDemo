@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.people.cbsadmin.business.dao.CommunityActivityOrderMapper">
+  <resultMap id="BaseResultMap" type="com.people.cbsadmin.model.po.CommunityActivityOrder">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="order_code" jdbcType="VARCHAR" property="orderCode" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_phone" jdbcType="INTEGER" property="userPhone" />
+    <result column="order_source" jdbcType="INTEGER" property="orderSource" />
+    <result column="activity_name" jdbcType="VARCHAR" property="activityName" />
+    <result column="activity_time" jdbcType="VARCHAR" property="activityTime" />
+    <result column="activity_place" jdbcType="VARCHAR" property="activityPlace" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="total_amount" jdbcType="DECIMAL" property="totalAmount" />
+    <result column="pay_way" jdbcType="INTEGER" property="payWay" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="is_entry" jdbcType="SMALLINT" property="isEntry" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="is_deleted" jdbcType="INTEGER" property="isDeleted" />
+    <result column="is_available" jdbcType="INTEGER" property="isAvailable" />
+    <result column="create_user_id" jdbcType="BIGINT" property="createUserId" />
+    <result column="update_user" jdbcType="BIGINT" property="updateUser" />
+    <result column="bar_num" jdbcType="INTEGER" property="barNum" />
+    <result column="bar_area" jdbcType="VARCHAR" property="barArea" />
+    <result column="refund_state" jdbcType="INTEGER" property="refundState" />
+    <result column="isPlus" jdbcType="INTEGER" property="isplus" />
+    <result column="out_state" jdbcType="INTEGER" property="outState" />
+    <result column="out_code" jdbcType="INTEGER" property="outCode" />
+    <result column="main_type" jdbcType="INTEGER" property="mainType" />
+    <result column="pay_state" jdbcType="INTEGER" property="payState" />
+    <result column="pay_time" jdbcType="TIMESTAMP" property="payTime" />
+    <result column="reserve_name" jdbcType="VARCHAR" property="reserveName" />
+    <result column="reserve_phone" jdbcType="VARCHAR" property="reservePhone" />
+    <result column="community_activity_id" jdbcType="BIGINT" property="communityActivityId" />
+    <result column="surface_picture" jdbcType="VARCHAR" property="surfacePicture" />
+    <result column="qr_url" jdbcType="VARCHAR" property="qrUrl" />
+    <result column="is_admin" jdbcType="INTEGER" property="isAdmin" />
+    <result column="is_sign" jdbcType="INTEGER" property="isSign" />
+    <result column="sign_time" jdbcType="TIMESTAMP" property="signTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, order_code, user_name, user_phone, order_source, activity_name, activity_time, 
+    activity_place, create_time, total_amount, pay_way, status, is_entry, update_time, 
+    is_deleted, is_available, create_user_id, update_user, bar_num, bar_area, refund_state, 
+    isPlus, out_state, out_code, main_type, pay_state, pay_time, reserve_name, reserve_phone,
+    community_activity_id,surface_picture,qr_url,is_admin,is_sign,sign_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from community_activity_order
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  
+  
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from community_activity_order
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.people.cbsadmin.model.po.CommunityActivityOrder">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into community_activity_order (order_code, user_name, user_phone, 
+      order_source, activity_name, activity_time, 
+      activity_place, create_time, total_amount, 
+      pay_way, status, is_entry, 
+      update_time, is_deleted, is_available, 
+      create_user_id, update_user, bar_num, 
+      bar_area, refund_state, isPlus, 
+      out_state, out_code, main_type, 
+      pay_state, pay_time, reserve_name, 
+      reserve_phone,community_activity_id,surface_picture,qr_url,is_admin,is_sign,sign_time)
+    values (#{orderCode,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{userPhone,jdbcType=INTEGER}, 
+      #{orderSource,jdbcType=INTEGER}, #{activityName,jdbcType=VARCHAR}, #{activityTime,jdbcType=VARCHAR}, 
+      #{activityPlace,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{totalAmount,jdbcType=DECIMAL}, 
+      #{payWay,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{isEntry,jdbcType=SMALLINT}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{isDeleted,jdbcType=INTEGER}, #{isAvailable,jdbcType=INTEGER}, 
+      #{createUserId,jdbcType=BIGINT}, #{updateUser,jdbcType=BIGINT}, #{barNum,jdbcType=INTEGER}, 
+      #{barArea,jdbcType=VARCHAR}, #{refundState,jdbcType=INTEGER}, #{isplus,jdbcType=INTEGER}, 
+      #{outState,jdbcType=INTEGER}, #{outCode,jdbcType=INTEGER}, #{mainType,jdbcType=INTEGER}, 
+      #{payState,jdbcType=INTEGER}, #{payTime,jdbcType=TIMESTAMP}, #{reserveName,jdbcType=VARCHAR}, 
+      #{reservePhone,jdbcType=VARCHAR}), #{communityActivityId,jdbcType=BIGINT}),#{surfacePicture,jdbcType=VARCHAR}),
+      #{qrUrl,jdbcType=VARCHAR}),  #{isAdmin,jdbcType=INTEGER}), #{is_sign,jdbcType=INTEGER}, #{sign_time,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.people.cbsadmin.model.po.CommunityActivityOrder">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into community_activity_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderCode != null">
+        order_code,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="userPhone != null">
+        user_phone,
+      </if>
+      <if test="orderSource != null">
+        order_source,
+      </if>
+      <if test="activityName != null">
+        activity_name,
+      </if>
+      <if test="activityTime != null">
+        activity_time,
+      </if>
+      <if test="activityPlace != null">
+        activity_place,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="totalAmount != null">
+        total_amount,
+      </if>
+      <if test="payWay != null">
+        pay_way,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="isEntry != null">
+        is_entry,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="isAvailable != null">
+        is_available,
+      </if>
+      <if test="createUserId != null">
+        create_user_id,
+      </if>
+      <if test="updateUser != null">
+        update_user,
+      </if>
+      <if test="barNum != null">
+        bar_num,
+      </if>
+      <if test="barArea != null">
+        bar_area,
+      </if>
+      <if test="refundState != null">
+        refund_state,
+      </if>
+      <if test="isplus != null">
+        isPlus,
+      </if>
+      <if test="outState != null">
+        out_state,
+      </if>
+      <if test="outCode != null">
+        out_code,
+      </if>
+      <if test="mainType != null">
+        main_type,
+      </if>
+      <if test="payState != null">
+        pay_state,
+      </if>
+      <if test="payTime != null">
+        pay_time,
+      </if>
+      <if test="reserveName != null">
+        reserve_name,
+      </if>
+      <if test="reservePhone != null">
+        reserve_phone,
+      </if>
+      <if test="reservePhone != null">
+        community_activity_id,
+      </if>
+        <if test="surfacePicture != null">
+        surface_picture,
+      </if>
+        <if test="qrUrl != null">
+        qr_url,
+      </if>
+        <if test="isAdmin != null">
+        is_admin,
+      </if>
+      <if test="isSign != null">
+        is_sign,
+      </if>
+      <if test="signTime != null">
+        sign_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderCode != null">
+        #{orderCode,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhone != null">
+        #{userPhone,jdbcType=INTEGER},
+      </if>
+      <if test="orderSource != null">
+        #{orderSource,jdbcType=INTEGER},
+      </if>
+      <if test="activityName != null">
+        #{activityName,jdbcType=VARCHAR},
+      </if>
+      <if test="activityTime != null">
+        #{activityTime,jdbcType=VARCHAR},
+      </if>
+      <if test="activityPlace != null">
+        #{activityPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="totalAmount != null">
+        #{totalAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="payWay != null">
+        #{payWay,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isEntry != null">
+        #{isEntry,jdbcType=SMALLINT},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=INTEGER},
+      </if>
+      <if test="isAvailable != null">
+        #{isAvailable,jdbcType=INTEGER},
+      </if>
+      <if test="createUserId != null">
+        #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="updateUser != null">
+        #{updateUser,jdbcType=BIGINT},
+      </if>
+      <if test="barNum != null">
+        #{barNum,jdbcType=INTEGER},
+      </if>
+      <if test="barArea != null">
+        #{barArea,jdbcType=VARCHAR},
+      </if>
+      <if test="refundState != null">
+        #{refundState,jdbcType=INTEGER},
+      </if>
+      <if test="isplus != null">
+        #{isplus,jdbcType=INTEGER},
+      </if>
+      <if test="outState != null">
+        #{outState,jdbcType=INTEGER},
+      </if>
+      <if test="outCode != null">
+        #{outCode,jdbcType=INTEGER},
+      </if>
+      <if test="mainType != null">
+        #{mainType,jdbcType=INTEGER},
+      </if>
+      <if test="payState != null">
+        #{payState,jdbcType=INTEGER},
+      </if>
+      <if test="payTime != null">
+        #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reserveName != null">
+        #{reserveName,jdbcType=VARCHAR},
+      </if>
+      <if test="reservePhone != null">
+        #{reservePhone,jdbcType=VARCHAR},
+      </if>
+       <if test="communityActivityId != null">
+        #{communityActivityId,jdbcType=BIGINT},
+      </if>
+      <if test="surfacePicture != null">
+        #{surfacePicture,jdbcType=VARCHAR},
+      </if>
+      <if test="qrUrl != null">
+        #{qrUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="isAdmin != null">
+        #{isAdmin,jdbcType=INTEGER},
+      </if>
+      <if test="isSign != null">
+        #{isSign,jdbcType=INTEGER},
+      </if>
+      <if test="signTime != null">
+        #{signTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.people.cbsadmin.model.po.CommunityActivityOrder">
+    update community_activity_order
+    <set>
+      <if test="orderCode != null">
+        order_code = #{orderCode,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhone != null">
+        user_phone = #{userPhone,jdbcType=INTEGER},
+      </if>
+      <if test="orderSource != null">
+        order_source = #{orderSource,jdbcType=INTEGER},
+      </if>
+      <if test="activityName != null">
+        activity_name = #{activityName,jdbcType=VARCHAR},
+      </if>
+      <if test="activityTime != null">
+        activity_time = #{activityTime,jdbcType=VARCHAR},
+      </if>
+      <if test="activityPlace != null">
+        activity_place = #{activityPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="totalAmount != null">
+        total_amount = #{totalAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="payWay != null">
+        pay_way = #{payWay,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isEntry != null">
+        is_entry = #{isEntry,jdbcType=SMALLINT},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=INTEGER},
+      </if>
+      <if test="isAvailable != null">
+        is_available = #{isAvailable,jdbcType=INTEGER},
+      </if>
+      <if test="createUserId != null">
+        create_user_id = #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="updateUser != null">
+        update_user = #{updateUser,jdbcType=BIGINT},
+      </if>
+      <if test="barNum != null">
+        bar_num = #{barNum,jdbcType=INTEGER},
+      </if>
+      <if test="barArea != null">
+        bar_area = #{barArea,jdbcType=VARCHAR},
+      </if>
+      <if test="refundState != null">
+        refund_state = #{refundState,jdbcType=INTEGER},
+      </if>
+      <if test="isplus != null">
+        isPlus = #{isplus,jdbcType=INTEGER},
+      </if>
+      <if test="outState != null">
+        out_state = #{outState,jdbcType=INTEGER},
+      </if>
+      <if test="outCode != null">
+        out_code = #{outCode,jdbcType=INTEGER},
+      </if>
+      <if test="mainType != null">
+        main_type = #{mainType,jdbcType=INTEGER},
+      </if>
+      <if test="payState != null">
+        pay_state = #{payState,jdbcType=INTEGER},
+      </if>
+      <if test="payTime != null">
+        pay_time = #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reserveName != null">
+        reserve_name = #{reserveName,jdbcType=VARCHAR},
+      </if>
+      <if test="reservePhone != null">
+        reserve_phone = #{reservePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="communityActivityId != null">
+        community_activity_id = #{communityActivityId,jdbcType=BIGINT},
+      </if>
+      <if test="surfacePicture != null">
+        surface_picture = #{surfacePicture,jdbcType=BIGINT},
+      </if>
+      
+      <if test="qrUrl != null">
+        qr_url = #{qrUrl,jdbcType=BIGINT},
+      </if>
+      <if test="isAdmin != null">
+        is_admin = #{isAdmin,jdbcType=BIGINT},
+      </if>
+       <if test="isSign != null">
+        is_sign = #{isSign,jdbcType=BIGINT},
+      </if>
+       <if test="signTime != null">
+        sign_time = #{signTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.people.cbsadmin.model.po.CommunityActivityOrder">
+    update community_activity_order
+    set order_code = #{orderCode,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      user_phone = #{userPhone,jdbcType=INTEGER},
+      order_source = #{orderSource,jdbcType=INTEGER},
+      activity_name = #{activityName,jdbcType=VARCHAR},
+      activity_time = #{activityTime,jdbcType=VARCHAR},
+      activity_place = #{activityPlace,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      total_amount = #{totalAmount,jdbcType=DECIMAL},
+      pay_way = #{payWay,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      is_entry = #{isEntry,jdbcType=SMALLINT},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      is_deleted = #{isDeleted,jdbcType=INTEGER},
+      is_available = #{isAvailable,jdbcType=INTEGER},
+      create_user_id = #{createUserId,jdbcType=BIGINT},
+      update_user = #{updateUser,jdbcType=BIGINT},
+      bar_num = #{barNum,jdbcType=INTEGER},
+      bar_area = #{barArea,jdbcType=VARCHAR},
+      refund_state = #{refundState,jdbcType=INTEGER},
+      isPlus = #{isplus,jdbcType=INTEGER},
+      out_state = #{outState,jdbcType=INTEGER},
+      out_code = #{outCode,jdbcType=INTEGER},
+      main_type = #{mainType,jdbcType=INTEGER},
+      pay_state = #{payState,jdbcType=INTEGER},
+      pay_time = #{payTime,jdbcType=TIMESTAMP},
+      reserve_name = #{reserveName,jdbcType=VARCHAR},
+      reserve_phone = #{reservePhone,jdbcType=VARCHAR},
+     community_activity_id= #{communityActivityId,jdbcType=BIGINT},
+      surface_picture=#{surfacePicture,jdbcType=VARCHAR},
+      qr_url=#{qrUrl,jdbcType=VARCHAR},
+      is_admin=#{isAdmin,jdbcType=INTEGER}),
+      is_sign=#{isSign,jdbcType=INTEGER}),
+      sign_time=#{signTime,jdbcType=TIMESTAMP})
+     
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

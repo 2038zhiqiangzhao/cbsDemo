@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.people.cbsadmin.business.dao.ext.UserMapperExt">
+  <resultMap id="BaseResultMap" type="com.people.cbsadmin.model.po.User" extends="com.people.cbsadmin.business.dao.UserMapper.BaseResultMap">
+  </resultMap>
+  <resultMap id="DetailResultMap" type="com.people.cbsadmin.model.dto.UserDTO" extends="com.people.cbsadmin.business.dao.ext.UserMapperExt.BaseResultMap">
+    <result column="account_id" jdbcType="BIGINT" property="accountId" />
+    <result column="account_type" jdbcType="INTEGER" property="accountType" />
+    <result column="pay_pwd" jdbcType="VARCHAR" property="payPwd" />
+    <result column="amount" jdbcType="DECIMAL" property="amount" />
+    <result column="freezing_amount" jdbcType="DECIMAL" property="freezingAmount" />
+    <result column="p_salt" jdbcType="VARCHAR" property="pSalt" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+    U.id, U.original_id, U.type, U.identity_type, U.parent_id, U.username, U.password, U.nickname, U.company_name, 
+    U.contact_person, U.mobile, U.telephone, U.email, U.address, U.status, U.remarks, U.points, U.sex, 
+    U.head_pic_url, U.birthday, U.user_province, U.user_city, U.user_region, U.user_address, U.check_time, 
+    U.check_user_id, U.identity_card_name, U.is_certification, U.legal_person_name, U.legal_personNo_number, 
+    U.organization_code, U.business_license_number, U.business_license_url, U.company_type, U.business_scope, 
+    U.business_start, U.business_end, U.registered_address, U.registered_capital, U.population, 
+    U.is_available, U.is_deleted, U.version_no, U.create_userid, U.create_username, U.create_userip, 
+    U.create_usermac, U.create_time, U.create_time_db, U.server_ip, U.update_userid, U.update_username, 
+    U.update_userip, U.update_usermac, U.update_time, U.update_time_db, U.client_versionno, U.company_id, 
+    U.birthday_update_count, U.qq, U.source, U.f_algorithm_version, U.b_algorithm_version, U.f_salt, 
+    U.f_salt_update_time, U.b_salt, U.b_salt_update_time, U.platform_id, U.platform_group_id, U.entity_type, 
+    U.entity_id, U.employe_num, U.grade_id, U.name_card_url, U.industry, U.profession, U.referee_mobile
+  </sql>
+  
+  
+  <sql id="Detail_Column_List">
+    <include refid="Base_Column_List"></include>
+  </sql>
+  
+  <sql id="baseWhereCase">
+      <where>
+          and U.is_deleted=0
+          <if test="ids != null and ids.size() > 0">
+          and U.id in 
+          	<foreach collection="ids" item="id" open="(" close=")" separator=",">
+          		#{id,jdbcType=BIGINT}
+          	</foreach>
+          </if>
+          <if test="username != null and username != '' ">
+          and U.username = #{username,jdbcType=VARCHAR}
+          </if>
+          <if test="mobile != null and mobile != '' ">
+          and U.mobile = #{mobile,jdbcType=VARCHAR}
+          </if>
+          <if test="type != null ">
+          and U.type = #{type,jdbcType=INTEGER}
+          </if>
+          <if test="identityType != null">
+          and U.identity_type = #{identityType,jdbcType=INTEGER}
+          </if>
+          <if test="email != null and email != '' ">
+          and U.email = #{email,jdbcType=VARCHAR}
+          </if>
+          <if test="identityCardName != null and identityCardName != '' ">
+          and U.identity_card_name = #{identityCardName,jdbcType=VARCHAR}
+          </if>
+          <if test="employeNum != null and employeNum != '' ">
+          and U.employe_num = #{employeNum,jdbcType=VARCHAR}
+          </if>
+          <if test="gradeId != null">
+          and U.grade_id = #{gradeId,jdbcType=BIGINT}
+          </if>
+          <if test="companyId != null ">
+          and U.company_Id = #{companyId,jdbcType=VARCHAR}
+          </if>
+          <if test="companyName != null and companyName != '' ">
+          and U.company_Name like CONCAT('%',  #{companyName,jdbcType=VARCHAR}, '%')
+          </if>
+          <if test="refereeMobile != null and refereeMobile != '' ">
+          and U.referee_mobile = #{refereeMobile,jdbcType=VARCHAR}
+          </if>
+      </where>
+  </sql>
+  
+  <!-- 根据条件查询列表-->
+  <select id="queryUserList" parameterType="com.people.cbsadmin.model.vo.UserQueryVo"
+      resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List" />
+      from u_user U
+      <include refid="baseWhereCase"></include>
+      order by U.create_time desc
+  </select>
+  
+  <!-- 根据条件查询列表-->
+  <select id="queryUserPage" parameterType="com.people.cbsadmin.model.vo.UserQueryVo"
+      resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List" />
+      from u_user U
+      <include refid="baseWhereCase"></include>
+      order by U.create_time desc
+      limit
+      #{startItem,jdbcType=INTEGER},#{itemsPerPage,jdbcType=INTEGER}
+  </select>
+
+  <!-- 根据条件统计数量-->
+  <select id="countUser" resultType="java.lang.Integer"
+      parameterType="com.people.cbsadmin.model.vo.UserQueryVo">
+      select
+      count(1)
+      from
+      u_user U
+      <include refid="baseWhereCase"></include>
+  </select>
+  
+  
+  <!-- 根据条件查询列表-->
+  <select id="queryUserDetailList" parameterType="com.people.cbsadmin.model.vo.UserQueryVo"
+      resultMap="DetailResultMap">
+      select
+      <include refid="Detail_Column_List" />
+      from u_user U
+      <include refid="baseWhereCase"></include>
+      order by U.create_time desc
+  </select>
+  
+  <!-- 根据条件查询列表-->
+  <select id="queryUserDetailPage" parameterType="com.people.cbsadmin.model.vo.UserQueryVo"
+      resultMap="DetailResultMap">
+      select
+      <include refid="Detail_Column_List" />
+      from u_user U
+      <include refid="baseWhereCase"></include>
+      order by U.create_time desc
+      limit
+      #{startItem,jdbcType=INTEGER},#{itemsPerPage,jdbcType=INTEGER}
+  </select>
+  
+  <!-- 根据主键查询用户详情 -->
+  <select id="queryUserDetailById" parameterType="java.lang.Long"
+      resultMap="DetailResultMap">
+      select
+      <include refid="Base_Column_List" />
+      from u_user U
+      where U.id = #{userId,jdbcType=BIGINT}
+      order by U.id = #{_parameter,jdbcType=BIGINT}
+  </select>
+  
+  <select id="queryByCardNos" parameterType="com.people.cbsadmin.model.dto.UserQueryDTO"
+      resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List" />
+      from u_user U
+      WHERE U.id in (
+      	select user_door_card  UDC
+      	<where> UDC.is_deleted = 0
+      	  and UDC.card_no in <foreach collection="cardNos" item="cardNo" open="(" close=")" separator=",">
+          						#{cardNo,jdbcType=VARCHAR}
+          	                 </foreach>
+        </where>
+      )
+  </select>
+  
+  <select id="queryByCardNo" parameterType="java.lang.String"
+      resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List" />
+      from u_user U
+      WHERE U.id in (
+      	select user_door_card  UDC
+      	<where> 
+      		UDC.is_deleted = 0 and UDC.card_no = #{cardNo,jdbcType=VARCHAR}
+        </where>
+      )
+  </select>
+  
+  <select id="queryServerByproductId" parameterType="java.lang.Long"
+      resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List" />
+      from u_user U
+      WHERE U.id in (
+      	select USF.user_id from user_service_product_type  USF
+      	<where> 
+      		USF.is_deleted = 0 and USF.product_id = #{productId,jdbcType=BIGINT}
+        </where>
+      )
+  </select>
+  
+  <select id="selectListUserByuser" parameterType="com.people2000.user.model.po.ibatis.User"
+      resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List" />
+      from u_user U
+      <include refid="baseWhereCase"></include>
+  </select>
+  
+</mapper>

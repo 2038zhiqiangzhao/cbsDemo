@@ -1,0 +1,98 @@
+<div>
+ <div class="wrapper-md">
+  <div class="panel panel-default">
+   <div class="panel-heading font-bold">基础信息</div>
+   <div class="panel-body">
+    <form class="form-horizontal ng-pristine ng-valid" role="form">
+     <div class="form-group">
+      <div class="col-sm-4 mgt15">
+       <label for="" class="col-sm-5 control-label">订单编号</label>
+       <div class="col-sm-7">
+        <label for="" class="wd control-label">{{formData.orderCode}}</label>
+       </div>
+      </div>
+      <div class="col-sm-4 mgt15">
+       <label for="" class="col-sm-5 control-label">订单来源</label>
+       <div class="col-sm-7">
+        <label for="" class="wd control-label">{{orderSourceDescs[formData.orderSource]}}</label>
+       </div>
+      </div>
+      <div class="col-sm-4 mgt15">
+       <label for="" class="col-sm-5 control-label">订单状态</label>
+       <div class="col-sm-7">
+        <label for="" class="wd control-label">{{activityStateDec[formData.status]}}</label>
+       </div>
+      </div>
+     </div>
+     
+     
+     
+     <div class="form-group">
+      <div class="col-sm-4 mgt15">
+       <label for="" class="col-sm-5 control-label">活动名称</label>
+       <div class="col-sm-7">
+        <label for="" class="wd control-label">{{formData.activityName}}</label>
+       </div>
+      </div>
+      <div class="col-sm-4 mgt15">
+       <label for="" class="col-sm-5 control-label">活动时间</label>
+       <div class="col-sm-7">
+        <label for="" class="wd control-label">{{formData.activityTime}}</label>
+       </div>
+      </div>
+      <div class="col-sm-4 mgt15">
+       <label for="" class="col-sm-5 control-label">活动地点</label>
+       <div class="col-sm-7">
+        <label for="" class="wd control-label">{{formData.activityPlace}}</label>
+       </div>
+      </div>
+     </div>
+    
+    
+    <div class="form-group">
+      <div class="col-sm-4 mgt15">
+       <label for="" class="col-sm-5 control-label">实际支付</label>
+       <div class="col-sm-7">
+        <label for="" class="wd control-label">{{formData.totalAmount}}</label>
+       </div>
+      </div>
+      <div class="col-sm-4 mgt15">
+       <label for="" class="col-sm-5 control-label">支付方式</label>
+       <div class="col-sm-7">
+        <label for="" class="wd control-label">{{activityStatePayWayDec[formData.payWay]}}</label>
+       </div>
+      </div>
+      <div class="col-sm-4 mgt15">
+       <label for="" class="col-sm-5 control-label">是否入场</label>
+       <div class="col-sm-7">
+        <label for="" class="wd control-label">{{statusisEntryDescs[formData.isEntry]}}</label>
+       </div>
+      </div>
+     </div>
+     
+     
+     
+    
+    <div class="panel-heading font-bold">客户信息</div>
+    <div class="form-group">
+      <div class="col-sm-4 mgt15">
+       <label for="" class="col-sm-5 control-label">预订人姓名</label>
+       <div class="col-sm-7">
+        <label for="" class="wd control-label">{{formData.userName}}</label>
+       </div>
+      </div>
+      <div class="col-sm-4 mgt15">
+       <label for="" class="col-sm-5 control-label">预订人手机</label>
+       <div class="col-sm-7">
+        <label for="" class="wd control-label">{{formData.userPhone}}</label>
+       </div>
+      </div>
+     </div>
+    
+    
+    
+    </form>
+   </div>
+  </div>
+ </div>
+</div>

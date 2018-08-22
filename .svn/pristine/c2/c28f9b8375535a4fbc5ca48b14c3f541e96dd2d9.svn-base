@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="wekit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link id="favicon" href="favicon" type="image/x-icon"
+ rel="shortcut icon">
+
+<link href="/plugins/bootstrap-3.3.4/css/bootstrap.css" rel="stylesheet">
+<link href="/plugins/common/css/animate.min.css" rel="stylesheet" />
+<link href="/plugins/common/css/font.css" rel="stylesheet" />
+<link href="/plugins/common/css/font-awesome.min.css" rel="stylesheet" />
+<link href="/plugins/common/css/simple-line-icons.css" rel="stylesheet" />
+<link href="/plugins/platform-include/css/platform.css" rel="stylesheet">
+<link href="/plugins/platform-include/css/content.css" rel="stylesheet">
+<link href="/plugins/bootstrap-dialog/css/bootstrap-dialog.min.css"
+ rel="stylesheet">
+<link
+ href="/plugins/filestyle/css/file.css"
+ rel="stylesheet" type="text/css" />
+ <link
+ href="/plugins/jquery/datetimepicker/css/jquery.datetimepicker.css"
+ rel="stylesheet" type="text/css" />
+<link href="/plugins/ueditor/themes/default/css/ueditor.css"
+ type="text/css" rel="stylesheet">
+<link href="/plugins/bootstrap-tree/css/ui-bootstrap-tree.css"
+ type="text/css" rel="stylesheet">
+ <!--tree-->
+ 
+<!-- 系统JS引入 START -->
+<script src="/plugins/jquery/jquery.min.js"></script>
+<script src="/plugins/angular-1.2.29/js/angular.min.js"></script>
+<script src="/plugins/angular-1.2.29/js/angular-cookies.min.js"></script>
+<script src="/plugins/angular-1.2.29/js/angular-animate.min.js"></script>
+<script src="/plugins/angular-1.2.29/js/angular-route.min.js"></script>
+<script src="/plugins/angular-1.2.29/js/angular-ui-router.js"></script>
+<script src="/plugins/angular-1.2.29/js/ngStorage.min.js"></script>
+<script src="/plugins/angular-1.2.29/js/ui-load.js"></script>
+<script src="/plugins/angular-1.2.29/js/ui-jq.js"></script>
+<script src="/plugins/angular-1.2.29/js/ui-validate.js"></script>
+<script src="/plugins/angular-1.2.29/js/ui-bootstrap-tpls.min.js"></script>
+<script src="/plugins/angular-1.2.29/js/angular-file-upload.js"></script>
+<!--  <script src="plugins/filestyle/js/ui-jq.js"></script> -->
+<script
+ src="/plugins/angular-1.2.29/js/angular-datetimepicker-transform.js"></script>
+<script
+ src="/plugins/jquery/datetimepicker/js/jquery.datetimepicker.full.js"
+ type="text/javascript"></script>
+<script src="/plugins/bootstrap-3.3.4/js/ui-bootstrap-modal.js"></script>
+<script src="/plugins/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+<script src="/plugins/bootstrap-3.3.4/js/ui-bootstrap-pagination.js"></script>
+<script src="/plugins/bootstrap-dialog/js/bootstrap-dialog.min.js"></script>
+<script src="/plugins/bootstrap-addtab/js/bootstrap.addtabs.js"></script>
+<script src="/plugins/bootstrap-tree/js/ui-bootstrap-tree.js"></script>
+
+<script src="/plugins/ueditor/ueditor.config.js" type="text/javascript"></script>
+<script src="/plugins/ueditor/ueditor.all.min.js" type="text/javascript"></script>
+
+<!-- 系统JS引入 END -->
+
+<!-- 营地活动angularJs start -->
+<script src="js/app.js"></script>
+<script src="js/common/dict.js"></script>
+<script src="js/common/common.js"></script>
+
+<script src="js/communityActivity/communityActivityCtrl.js"></script>
+<script src="js/communityActivity/communityActivityOderCtrl.js"></script>
+<script src="js/communityActivity/communityActivityAddCtrl.js"></script>
+<script src="js/communityActivity/communityActivityEditCtrl.js"></script>
+<script src="js/communityActivity/communityActivityOderDetailsCtrl.js"></script>
+<!-- 引入富文本样式和easyui样式 -->
+<script src="/plugins/ueditor/ueditor.config.js" type="text/javascript" ></script>
+<script src="/plugins/ueditor/ueditor.all.min.js" type="text/javascript" ></script>
+
+
+
+
+<!-- 营地活动angularJs end -->
+
+<script src="/plugins/platform-include/js/platformCtrl.js"></script>
+
+</head>
+<body ng-app="app">
+ <!-- <iframe class="app-content-body" frameborder="0" style="min-height:500px;" id="platformFrame" onload="iframeLoaded();"></iframe> -->
+ <div class="app-content-body" ui-view></div>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!-- navbar header -->
+<div class="navbar-header {{app.settings.navbarHeaderColor}}" class="bg-info">
+    <button class="pull-right visible-xs dk" ui-toggle-class="show" data-target=".navbar-collapse">
+        <i class="glyphicon glyphicon-cog"></i>
+    </button>
+    <button class="pull-right visible-xs" ui-toggle-class="off-screen" data-target=".app-aside" ui-scroll="app">
+        <i class="glyphicon glyphicon-align-justify"></i>
+    </button>
+    <!-- brand -->
+    <a href="javascript:void(0);" ng-click="getBoardSwitch();" class="navbar-brand text-lt">
+        <!--<i class="fa fa-btc"></i>-->
+        <!--<img src="/plugins/platform-include/image/logo.png" alt="." class="hide">-->
+        <img ng-src="{{websiteLogo}}" src="" onerror="this.src='/plugins/platform-include/image/logo.png'" width="20px" height="64px" class=""/>
+        <span class="hidden-folded m-l-xs" >后台系统</span>
+    </a>
+    <!-- / brand -->
+</div>
+<!-- / navbar header -->
+
+<!-- navbar collapse -->
+<div class="collapse navbar-collapse box-shadow {{app.settings.navbarCollapseColor}}">
+    <!-- buttons -->
+    <div class="nav navbar-nav m-l-sm hidden-xs">
+        <a href class="btn no-shadow navbar-btn" ng-click="app.settings.asideFolded = !app.settings.asideFolded">
+            <i class="fa {{app.settings.asideFolded ? 'fa-indent' : 'fa-dedent'}} fa-fw"></i>
+        </a>
+    </div>
+    <!-- / buttons -->
+
+	<!-- link and dropdown -->
+    <ul class="nav navbar-nav hidden-sm">
+      <li ng-class="{active:tabs[$index]}" ng-repeat="rootMenu in menuTreeData">
+        <a href ng-click="setTabs($index)"><span ng-bind="rootMenu.name"></span></a>
+      </li>
+    </ul>
+    
+    <ul class="nav navbar-nav navbar-right">
+
+        <li class="hidden-xs">
+            <a ui-fullscreen></a>
+        </li>
+        <!-- 网站向导-->
+        <li ng-show="backGuideSwitch"><button class="btn navbar-btn {{app.settings.navbarCollapseColor}}" id="showGuideBtn" data-toggle="modal" data-target="#guide-modal">网站向导</button></li>
+
+        <li class="dropdown" ng-show="username">
+            <a href class="dropdown-toggle clear" data-toggle="dropdown">
+              <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+                <img src="/plugins/platform-include/image/a0.jpg" alt="...">
+                <i class="on md b-white bottom"></i>
+              </span>
+                <span class="hidden-sm hidden-md" ng-bind="username"></span> <b class="caret"></b>
+            </a>
+            <!-- dropdown -->
+            <ul class="dropdown-menu animated fadeInRight w">
+                <li>
+                    <a ng-click="logout();">退出</a>
+                </li>
+            </ul>
+            <!-- / dropdown -->
+        </li>
+    </ul>
+    <!-- / navbar right -->
+
+</div>
+<!-- / navbar collapse -->
